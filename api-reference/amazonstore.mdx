@@ -1,0 +1,55 @@
+---
+title: "AmazonStore"
+description: "Represents an Amazon store."
+---
+
+## Fields
+
+---
+
+`store`: `String!` 
+
+The name of the Amazon store. The value is always equal to `amazon`
+
+---
+
+`cartLines`: [\[AmazonCartLine!\]!](https://rye-docs.readme.io/reference/amazoncartline)
+
+An array of [AmazonCartLine](https://rye-docs.readme.io/reference/amazoncartline) objects, each representing a line item in the cart with the Amazon product details and the quantity of the product.
+
+---
+
+`offer`: [AmazonOffer](https://rye-docs.readme.io/reference/amazonoffer-1)
+
+An `Offer` object containing information about taxes, prices, and shipping methods related to the items in the cart.
+
+---
+
+`shipsToCountries`: [\[Country!\]](https://rye-docs.readme.io/reference/country)
+
+Countries that the store ships to.
+
+---
+
+`isSubmitted`: `Boolean!`
+
+True if the store items ended up with a successful checkout
+
+---
+
+`requestId`: `String!`
+
+A unique identifier will be used for getting information about the order after the cart is submitted
+
+---
+
+`errors`: [\[AmazonStoreError!\]!](/reference/amazonstoreerror)
+
+Contains errors related to a specific store
+
+---
+
+### Related types
+
+* [Store](/reference/store)
+* [Cart](/reference/cart-2)

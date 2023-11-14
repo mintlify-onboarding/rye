@@ -1,0 +1,1708 @@
+---
+title: "Webhook updates"
+description: "After an order is created, real-time updates about order state changes are sent to your configured webhook."
+---
+
+### Webhook configuration
+
+To configure your webhook:
+
+1. Head over to [https://console.rye.com/account](https://console.rye.com/account)
+2. Enter a valid callback endpoint for your backend under the "Webhook section", and click save
+![](/images/a64deca-image.png) 
+
+That's it! On every order update, a webhook will be fired at your designated endpoint. Currently, webhooks are not retried on failure so please ensure they succeed on the first try.
+
+---
+
+### Webhook payload examples
+
+> 📘
+> 
+> The `requestId` field present in the webhook payload is what will be returned by the `submitCart` mutation. This can interpreted as the "order ID".
+
+#### Payment related webhooks
+
+PaymentSucceededWebhookPaymentFailedWebhookPaymentRefundedWebhook
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "xDasf23Jk4LKlxOq",
+  "createdAt": "2023-06-27T12:00:00Z",
+  "type": "PAYMENT_SUCCEEDED",
+  "data": {
+    "marketplace": "shopify",
+    "amount": 100
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "developer_890",
+  "createdAt": "2023-06-27T12:00:01Z",
+  "type": "PAYMENT_FAILED",
+  "data": {
+    "marketplace": "shopify"
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "developer_901",
+  "createdAt": "2023-06-27T12:00:02Z",
+  "type": "PAYMENT_REFUNDED",
+  "data": {}
+}
+
+`
+
+#### Order submission related webhooks
+
+OrderSubmissionStartedWebhookOrderSubmissionSucceededWebhook
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "xDasf23Jk4LKlxOq",
+  "createdAt": "2023-06-27T12:00:03Z",
+  "type": "ORDER_SUBMISSION_STARTED",
+  "data": {
+    "marketplace": "shopify"
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "developer_123",
+  "createdAt": "2023-06-27T12:00:04Z",
+  "type": "ORDER_SUBMISSION_SUCCEEDED",
+  "data": {
+    "marketplace": "shopify"
+  }
+}
+
+`
+
+#### Order cancellation related webhooks (Amazon)
+
+OrderCancelStartedWebhookOrderCancelSucceededWebhookOrderCancelFailedWebhook
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "xDasf23Jk4LKlxOq",
+  "createdAt": "2023-06-27T12:00:03Z",
+  "type": "ORDER_CANCEL_STARTED",
+  "data": {
+    "marketplace": "amazon",
+    "startedAt": "2023-09-07T17:49:07.267Z"
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "developer_123",
+  "createdAt": "2023-06-27T12:00:04Z",
+  "type": "ORDER_CANCEL_SUCCEEDED",
+  "data": {
+    "marketplace": "amazon",
+    "cancelledAt": "2023-09-07T17:49:07.267Z"
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "developer_123",
+  "createdAt": "2023-06-27T12:00:04Z",
+  "type": "ORDER_CANCEL_FAILED",
+  "data": {
+    "marketplace": "amazon",
+    "reason": "Order already shipped"
+  }
+}
+`
+
+#### Order placed and failure related webhooks
+
+OrderPlacedWebhook (Shopify)OrderPlacedWebhook (Amazon)OrderFailedWebhook
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "xDasf23Jk4LKlxOq",
+  "createdAt": "2023-06-27T12:00:06Z",
+  "type": "ORDER_PLACED",
+  "data": {
+    "marketplace": "shopify",
+    "order": {
+      "currency": "USD",
+      "shippingCents": 500,
+      "subtotalCents": 2000,
+      "taxCents": 200,
+      "totalCents": 2700,
+      "orderEmailOverride": "[[email protected]](/cdn-cgi/l/email-protection)"
+    }
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "xDasf23Jk4LKlxOq",
+  "createdAt": "2023-06-27T12:00:05Z",
+  "type": "ORDER_PLACED",
+  "data": {
+    "marketplace": "amazon",
+    "order": {
+      "currency": "USD",
+      "shippingCents": 500,
+      "subtotalCents": 2000,
+      "taxCents": 200,
+      "totalCents": 2700,
+      "amazonOrders": [
+        {
+          "amazonOrderId": "113-7953074923-1301",
+          "products": [
+            {
+              "quantity": 2,
+              "productId": "B09X7FXHVJ"
+            },
+            {
+              "quantity": 1,
+              "productId": "B09X7CFXSX"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "xDasf23Jk4LKlxOq",
+  "createdAt": "2023-06-27T12:00:07Z",
+  "type": "ORDER_FAILED",
+  "data": {
+    "marketplace": "amazon",
+    "refund": {
+      "amount": 1000,
+      "created": 1675936800,
+      "currency": "USD",
+      "receipt_number": "refund_593203912",
+      "status": "succeeded"
+    },
+    "reasonCode": "INTERNAL_ERROR",
+    "reason": "An internal error occurred."
+  }
+}
+
+`
+
+#### Tracking related webhooks
+
+TrackingObtainedWebhook (Shopify)TrackingObtainedWebhook (Amazon)TrackingObtainedWebhook (Amazon v2)
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "xDasf23Jk4LKlxOq",
+  "createdAt": "2023-06-27T12:00:09Z",
+  "type": "TRACKING_OBTAINED",
+  "data": {
+    "marketplace": "shopify",
+    "order": {
+      "fulfillments": [
+        {
+          "products": [
+            {
+              "quantity": 1,
+              "variantId": "41160207204557"
+            }
+          ],
+          "trackingDetails": [
+            {
+              "trackingNumber": "1Z87F765679738",
+              "courierUrl": "https://www.ups.com/WebTracking?loc=en_US&requester=ST&trackNums=1Z87F765679738",
+              "courierName": "UPS"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "developer_567",
+  "createdAt": "2023-06-27T12:00:08Z",
+  "type": "TRACKING_OBTAINED",
+  "data": {
+    "marketplace": "amazon",
+    "order": {
+      "amazonOrders": [
+        {
+          "amazonOrderId": "113-7953074923-1301",
+          "products": [
+            {
+              "quantity": 1,
+              "productId": "B09X7FXHVJ"
+            }
+          ],
+          "trackingNumber": "1Z87F765679738",
+          "retailTrackingNumber": "TBA307720391618",
+          "courierUrl": "https://www.ups.com/WebTracking?loc=en_US&requester=ST&trackNums=1Z87F765679738",
+          "courierName": "UPS"
+        }
+      ]
+    }
+  }
+}
+
+`
+
+`{
+  "id": "hg9b8xyc-a128-4659-9c84-e3b376607977",
+  "requestId": "d222c412-fbc8-4e59-8cef-b57696bxyz11",
+  "developerId": "developer_567",
+  "createdAt": "2023-06-27T12:00:08Z",
+  "type": "TRACKING_OBTAINED",
+  "data": {
+    "marketplace": "amazon",
+    "order": {
+      "amazonOrders": [
+        {
+          "amazonOrderId": "113-7953074923-1301",
+          "products": [
+            {
+              "quantity": 1,
+              "productId": "B09X7FXHVJ"
+            }
+          ],
+          "trackingNumber": "1Z87F765679738",
+          "courierUrl": "https://www.ups.com/WebTracking?loc=en_US&requester=ST&trackNums=1Z87F765679738",
+          "courierName": "UPS",
+          "shipments": [
+            {
+              "carrierName": "USPS",
+              "carrierTracking": "123",
+              "carrierTrackingUrl": "https://tools.usps.com/go/TrackConfirmAction?tLabels=123",
+              "deliveryInformation": {
+                "deliveryStatus": "NOT_AVAILABLE",
+                "expectedDeliveryDate": "Oct 7, 2023, 8:18:59.000 AM"
+              },
+              "shipmentDate": "Oct 7, 2023, 8:18:59.000 AM",
+              "shipmentQuantity": 1,
+              "shipmentStatus": "SHIPPED",
+            }
+          ],
+          "tracking_url": "https://tools.usps.com/go/TrackConfirmAction?tLabels=123"
+        }
+      ]
+    }
+  }
+}
+`
+
+---
+
+### Webhook types
+
+The webhook body is JSON formatted. If your project is Typescript based you can use these types.
+
+TypeScriptJSON Schema
+
+`` /**
+ * How public events are represented on data transfer
+ */
+export type RyeWebhook =
+  | PaymentSucceededWebhook
+  | PaymentFailedWebhook
+  | PaymentRefundedWebhook
+  | OrderSubmissionStartedWebhook
+  | OrderSubmissionSucceededWebhook
+  | OrderPlacedWebhook
+  | OrderFailedWebhook
+  | PublicOrderCancelledWebhook
+  | PublicOrderCancelFailedWebhook
+  | PublicOrderCancelStartedWebhook
+  | PublicOrderCancelRequestedWebhook
+  | TrackingObtainedWebhook;
+export type PaymentSucceededWebhook = BaseWebhook & {
+  type: WebhookType.PaymentSucceeded;
+  data: {
+    marketplace: Marketplace;
+    amount: number;
+  };
+};
+export type BaseWebhook = {
+  // Unique identifier for the event
+  id: string;
+  // Unique ID of the request. This is used to group events together.
+  requestId: string;
+  // ID of developer who initiated the request
+  developerId: string;
+  // Creation time of the event
+  createdAt: string;
+};
+export type Marketplace = AmazonMarketplace | ShopifyMarketplace;
+export enum WebhookType {
+  PaymentSucceeded = 'PAYMENT_SUCCEEDED',
+  PaymentFailed = 'PAYMENT_FAILED',
+  PaymentRefunded = 'PAYMENT_REFUNDED',
+  OrderSubmissionStarted = 'ORDER_SUBMISSION_STARTED',
+  OrderSubmissionSucceeded = 'ORDER_SUBMISSION_SUCCEEDED',
+  OrderPlaced = 'ORDER_PLACED',
+  OrderFailed = 'ORDER_FAILED',
+  OrderCancelFailed = 'ORDER_CANCEL_FAILED',
+  OrderCancelStarted = 'ORDER_CANCEL_STARTED',
+  OrderCancelRequested = 'ORDER_CANCEL_REQUESTED',
+  OrderCancelSucceeded = 'ORDER_CANCEL_SUCCEEDED',
+  TrackingObtained = 'TRACKING_OBTAINED',
+}
+export type PaymentFailedWebhook = BaseWebhook & {
+  type: WebhookType.PaymentFailed;
+  data: {
+    marketplace: Marketplace;
+  };
+};
+export type PaymentRefundedWebhook = BaseWebhook & {
+  type: WebhookType.PaymentRefunded;
+  data: Record<string, never>;
+};
+export type OrderSubmissionStartedWebhook = BaseWebhook & {
+  type: WebhookType.OrderSubmissionStarted;
+  data: {
+    marketplace: Marketplace;
+  };
+};
+export type OrderSubmissionSucceededWebhook = BaseWebhook & {
+  type: WebhookType.OrderSubmissionSucceeded;
+  data: {
+    marketplace: Marketplace;
+  };
+};
+export type OrderPlacedWebhook = BaseWebhook & {
+  type: WebhookType.OrderPlaced;
+  data: AmazonOrderPlacedData | ShopifyOrderPlacedData;
+};
+type AmazonOrderPlacedData = {
+  marketplace: AmazonMarketplace;
+  order: BasePlacedOrderDetails & {
+    amazonOrders: Pick<BaseAmazonOrder, 'amazonOrderId' | 'products'>[];
+  };
+};
+export type AmazonMarketplace = 'amazon';
+export type BasePlacedOrderDetails = {
+  currency: string;
+  shippingCents: number;
+  subtotalCents: number;
+  taxCents: number;
+  totalCents: number;
+};
+export type BaseAmazonOrder = {
+  amazonOrderId: string;
+  cancellation?: {
+    status:
+      | WebhookType.OrderCancelFailed
+      | WebhookType.OrderCancelSucceeded
+      | WebhookType.OrderCancelStarted
+      | WebhookType.OrderCancelRequested;
+    isManuallyCancelled?: boolean;
+    isOrderFailure?: boolean;
+    date: string;
+    reason?: string; //use this for failed status
+  };
+  products: AmazonOrderRequestProduct[];
+};
+export type AmazonOrderRequestProduct = {
+  quantity: number;
+  productId: string;
+};
+type ShopifyOrderPlacedData = {
+  marketplace: ShopifyMarketplace;
+  order: BasePlacedOrderDetails & {};
+  orderEmailOverride?: string;
+};
+export type ShopifyMarketplace = 'shopify';
+export type OrderFailedWebhook = BaseWebhook & {
+  type: WebhookType.OrderFailed;
+  data: {
+    marketplace: Marketplace;
+    refund?: StripeRefund;
+    reasonCode?: OrderFailedReasonCode;
+    reason?: string;
+  };
+};
+type StripeRefund = {
+  /**
+   * Unique identifier for the object.
+   */
+  id: string;
+  /**
+   * String representing the object's type. Objects of the same type share the same value.
+   */
+  object: 'refund';
+  /**
+   * Amount, in %s.
+   */
+  amount: number;
+  /**
+   * Time at which the object was created. Measured in seconds since the Unix epoch.
+   */
+  created: number;
+  /**
+   * Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).
+   */
+  currency: string;
+  /**
+   * An arbitrary string attached to the object. Often useful for displaying to users. (Available on non-card refunds only)
+   */
+  description?: string;
+  /**
+   * This is the transaction number that appears on email receipts sent for this refund.
+   */
+  receipt_number: string | null;
+  /**
+   * Status of the refund. For credit card refunds, this can be `pending`, `succeeded`, or `failed`. For other types of refunds, it can be `pending`, `requires_action`, `succeeded`, `failed`, or `canceled`. Refer to our [refunds](https://stripe.com/docs/refunds#failed-refunds) documentation for more details.
+   */
+  status: string | null;
+};
+export type OrderFailedReasonCode =
+  | 'INTERNAL_ERROR'
+  | 'OUT_OF_STOCK'
+  | 'INVALID_REQUEST'
+  | 'UNAUTHENTICATED'
+  | 'PERMISSION_DENIED'
+  | 'USER_REQUESTED'
+  | 'DENIED_BY_MARKETPLACE'
+  | 'CANCELED'
+  | 'SHIPPING_ADDRESS_BLACKLISTED'
+  | 'SHIPPING_ADDRESS_UNAVAILABLE'
+  | 'EXPIRED_PRODUCT_ID'
+  | 'INSUFFICIENT_VARIANTS'
+  | 'INVALID_QUANTITY'
+  | 'INVALID_SHIPPING_METHOD'
+  | 'INVALID_VARIANT'
+  | 'PRODUCT_UNAVAILABLE'
+  | 'SHIPPING_ADDRESS_REFUSED'
+  | 'SHIPPING_METHOD_UNAVAILABLE'
+  | 'UNSUPPORTED_PRODUCT_ID';
+export type PublicOrderCancelledWebhook = BaseWebhook & {
+  type: WebhookType.OrderCancelSucceeded;
+  data: {
+    marketplace: Marketplace;
+    cancelledAt: string;
+    refund?: StripeRefund;
+  };
+};
+export type PublicOrderCancelFailedWebhook = BaseWebhook & {
+  type: WebhookType.OrderCancelFailed;
+  data: {
+    marketplace: Marketplace;
+    reason: string;
+  };
+};
+export type PublicOrderCancelStartedWebhook = BaseWebhook & {
+  type: WebhookType.OrderCancelStarted;
+  data: {
+    marketplace: Marketplace;
+    startedAt: string;
+  };
+};
+export type PublicOrderCancelRequestedWebhook = BaseWebhook & {
+  type: WebhookType.OrderCancelRequested;
+  data: {
+    marketplace: Marketplace;
+    requestedAt: string;
+    marketplaceOrderId: string;
+  };
+};
+export type TrackingObtainedWebhook = BaseWebhook & {
+  type: WebhookType.TrackingObtained;
+  data: AmazonTrackingObtainedData | ShopifyTrackingObtainedData;
+};
+type AmazonTrackingObtainedData = {
+  marketplace: AmazonMarketplace;
+  order: BasePlacedOrderDetails & {
+    amazonOrders: AmazonOrderWithTrackingObtained[];
+  };
+};
+type AmazonOrderWithTrackingObtained = Pick<BaseAmazonOrder, 'amazonOrderId' | 'products'> &
+  AmazonTrackedOrderDetails & {
+    shipments?: AmazonShipment[];
+  };
+export type AmazonTrackedOrderDetails = TrackedOrderDetails & {
+  retailTrackingNumber?: string;
+};
+export type TrackedOrderDetails = {
+  trackingNumber: string;
+  courierUrl: string;
+  courierName: string;
+};
+/** The shipment sent to the customer. */
+export type AmazonShipment = {
+  /**
+   * Date when the item was shipped.
+   * @format Firestore Timestamp
+   */
+  shipmentDate: string;
+  /** The current status of the shipment. */
+  shipmentStatus: 'SHIPPED' | null;
+  /** The tracking number from the shipment carrier. */
+  carrierTracking: string | null;
+  /** The delivery status and estimated delivery date. */
+  deliveryInformation: DeliveryInformation;
+  /** The total number of items for shipping. */
+  shipmentQuantity: number;
+  /** The name of the shipment carrier. */
+  carrierName: string;
+  /** Tracking url for the shipment carrier */
+  carrierTrackingUrl: string;
+};
+/** The delivery status and estimated delivery date. */
+export type DeliveryInformation = {
+  /**
+   * The expected delivery date of the shipment.
+   * @format Firestore Timestamp
+   */
+  expectedDeliveryDate: string;
+  /** The current delivery status of the shipment. */
+  deliveryStatus: 'DELIVERED' | 'NOT_DELIVERED' | 'NOT_AVAILABLE';
+};
+export type ShopifyTrackingObtainedData = {
+  marketplace?: ShopifyMarketplace;
+  order: {
+    fulfillments: BaseShopifyOrderFulfillment[];
+  };
+};
+export type BaseShopifyOrderFulfillment = {
+  products: ShopifyOrderRequestProduct[];
+  trackingDetails: TrackedOrderDetails[];
+};
+export type ShopifyOrderRequestProduct = {
+  quantity: number;
+  variantId: string;
+};
+
+ ``
+
+`` {
+  "$ref": "#/definitions/RyeWebhook",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "definitions": {
+    "AmazonMarketplace": {
+      "const": "amazon",
+      "type": "string"
+    },
+    "AmazonOrderPlacedData": {
+      "additionalProperties": false,
+      "properties": {
+        "marketplace": {
+          "$ref": "#/definitions/AmazonMarketplace"
+        },
+        "order": {
+          "additionalProperties": false,
+          "properties": {
+            "amazonOrders": {
+              "items": {
+                "$ref": "#/definitions/Pick%3CBaseAmazonOrder%2C(%22amazonOrderId%22%7C%22products%22)%3E"
+              },
+              "type": "array"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "shippingCents": {
+              "type": "number"
+            },
+            "subtotalCents": {
+              "type": "number"
+            },
+            "taxCents": {
+              "type": "number"
+            },
+            "totalCents": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "amazonOrders",
+            "currency",
+            "shippingCents",
+            "subtotalCents",
+            "taxCents",
+            "totalCents"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "marketplace",
+        "order"
+      ],
+      "type": "object"
+    },
+    "AmazonOrderRequestProduct": {
+      "additionalProperties": false,
+      "properties": {
+        "productId": {
+          "type": "string"
+        },
+        "quantity": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "quantity",
+        "productId"
+      ],
+      "type": "object"
+    },
+    "AmazonOrderWithTrackingObtained": {
+      "additionalProperties": false,
+      "properties": {
+        "amazonOrderId": {
+          "type": "string"
+        },
+        "courierName": {
+          "type": "string"
+        },
+        "courierUrl": {
+          "type": "string"
+        },
+        "products": {
+          "items": {
+            "$ref": "#/definitions/AmazonOrderRequestProduct"
+          },
+          "type": "array"
+        },
+        "retailTrackingNumber": {
+          "type": "string"
+        },
+        "shipments": {
+          "items": {
+            "$ref": "#/definitions/AmazonShipment"
+          },
+          "type": "array"
+        },
+        "trackingNumber": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "amazonOrderId",
+        "courierName",
+        "courierUrl",
+        "products",
+        "trackingNumber"
+      ],
+      "type": "object"
+    },
+    "AmazonShipment": {
+      "additionalProperties": false,
+      "description": "The shipment sent to the customer.",
+      "properties": {
+        "carrierName": {
+          "description": "The name of the shipment carrier.",
+          "type": "string"
+        },
+        "carrierTracking": {
+          "description": "The tracking number from the shipment carrier.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "carrierTrackingUrl": {
+          "description": "Tracking url for the shipment carrier",
+          "type": "string"
+        },
+        "deliveryInformation": {
+          "$ref": "#/definitions/DeliveryInformation",
+          "description": "The delivery status and estimated delivery date."
+        },
+        "shipmentDate": {
+          "description": "Date when the item was shipped.",
+          "format": "Firestore Timestamp",
+          "type": "string"
+        },
+        "shipmentQuantity": {
+          "description": "The total number of items for shipping.",
+          "type": "number"
+        },
+        "shipmentStatus": {
+          "description": "The current status of the shipment.",
+          "enum": [
+            "SHIPPED",
+            null
+          ],
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "shipmentDate",
+        "shipmentStatus",
+        "carrierTracking",
+        "deliveryInformation",
+        "shipmentQuantity",
+        "carrierName",
+        "carrierTrackingUrl"
+      ],
+      "type": "object"
+    },
+    "AmazonTrackingObtainedData": {
+      "additionalProperties": false,
+      "properties": {
+        "marketplace": {
+          "$ref": "#/definitions/AmazonMarketplace"
+        },
+        "order": {
+          "additionalProperties": false,
+          "properties": {
+            "amazonOrders": {
+              "items": {
+                "$ref": "#/definitions/AmazonOrderWithTrackingObtained"
+              },
+              "type": "array"
+            },
+            "currency": {
+              "type": "string"
+            },
+            "shippingCents": {
+              "type": "number"
+            },
+            "subtotalCents": {
+              "type": "number"
+            },
+            "taxCents": {
+              "type": "number"
+            },
+            "totalCents": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "amazonOrders",
+            "currency",
+            "shippingCents",
+            "subtotalCents",
+            "taxCents",
+            "totalCents"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "marketplace",
+        "order"
+      ],
+      "type": "object"
+    },
+    "BaseShopifyOrderFulfillment": {
+      "additionalProperties": false,
+      "properties": {
+        "products": {
+          "items": {
+            "$ref": "#/definitions/ShopifyOrderRequestProduct"
+          },
+          "type": "array"
+        },
+        "trackingDetails": {
+          "items": {
+            "$ref": "#/definitions/TrackedOrderDetails"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "products",
+        "trackingDetails"
+      ],
+      "type": "object"
+    },
+    "DeliveryInformation": {
+      "additionalProperties": false,
+      "description": "The delivery status and estimated delivery date.",
+      "properties": {
+        "deliveryStatus": {
+          "description": "The current delivery status of the shipment.",
+          "enum": [
+            "DELIVERED",
+            "NOT_DELIVERED",
+            "NOT_AVAILABLE"
+          ],
+          "type": "string"
+        },
+        "expectedDeliveryDate": {
+          "description": "The expected delivery date of the shipment.",
+          "format": "Firestore Timestamp",
+          "type": "string"
+        }
+      },
+      "required": [
+        "expectedDeliveryDate",
+        "deliveryStatus"
+      ],
+      "type": "object"
+    },
+    "Marketplace": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/AmazonMarketplace"
+        },
+        {
+          "$ref": "#/definitions/ShopifyMarketplace"
+        }
+      ]
+    },
+    "OrderFailedReasonCode": {
+      "enum": [
+        "INTERNAL_ERROR",
+        "OUT_OF_STOCK",
+        "INVALID_REQUEST",
+        "UNAUTHENTICATED",
+        "PERMISSION_DENIED",
+        "USER_REQUESTED",
+        "DENIED_BY_MARKETPLACE",
+        "CANCELED",
+        "SHIPPING_ADDRESS_BLACKLISTED",
+        "SHIPPING_ADDRESS_UNAVAILABLE",
+        "EXPIRED_PRODUCT_ID",
+        "INSUFFICIENT_VARIANTS",
+        "INVALID_QUANTITY",
+        "INVALID_SHIPPING_METHOD",
+        "INVALID_VARIANT",
+        "PRODUCT_UNAVAILABLE",
+        "SHIPPING_ADDRESS_REFUSED",
+        "SHIPPING_METHOD_UNAVAILABLE",
+        "UNSUPPORTED_PRODUCT_ID"
+      ],
+      "type": "string"
+    },
+    "OrderFailedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            },
+            "reason": {
+              "type": "string"
+            },
+            "reasonCode": {
+              "$ref": "#/definitions/OrderFailedReasonCode"
+            },
+            "refund": {
+              "$ref": "#/definitions/StripeRefund"
+            }
+          },
+          "required": [
+            "marketplace"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderFailed"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "OrderPlacedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AmazonOrderPlacedData"
+            },
+            {
+              "$ref": "#/definitions/ShopifyOrderPlacedData"
+            }
+          ]
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderPlaced"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "OrderSubmissionStartedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            }
+          },
+          "required": [
+            "marketplace"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderSubmissionStarted"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "OrderSubmissionSucceededWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            }
+          },
+          "required": [
+            "marketplace"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderSubmissionSucceeded"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "PaymentFailedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            }
+          },
+          "required": [
+            "marketplace"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.PaymentFailed"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "PaymentRefundedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "$ref": "#/definitions/Record%3Cstring%2Cnever%3E"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.PaymentRefunded"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "PaymentSucceededWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "amount": {
+              "type": "number"
+            },
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            }
+          },
+          "required": [
+            "marketplace",
+            "amount"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.PaymentSucceeded"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "Pick<BaseAmazonOrder,(\"amazonOrderId\"|\"products\")>": {
+      "additionalProperties": false,
+      "properties": {
+        "amazonOrderId": {
+          "type": "string"
+        },
+        "products": {
+          "items": {
+            "$ref": "#/definitions/AmazonOrderRequestProduct"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "amazonOrderId",
+        "products"
+      ],
+      "type": "object"
+    },
+    "PublicOrderCancelFailedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            },
+            "reason": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "marketplace",
+            "reason"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderCancelFailed"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "PublicOrderCancelRequestedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            },
+            "marketplaceOrderId": {
+              "type": "string"
+            },
+            "requestedAt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "marketplace",
+            "requestedAt",
+            "marketplaceOrderId"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderCancelRequested"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "PublicOrderCancelStartedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            },
+            "startedAt": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "marketplace",
+            "startedAt"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderCancelStarted"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "PublicOrderCancelledWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "additionalProperties": false,
+          "properties": {
+            "cancelledAt": {
+              "type": "string"
+            },
+            "marketplace": {
+              "$ref": "#/definitions/Marketplace"
+            },
+            "refund": {
+              "$ref": "#/definitions/StripeRefund"
+            }
+          },
+          "required": [
+            "marketplace",
+            "cancelledAt"
+          ],
+          "type": "object"
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.OrderCancelSucceeded"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "Record<string,never>": {
+      "additionalProperties": {
+        "not": {}
+      },
+      "type": "object"
+    },
+    "RyeWebhook": {
+      "anyOf": [
+        {
+          "$ref": "#/definitions/PaymentSucceededWebhook"
+        },
+        {
+          "$ref": "#/definitions/PaymentFailedWebhook"
+        },
+        {
+          "$ref": "#/definitions/PaymentRefundedWebhook"
+        },
+        {
+          "$ref": "#/definitions/OrderSubmissionStartedWebhook"
+        },
+        {
+          "$ref": "#/definitions/OrderSubmissionSucceededWebhook"
+        },
+        {
+          "$ref": "#/definitions/OrderPlacedWebhook"
+        },
+        {
+          "$ref": "#/definitions/OrderFailedWebhook"
+        },
+        {
+          "$ref": "#/definitions/PublicOrderCancelledWebhook"
+        },
+        {
+          "$ref": "#/definitions/PublicOrderCancelFailedWebhook"
+        },
+        {
+          "$ref": "#/definitions/PublicOrderCancelStartedWebhook"
+        },
+        {
+          "$ref": "#/definitions/PublicOrderCancelRequestedWebhook"
+        },
+        {
+          "$ref": "#/definitions/TrackingObtainedWebhook"
+        }
+      ],
+      "description": "How public events are represented on data transfer"
+    },
+    "ShopifyMarketplace": {
+      "const": "shopify",
+      "type": "string"
+    },
+    "ShopifyOrderPlacedData": {
+      "additionalProperties": false,
+      "properties": {
+        "marketplace": {
+          "$ref": "#/definitions/ShopifyMarketplace"
+        },
+        "order": {
+          "additionalProperties": false,
+          "properties": {
+            "currency": {
+              "type": "string"
+            },
+            "shippingCents": {
+              "type": "number"
+            },
+            "subtotalCents": {
+              "type": "number"
+            },
+            "taxCents": {
+              "type": "number"
+            },
+            "totalCents": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "currency",
+            "shippingCents",
+            "subtotalCents",
+            "taxCents",
+            "totalCents"
+          ],
+          "type": "object"
+        },
+        "orderEmailOverride": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "marketplace",
+        "order"
+      ],
+      "type": "object"
+    },
+    "ShopifyOrderRequestProduct": {
+      "additionalProperties": false,
+      "properties": {
+        "quantity": {
+          "type": "number"
+        },
+        "variantId": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "quantity",
+        "variantId"
+      ],
+      "type": "object"
+    },
+    "ShopifyTrackingObtainedData": {
+      "additionalProperties": false,
+      "properties": {
+        "marketplace": {
+          "$ref": "#/definitions/ShopifyMarketplace"
+        },
+        "order": {
+          "additionalProperties": false,
+          "properties": {
+            "fulfillments": {
+              "items": {
+                "$ref": "#/definitions/BaseShopifyOrderFulfillment"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "fulfillments"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "order"
+      ],
+      "type": "object"
+    },
+    "StripeRefund": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "description": "Amount, in %s.",
+          "type": "number"
+        },
+        "created": {
+          "description": "Time at which the object was created. Measured in seconds since the Unix epoch.",
+          "type": "number"
+        },
+        "currency": {
+          "description": "Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase. Must be a [supported currency](https://stripe.com/docs/currencies).",
+          "type": "string"
+        },
+        "description": {
+          "description": "An arbitrary string attached to the object. Often useful for displaying to users. (Available on non-card refunds only)",
+          "type": "string"
+        },
+        "id": {
+          "description": "Unique identifier for the object.",
+          "type": "string"
+        },
+        "object": {
+          "const": "refund",
+          "description": "String representing the object's type. Objects of the same type share the same value.",
+          "type": "string"
+        },
+        "receipt_number": {
+          "description": "This is the transaction number that appears on email receipts sent for this refund.",
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "status": {
+          "description": "Status of the refund. For credit card refunds, this can be `pending`, `succeeded`, or `failed`. For other types of refunds, it can be `pending`, `requires_action`, `succeeded`, `failed`, or `canceled`. Refer to our [refunds](https://stripe.com/docs/refunds#failed-refunds) documentation for more details.",
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "object",
+        "amount",
+        "created",
+        "currency",
+        "receipt_number",
+        "status"
+      ],
+      "type": "object"
+    },
+    "TrackedOrderDetails": {
+      "additionalProperties": false,
+      "properties": {
+        "courierName": {
+          "type": "string"
+        },
+        "courierUrl": {
+          "type": "string"
+        },
+        "trackingNumber": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "trackingNumber",
+        "courierUrl",
+        "courierName"
+      ],
+      "type": "object"
+    },
+    "TrackingObtainedWebhook": {
+      "additionalProperties": false,
+      "properties": {
+        "createdAt": {
+          "type": "string"
+        },
+        "data": {
+          "anyOf": [
+            {
+              "$ref": "#/definitions/AmazonTrackingObtainedData"
+            },
+            {
+              "$ref": "#/definitions/ShopifyTrackingObtainedData"
+            }
+          ]
+        },
+        "developerId": {
+          "type": "string"
+        },
+        "id": {
+          "type": "string"
+        },
+        "requestId": {
+          "type": "string"
+        },
+        "type": {
+          "$ref": "#/definitions/WebhookType.TrackingObtained"
+        }
+      },
+      "required": [
+        "createdAt",
+        "data",
+        "developerId",
+        "id",
+        "requestId",
+        "type"
+      ],
+      "type": "object"
+    },
+    "WebhookType.OrderCancelFailed": {
+      "const": "ORDER_CANCEL_FAILED",
+      "type": "string"
+    },
+    "WebhookType.OrderCancelRequested": {
+      "const": "ORDER_CANCEL_REQUESTED",
+      "type": "string"
+    },
+    "WebhookType.OrderCancelStarted": {
+      "const": "ORDER_CANCEL_STARTED",
+      "type": "string"
+    },
+    "WebhookType.OrderCancelSucceeded": {
+      "const": "ORDER_CANCEL_SUCCEEDED",
+      "type": "string"
+    },
+    "WebhookType.OrderFailed": {
+      "const": "ORDER_FAILED",
+      "type": "string"
+    },
+    "WebhookType.OrderPlaced": {
+      "const": "ORDER_PLACED",
+      "type": "string"
+    },
+    "WebhookType.OrderSubmissionStarted": {
+      "const": "ORDER_SUBMISSION_STARTED",
+      "type": "string"
+    },
+    "WebhookType.OrderSubmissionSucceeded": {
+      "const": "ORDER_SUBMISSION_SUCCEEDED",
+      "type": "string"
+    },
+    "WebhookType.PaymentFailed": {
+      "const": "PAYMENT_FAILED",
+      "type": "string"
+    },
+    "WebhookType.PaymentRefunded": {
+      "const": "PAYMENT_REFUNDED",
+      "type": "string"
+    },
+    "WebhookType.PaymentSucceeded": {
+      "const": "PAYMENT_SUCCEEDED",
+      "type": "string"
+    },
+    "WebhookType.TrackingObtained": {
+      "const": "TRACKING_OBTAINED",
+      "type": "string"
+    }
+  }
+}
+
+ ``

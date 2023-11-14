@@ -1,0 +1,66 @@
+---
+title: "Definitions"
+---
+
+### Components of Rye ecosystem
+
+<AccordionGroup>
+  <Accordion title="API" icon="square-terminal" >
+    - Application programming interface, enabling two or more software programs to communicate with each other. Forms part of a developer's software development kit (SDK). 
+    - Rye has a suite of APIs: Products API, Cart & Order API, and Monetization API.
+  </Accordion>
+    <Accordion title="Developer" icon="code" >
+    * Platforms and apps with access to potential shoppers but might not have eCommerce features yet. This includes marketplaces, gifting platforms, creator stores, link-in-bio, and livestream platforms.
+    * Developers can utilize Rye's API to build or expand on eCommerce infrastructure.
+  </Accordion>
+      <Accordion title="Merchant" icon="shop" >
+    * Holds inventory and sells products using an eCommerce marketplace builder, e.g. Shopify, Amazon, Magento, WooCommerce.
+    * Rye supports all merchants on Shopify and US Amazon to multiply reach and revenue.
+  </Accordion>
+</AccordionGroup>
+
+### eCommerce concepts
+
+**Product**
+
+* Refers to items listed on merchants' inventory. However, product variant must be specified to place an order, e.g. size and color of product. Each `product_variant` is associated with a unique id.
+
+**Inventory**
+
+* Product data and meta data supplied by merchants, including price, image, and stock availability. Rye has an up-to-date database that developers can pull from using the Products API.
+
+**Cart**
+
+* A cart contains one or more product\_variant. Rye supports carts with items from multiple merchants, hosted on multiple eCommerce building platforms. The whole cart is submitted when an order is placed
+
+**Checkout**
+
+* Payment processing for the items in cart. Rye supports a native checkout experience (no need to redirect to individual merchant sites) using most payment methods (see more on [Rye Pay](/docs/rye-pay)).
+
+**Order**
+
+* Rye programmatically sends orders to merchants and returns an `order_id`.
+
+**GMV**
+
+* Gross merchandise value, refers to the total value of goods exchanged on the platform. This excludes add-ons such as shipping and tax.
+
+**Developer monetization**
+
+* Developers have 2 ways to monetize with Rye: adding a % markup on MSRP or getting a % commission of the GMV of each sale.
+
+**Commission rate**
+
+* % of the GMV as a reward for the platform that facilitated the sale. Developers can specify a set commission rate with merchants they have an existing relationship with. Merchants that integrate directly with Rye are able to set a custom commission rate. Developers are likely to prioritise products with higher commission rates.
+
+**Shipping details**
+
+* A valid shipping method and shipping address must be submitted for an order to be successfully placed and fulfilled. Shipping options are defined by merchants, which sometimes use third-party logistics (3PL) providers.
+
+**Tools**
+
+* B2B services (mostly commonly in the form of Shopify apps) that facilitate the eCommerce experience, e.g. loyalty and reward programmes, order tracking, bundles and upsell. Rye has a Shopify app for merchants to plug into.
+
+**Webhooks**
+
+* A method to notify one system about updates in an external system. Rye has webhooks that send real-time updates such as order placed, order failed, and tracking info.

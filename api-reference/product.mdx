@@ -1,0 +1,79 @@
+---
+title: "Product"
+description: "The Product interface is a common interface implemented across different marketplace products, such as Amazon and Shopify. It represents the basic structure and fields that every product type should have in the Rye's cart API schema. By implementing this interface, each marketplace product can have a consistent data structure, making it easier for developers to work with the API."
+---
+
+### Fields
+
+---
+
+`id`: `ID!`
+
+A non-null unique identifier for the product.
+
+---
+
+`marketplace`: [Marketplace!](/reference/marketplace)
+
+A non-null enumeration value representing the marketplace.
+
+---
+
+`title`: `String!`
+
+A non-null string containing the title of the product.
+
+---
+
+`description`: `String!`
+
+A non-null string containing the product's description.
+
+---
+
+`vendor`: `String!`
+
+A non-null string representing the product's vendor or brand.
+
+---
+
+`url`: [URL!](/reference/url)
+
+A non-null URL pointing to the product's page on the marketplace.
+
+---
+
+`isAvailable`: `Boolean!`
+
+A non-null boolean value indicating whether the product is available for purchase.
+
+---
+
+`tags`: `[String!]!`
+
+A non-null list of strings representing tags associated with the product.
+
+---
+
+`images`: [\[Image!\]!](/reference/image)
+
+A non-null list of image objects associated with the product, implementing the Image interface.
+
+---
+
+`variants`: [\[Variant!\]!](/reference/variant)
+
+A non-null list of product variants available, implementing the Variant interface. These can include different sizes, colors, or other options for the product.
+
+---
+
+`price`: [Price!](/reference/price)
+
+A nullable Price object representing the product's price. The price might be null if it is not available or cannot be determined.
+
+---
+
+### Implementations
+
+* [AmazonProduct](/reference/amazonproduct)
+* [ShopifyProduct](/reference/shopifyproduct)

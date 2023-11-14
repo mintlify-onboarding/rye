@@ -1,0 +1,90 @@
+---
+title: "CartErrorCode"
+description: "An enumeration value representing the cart error codes. These are exclusive for our cart service"
+---
+
+### Valid values
+
+---
+
+`PRODUCT_NOT_FOUND`
+
+The product was not found when we query for it in our system
+
+---
+
+`STORE_NOT_FOUND`
+
+The specified store could not be found in our system at the time of request
+
+---
+
+`STORE_OPERATION_FAILED`
+
+A store operation (update, delete, or add) failed
+
+---
+
+`BUYER_IDENTITY_INVALID_FIRST_NAME`
+
+The first name in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_LAST_NAME`
+
+The last name in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_ADDRESS`
+
+The address in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_CITY`
+
+The city in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_PROVINCE`
+
+The province in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_COUNTRY`
+
+The country in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_POSTAL_CODE`
+
+The postal code in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_PHONE`
+
+The phone number in the buyer's identity is invalid
+
+---
+
+`BUYER_IDENTITY_INVALID_EMAIL`
+
+The email address in the buyer's identity is invalid
+
+---
+
+`CART_MODIFICATION_FORBIDDEN`
+
+Modification of the cart is forbidden. Usually, this is because it has been submitted
+
+---
+
+### Related types
+
+[CartError](/reference/carterror)

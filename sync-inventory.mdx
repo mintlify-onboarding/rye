@@ -1,0 +1,48 @@
+---
+title: "Sync inventory"
+description: "Add products from Rye inventory to your database of products."
+---
+
+### Step 1: Request products to Rye Inventory
+
+If a product or a vendor is not already in the Rye inventory, a product or all products from a vendor can be added to the Rye inventory via the product URL or the store URL respectively.
+
+[Follow this guide](/docs/products-api-overview) to query and add products to and from the Rye Inventory. 
+
+Once a product has been added, you can query it from the Rye Inventory any time.
+
+  
+---
+
+  
+### Step 2: Sync Rye Inventory products onto your database
+
+If you already have a database of products, it’s important to ensure that Rye’s inventory database is in sync with your inventory database. This step will allow your gifters to see all the necessary information regarding a product that you want to sell.
+
+  
+#### Option 1: Server-side \[Recommended\]
+
+Use your existing database systems and sync your selected inventory periodically via a CRON job.
+
+| Pros                                                                                                                                                          | Cons                                                                                                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Allows for flexibility for customization of product data to display. e.g. you may want to have different product descriptions tailored for corporate gifting. | Product price and availability can be slightly out of date depending on how often CRON syncs happen. Every 6 hours is the recommended interval. This can be intensive if there is a large number of synced products. |
+| Rye works seamlessly with existing product look-up processes or flows.                                                                                        |                                                                                                                                                                                                                      |
+| Integration is simpler with a current inventory system.                                                                                                       |                                                                                                                                                                                                                      |
+| Can easily co-exist with existing backend search system and sync inventory periodically.                                                                      |                                                                                                                                                                                                                      |
+
+  
+#### Option 2: Client-side
+
+Query Rye directly from your front-end. Implement server-side auth and query Rye API from the front-end.
+
+| Pros                                                                   | Cons                                                                                              |
+| ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| Product price and availability are in sync with Rye and are up-to-date | Integration could potentially be more difficult if there is an existing backend search experience |
+
+  
+#### Recommendation
+
+Begin with **server-side integration**.
+
+6-hour sync intervals provide reasonably up-to-date pricing and availability information on most of the products during regular non-peak days. For more highly-frequented and sold-out products, a hybrid solution is in our roadmap to allow a near real-time inventory syncs and reduce the risk of stale product information.

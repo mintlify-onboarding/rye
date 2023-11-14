@@ -1,0 +1,32 @@
+---
+title: "ShopifyCartItemsInput"
+description: "The input fields to provide the necessary information to add or update Shopify product variants in the cart. It is included as a part of the CartItemsInput object, which allows the API to handle items from multiple platforms, including Shopify."
+---
+
+## Fields
+
+---
+
+`quantity`: `Int!`
+
+An integer representing the number of products. This value indicates how many units of the specific Amazon product the buyer wants to add to the cart.
+
+---
+
+`variantId`: `Int!`
+
+The ID of the Shopify product variant that the buyer wants to add to the cart. In Shopify, each product can have multiple variants, such as different colors, sizes, or materials. This ID is used to identify the specific variant the buyer has chosen.
+
+---
+
+### Mutations
+
+* [createCart](/reference/createcart)
+* [addCartItems](/reference/addcartitems)
+* [updateCartItems](/reference/updatecartitems)
+
+---
+
+### Related types
+
+* [CartItemsInput](/reference/cartitemsinput)

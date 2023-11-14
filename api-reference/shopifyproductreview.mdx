@@ -1,0 +1,54 @@
+---
+title: "ShopifyProductReview"
+description: "Represents a product review for a Shopify product."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+A unique review ID.
+
+---
+
+`body`: `String`
+
+The body (message) of the review.
+
+---
+
+`helpfulnessCount`: `Int!`
+
+The number of people who found this review helpful.
+
+---
+
+`rating`: `Int!`
+
+The rating given to the product, from 1 to 5.
+
+---
+
+`submittedAt`: [Time!](/reference/time)
+
+The date and time when the review was submitted.
+
+---
+
+`reviewerDisplayName`: `String`
+
+The display name of the reviewer.
+
+---
+
+`merchantReply`: `String`
+
+The reply from the merchant, if it exists.
+
+---
+
+### Related types
+
+* [ShopifyProduct](/reference/shopifyproduct)

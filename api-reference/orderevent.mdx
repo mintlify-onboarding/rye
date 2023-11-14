@@ -1,0 +1,98 @@
+---
+title: "OrderEvent"
+description: "The interface defines a set of properties that can be used to represent an event related to an order. An order event typically represents a change in the status or state of an order, such as when an order is placed, failed, or succeed."
+---
+
+## Fields
+
+---
+
+`id:`: `ID!`
+
+The unique identifier of the event.
+
+---
+
+`createdAt`: [Time!](/reference/time)
+
+The timestamp when the event was created.
+
+---
+
+### Related queries
+
+* [orderById](/reference/orderbyid-new)
+* [checkoutByCartID](/reference/orderbyid)
+
+---
+
+### Implementations
+
+* [OrderCancelFailedOrderEvent](/reference/ordercancelfailedorderevent)
+* [OrderCancelStartedOrderEvent](/reference/ordercancelstartedorderevent)
+* [OrderCancelSucceededOrderEvent](/reference/ordercancelsucceededorderevent)
+* [OrderFailedOrderEvent](/reference/orderfailedorderevent)
+* [OrderPlacedOrderEvent](/reference/orderplacedorderevent)
+* [OrderSubmissionStartedOrderEvent](/reference/ordersubmissionstartedorderevent)
+* [OrderSubmissionSucceededOrderEvent](/reference/ordersubmissionsucceededorderevent)
+* [PaymentFailedOrderEvent](/reference/paymentfailedorderevent)
+* [PaymentRefundedOrderEvent](/reference/paymentrefundedorderevent)
+* [PaymentSucceededOrderEvent](/reference/paymentsucceededorderevent)
+* [TrackingObtainedOrderEvent](/reference/trackingobtainedorderevent)
+
+---
+
+### Examples
+
+An example below shows a response from [checkoutByCartID](/reference/orderbyid) that returns an array of events that implement `OrderEvent` interface.
+
+JSON
+
+`{
+    "data": {
+        "checkoutByCartID": {
+            "status": "PARTIALLY_SUCCEEDED",
+            "orders": [
+                {
+                    "id": "593c5fd7-cfbf-4274-b9f7-40a82fac4791",
+                    "status": "SUCCEEDED",
+                    "events": [
+                        {
+                            "__typename": "OrderSubmissionStartedOrderEvent",
+                            "id": "f9e53117-c447-4162-be9d-e4744d4fa2a3",
+                            "createdAt": "2023-03-27T22:12:42.350Z"
+                        },
+                        {
+                            "__typename": "OrderSubmissionSucceededOrderEvent",
+                            "id": "896be1e6-772b-4bff-a590-ad2a441d6332",
+                            "createdAt": "2023-03-27T22:13:13.513Z"
+                        },
+                        {
+                            "__typename": "OrderPlacedOrderEvent",
+                            "id": "8360eff8-0e85-4d87-a101-687fce565e72",
+                            "createdAt": "2023-03-27T22:13:13.637Z"
+                        }
+                    ]
+                },
+                {
+                    "id": "dd2c5eb7-3ec0-41ef-9907-cd560b9041bb",
+                    "status": "FAILED",
+                    "events": [
+                        {
+                            "__typename": "OrderSubmissionStartedOrderEvent",
+                            "id": "32deef07-81c3-41cf-be3a-0f453b598b0f",
+                            "createdAt": "2023-03-27T22:12:43.796Z"
+                        },
+                        {
+                            "__typename": "OrderFailedOrderEvent",
+                            "id": "3efa05ad-21ea-48f3-8741-ae40a71fce86",
+                            "createdAt": "2023-03-29T22:13:03.837Z",
+                            "reason": "Internal error occurred"
+                        }
+                    ]
+                }
+            ]
+        }
+    }
+}
+`

@@ -1,0 +1,30 @@
+---
+title: "Order"
+description: "Represents an order that a customer places for a product."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+ A Price object representing the subtotal of the products in the cart before taxes and shipping fees are applied.
+
+---
+
+`status`: [OrderStatus!](/reference/orderstatus)
+
+The status of the order.
+
+---
+
+`events`: [\[OrderEvent!\]!](/reference/orderevent)
+
+The list of events associated with the order.
+
+---
+
+### Related types
+
+* [Checkout](/reference/checkout-new)

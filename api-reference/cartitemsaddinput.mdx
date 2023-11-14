@@ -1,0 +1,30 @@
+---
+title: "CartItemsAddInput"
+description: "The input fields to provide the necessary information to add new items to a cart through the addCartItems mutation. By providing the cart ID and the list of items to be added, the API can update the cart with the new items."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+The ID of the cart that the user wants to add items to. It's a unique identifier for the cart in the system.
+
+---
+
+`items`: [CartItemsInput!](https://rye-docs.readme.io/reference/cartitemsinput)
+
+The [CartItemsInput](https://rye-docs.readme.io/reference/cartitemsinput) object containing the list of items to be added to the cart.
+
+---
+
+### Mutations
+
+* [addCartItems](/reference/addcartitems)
+
+---
+
+### Related types
+
+* [CartResponse](/reference/cartresponse)

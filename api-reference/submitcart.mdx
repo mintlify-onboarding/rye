@@ -1,0 +1,194 @@
+---
+title: "submitCart"
+description: "Submits an existing cart for checkout."
+---
+
+> 🚧
+> 
+> Normally the developers should not call this mutation directly because the cart submission is handled via the rye-pay script ([available here](https://www.npmjs.com/package/@rye-api/rye-pay)). The mutation can be used only if developers are going to manage to receive the Spreedly payment method token by themselves. 
+> 
+> Find more information about the rye-pay script [here](/docs/rye-pay).
+
+---
+
+> 📘
+> 
+> If the cart contains products from different stores then multiple orders will be created - one order per each store.
+
+---
+
+> 🚧
+> 
+> Success response of this mutation does not guarantee that the order has been placed successfully. To track order status use [checkoutByCartId](/reference/orderbyid) or [orderById](/reference/orderbyid-new) mutations
+
+---
+
+> 📘
+> 
+> If the cart has been successfully submitted, an attempt to submit the cart again will lead to an error.
+> 
+> If the cart has multiple stores it is possible that checkout succeeds only for some of them. In this case, the cart can be submitted again. It has no effect on already submitted stores in the cart.
+
+---
+
+### Requirements
+
+---
+
+To use this query, please ensure that the `x-rye-shopper-ip` is set in your HTTP headers. For more information about the `x-rye-shopper-ip` header, view this [section](/docs/authorization-headers#x-rye-shopper-ip-optional).
+
+---
+
+### Arguments
+
+`input` : [CartSubmitInput!](https://rye-docs.readme.io/reference/cartsubmitinput)
+
+The `input` object contains the unique identifier (ID) for the cart, a tokenized credit card value, and the billing address information of the buyer.
+
+---
+
+### Returns
+
+[SubmitCartResult.\*](https://rye-docs.readme.io/reference/submitcartresult): [SubmitCartResult](https://rye-docs.readme.io/reference/submitcartresult)
+
+Any requested field from the [SubmitCartResult](https://rye-docs.readme.io/reference/submitcartresult) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "input": {
+        "id": "{{cartId}}",
+        "token": "{{paymentTokne}}",
+        "selectedShippingOptions": [
+            {
+                "store": "{{store}}",
+                "shippingId": "{{shippingId}}"
+            }
+        ],
+        "billingAddress": {
+            "firstName": "{{firstName}}",
+            "lastName": "{{lastName}}",
+            "phone": "{{phone}}",
+            "address1": "{{address1}}",
+            "address2": "{{address2}}",
+            "city": "{{city}}",
+            "provinceCode": "{{provinceCode}}",
+            "countryCode": "US",
+            "postalCode": "{{postalCode}}"
+        }
+    }
+}
+`
+
+GraphQL
+
+`mutation ($input: CartSubmitInput!) {
+    submitCart(input: $input) {
+        cart {
+            id,
+            stores {
+                status, 
+                requestId
+                store {
+                    ... on AmazonStore {
+                        store
+                        cartLines {
+                            quantity,
+                            product {
+                                id
+                            }
+                        }
+                    }
+                    ... on ShopifyStore {
+                        store
+                        cartLines {
+                            quantity,
+                            variant {
+                                id
+                            }
+                        }
+                    }
+                }
+                errors {
+                    code
+                    message
+                }
+            }
+        }
+        errors {
+            code
+            message
+        }
+        
+    }
+}
+`
+
+Response
+
+`{
+    "data": {
+        "submitCart": {
+            "cart": {
+                "id": "KVER2EJJ1kqrjI4H1fbi",
+                "stores": [
+                    {
+                        "status": "COMPLETED",
+                        "requestId": "e2615c4d-0c1d-40c2-b222-91b5523cc6b7",
+                        "store": {
+                            "store": "amazon",
+                            "cartLines": [
+                                {
+                                    "quantity": 3,
+                                    "product": {
+                                        "id": "B00A2KD8NY"
+                                    }
+                                }
+                            ]
+                        },
+                        "errors": []
+                    }
+                ]
+            },
+            "errors": []
+        }
+    }
+}
+`
+
+---
+
+### Errors
+
+If the cart is not found then a corresponding error is returned
+
+JSON
+
+`{
+    "errors": [
+        {
+            "message": "Cart not found: someInvalidCartId",
+            "path": [
+                "getCart"
+            ]
+        }
+    ],
+    "data": null
+}
+`
+
+If the cart has already been submitted then `ALREADY_SUBMITTED`error is returned
+
+If [BuyerIdentity](/reference/buyeridentity) has not been provided with [createCart](/reference/createcart) or [updateCartBuyerIdentity](/reference/updatecartbuyeridentity) then `BUYER_IDENTITY_MISSING` error is returned.
+
+If [BuyerIdentity](/reference/buyeridentity) contains invalid fields then a corresponding error is returned, e.g. `BUYER_IDENTITY_INVALID_PHONE`.
+
+If [BillingAddress](/reference/billingaddressinput) contains invalid fields then a corresponding error is returned, e.g. `BILLING_ADDRESS_INVALID_PHONE`.
+
+If Rye API is unable to create a Spreedly environment (used for payment transactions) then `CREATE_SPREEDLY_ENVIRONMENT_FAILED` error is returned.
+
+If the cart submission failed due to an unknown reason then `SUBMIT_CART_FAILED` error is returned.

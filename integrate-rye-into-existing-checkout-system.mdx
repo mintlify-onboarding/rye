@@ -1,0 +1,27 @@
+---
+title: "Integrate Rye into existing checkout system"
+---
+
+There are two scenarios to focus on based on what you want the user to be able to do.
+
+#### Checkout only one item at once
+
+* Start identifying which products come from Rye and which products already exist in your current database
+* For products that come from Rye, adjust your checkout flow to ask for additional information that is required by Rye to perform a successful checkout.
+  
+---
+
+  
+#### Checkout multiple items at once
+
+There are three cases to deal regarding items in cart:
+
+  
+* **Only Rye products in a cart:**  
+   * Adjust your checkout flow to ask for additional information that is required by Rye to perform a successful checkout.
+* **Only your products in a cart:**  
+   * Continue with your existing flow.
+* **Mix of Rye and your products in a cart:**  
+   * Collect all information that is required by Rye.  
+   * When customer shipping address is added, give user the ability to select a shipping method for Rye items.  
+   * During the payment step, complete the payment for Rye items via Rye Pay or `submitCart` and use the same payment token / spreedly token to complete the payment for items from your database.

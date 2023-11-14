@@ -1,0 +1,128 @@
+---
+title: "Tutorial"
+description: "In this tutorial, you'll understand how to use Rye's cart API to create a cart, add products to it, and submit it for checkout."
+---
+
+### Requirements
+
+* You have created a [Rye Developer Account](https://console.rye.com/account).
+* You have access to your API key [(Follow these steps if not)](/docs/quick-start#1-grab-your-api-key).
+* Skip Steps 1 - 3 if you have completed the [Product API tutorial](/docs/tutorial).
+
+---
+
+### Step 1: Initialize GQL client with your API key
+
+Use your API Key to initialize authorization headers for your GQL client.
+
+1️⃣
+
+Initialize GQL client with your API Key
+
+Open Recipe
+
+---
+
+### Step 2: Add external product to Rye inventory
+
+Adding product data to inventory may take a few seconds, but the product id will be returned immediately. You can then use this product id to fetch product data in the next step.  
+You can also do this via the Rye Console.
+
+2️⃣
+
+Add external product to Rye inventory
+
+Open Recipe
+
+---
+
+### Step 3: Fetch product data from Rye inventory
+
+The product ID can be found in the response to the `requestProduct` mutation.
+
+3️⃣
+
+Fetch product data from Rye inventory
+
+Open Recipe
+
+---
+
+### Step 4: Create a cart
+
+Create your first cart! We don't require adding a product for the cart to be created if you'd like to create an empty cart. 
+
+Create a cart
+
+Open Recipe
+
+---
+
+### Step 5: Add more products to your cart
+
+Add more products to your cart with the product IDs and the cart ID of the desired cart.
+
+Add item to cart
+
+Open Recipe
+
+---
+
+### Step 6: Fetch cart shipping methods and cost
+
+Check if your cart looks good, and fetch the estimated checkout cost and available shipping methods for the cart.
+
+Get an existing carts details
+
+Open Recipe
+
+---
+
+### Step 7: Update buyer identity
+
+Update buyer identity information if it was not provided during cart creation as it is required to be able to submit the cart.
+
+Update buyer identity for a cart
+
+Open Recipe
+
+---
+
+### Step 8: Submit your cart
+
+Submit your cart via rye-pay and Spreedly iFrame.
+
+Submit cart via rye-pay
+
+Open Recipe
+
+---
+
+### Step 9: Display the results of the transaction
+
+The result of the`ryePay.submit` should return the cart data and any possible errors that occurred during the submission of the cart. Errors can occur on the Cart level and the Store level:
+
+* For the cart level: `result.errors` will provide an array of errors related to submitting the cart with appropriate error messages and codes
+* For the store level: `result.cart.stores[idx].errors`will provide an array of errors related to submitting the order to the store with appropriate error messages and codes
+
+---
+
+### (Optional) Step 10: Cart management
+
+* To update the number of existing products in the cart, use the [updateCartItems ](/reference/updatecartitems)mutation.
+* To remove existing products from the cart, use the [deleteCartItems](/reference/deletecartitems) mutation.
+* To remove the entire cart, use the [removeCart](/reference/removecart) mutation.
+  
+## Next steps
+
+---
+
+* Check out the [documentation](/reference/cart-1) to start using the Cart API
+* Run queries on the GraphQL on either of the following playgrounds:  
+   * [https://docs.rye.com/graphql](https://docs.rye.com/graphql)  
+   > 🚧  
+   >  
+   > Ensure you have the HTTP headers set  
+   >  
+   > Before testing on [https://docs.rye.com/graphql](https://docs.rye.com/graphql), you will need the correct HTTP headers. Check this guide here on how to get them.  
+   * [https://console.rye.com/graphql](https://console.rye.com/graphql)

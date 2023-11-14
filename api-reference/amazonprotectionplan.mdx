@@ -1,0 +1,30 @@
+---
+title: "AmazonProtectionPlan"
+description: "Represents product protection plans offered by the seller or manufacturer on Amazon. These protection plans can provide additional coverage, such as an extended warranty or accidental damage protection, for products purchased on Amazon."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+ The unique identifier for the protection plan. This is used to differentiate between various protection plans available for the product.
+
+---
+
+`title`: `String!`
+
+The title of the protection plan, which describes the coverage offered. This could include information like the duration of the plan and the type of coverage provided (e.g., "2-Year Accident Protection Plan").
+
+---
+
+`price`: [Price!](/reference/price)
+
+The price of the protection plan, represented as a Price type. This includes the value, currency, and display value of the price, allowing for accurate representation and calculation of the protection plan cost.
+
+---
+
+### Related types
+
+* [AmazonProduct](/reference/amazonproduct)

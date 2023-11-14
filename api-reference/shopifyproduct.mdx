@@ -1,0 +1,154 @@
+---
+title: "ShopifyProduct"
+description: "Represents products from the Shopify stores. It includes details such as the product's title, description, price, availability, images, and other attributes. These details help the API to handle products from Shopify in a way that's consistent with products from other sources, like Amazon, and to provide users with a seamless shopping experience across different platforms."
+---
+
+> 📘
+> 
+> [AmazonProduct](/reference/amazonproduct) and [ShopifyProduct](/reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/docs/amazon-and-shopify-product-comparison)
+
+---
+
+## Fields
+
+`id`: `ID!`
+
+A unique Shopify Product ID, usually an integer.
+
+---
+
+`marketplace`: [Marketplace!](/reference/marketplace)
+
+The marketplace associated with the product, in this case, Shopify.
+
+---
+
+`title`: `String!`
+
+The title of the product.
+
+---
+
+`description`: `String!`
+
+The description of the product scraped and extracted from the HTML of the product page.
+
+---
+
+`vendor`: `String!`
+
+The vendor of the product.
+
+---
+
+`url`: [URL!](/reference/url)
+
+The URL to the product page.
+
+---
+
+`price`: [Price](/reference/price)
+
+The price of the product in the form of a Price object.
+
+---
+
+`isAvailable`: `Boolean!`
+
+A boolean flag to indicate whether any of the product variants are available.
+
+---
+
+`tags`: `[String!]!`
+
+A list of additional tags associated with the product.
+
+---
+
+`images`: [\[Image!\]!](/reference/image)
+
+A list of images of the product, implementing the Image interface.
+
+---
+
+`variants`: [\[Variant!\]!](/reference/variant)
+
+A list of product variants available, usually different sizes or colors, implementing the Variant interface.
+
+---
+
+`descriptionHTML`: `String!`
+
+The raw HTML of the product page description.
+
+---
+
+`collectionHandle`: `String!`
+
+A handle for the product collection, used to group products together.
+
+---
+
+`handle`: `String!`
+
+A unique handle for the product.
+
+---
+
+`maxPrice`: `Int!`
+
+The maximum price across the product variants.
+
+---
+
+`minPrice`: `Int!`
+
+The minimum price across the product variants.
+
+---
+
+`productType`: `String!`
+
+The type of the product.
+
+---
+
+`createdAt`: [Time!](/reference/time)
+
+The date and time when the product was created.
+
+---
+
+`publishedAt`: [Time!](/reference/time)
+
+The date and time when the product was published.
+
+---
+
+`storeCanonicalURL`: [URL!](/reference/url)
+
+The canonical URL of the store.
+
+---
+
+`storeDomain`: `String!`
+
+The domain name part of the store canonical URL, e.g., abc.myshopify.com.
+
+---
+
+`options`: [\[ProductOption!\]](/reference/productoption)
+
+ A list of extra customizations for a product.
+
+---
+
+`reviewsConnection( before: ID after: ID first: Int last: Int )`: [ShopifyProductReviewsConnection](/reference/shopifyproductreviewsconnection)
+
+A connection to fetch product reviews. It accepts the arguments before, after, first, and last for pagination purposes and returns a [ShopifyProductReviewsConnection](/reference/shopifyproductreviewsconnection) object.
+
+---
+
+### Related types
+
+* [ShopifyCartLine](/reference/shopifycartline)

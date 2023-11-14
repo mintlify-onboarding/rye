@@ -1,0 +1,25 @@
+---
+title: "AmazonCartLine"
+description: "Represents cart items from an Amazon store. Allows updating the quantity of each item and providing detailed information about each product."
+---
+
+## Fields
+
+---
+
+`quantity`: `Int!`
+
+The number of items of this particular product in the cart.
+
+---
+
+`product`: [AmazonProduct!](https://rye-docs.readme.io/reference/amazonproduct)
+
+The Amazon product associated with this cart line item.
+
+---
+
+### Related types
+
+* [AmazonStore](/reference/amazonstore)
+* [CartLine](/reference/cartline)

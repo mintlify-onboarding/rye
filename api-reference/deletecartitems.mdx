@@ -1,0 +1,359 @@
+---
+title: "deleteCartItems"
+description: "Deletes items from an existing shopping cart. This mutation resets selected shipping method of updated stores, and user will need to select shipping method again. If a cart becomes empty our API won't delete the cart itself. You can continue using it to add more items as needed."
+---
+
+### Arguments
+
+`input` : [CartItemsDeleteInput!](https://rye-docs.readme.io/reference/cartitemsdeleteinput)
+
+The `input` object contains the unique identifier (ID) for the cart and the items that need to be deleted.
+
+---
+
+### Returns
+
+[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
+
+Any requested field from the [CartResponse](/reference/cartresponse) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "input": {
+        "id": "{{cartId}}",
+        "items": {
+            "amazonProducts": [{
+                "productId": "{{productId}}"
+            }],
+            "shopifyProducts": [{
+                "variantId": "{{variantId}}"
+            }]
+        }
+    }
+}
+`
+
+GraphQL
+
+`mutation ($input: CartItemsDeleteInput!) {
+    deleteCartItems(input: $input) {
+        cart {
+            id
+            buyerIdentity {
+                firstName
+                lastName
+                address1
+                address2
+                city
+                provinceCode
+                countryCode
+                postalCode
+                email
+                phone
+            }
+            stores {
+                ... on AmazonStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            productIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        product {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on AmazonOfferErrorDetails {
+                                productIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+                ... on ShopifyStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            variantIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        variant {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on ShopifyOfferErrorDetails {
+                                variantIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        errors {
+            code
+            message
+        }
+    }
+}
+`
+
+Response
+
+`{
+    "data": {
+        "deleteCartItems": {
+            "cart": {
+                "id": "ufiqi0dgMfywFaskeEIY",
+                "buyerIdentity": {
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "address1": "1st St.",
+                    "address2": "apt.1",
+                    "city": "Redmond",
+                    "provinceCode": "WA",
+                    "countryCode": "US",
+                    "postalCode": "98052",
+                    "email": "[[email protected]](/cdn-cgi/l/email-protection)",
+                    "phone": "4255100000"
+                },
+                "stores": [
+                    {
+                        "errors": [],
+                        "store": "amazon",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "product": {
+                                    "id": "B00A2KD8NY"
+                                }
+                            }
+                        ],
+                        "offer": {
+                            "errors": [],
+                            "subtotal": {
+                                "value": 795,
+                                "displayValue": "$7.95",
+                                "currency": "USD"
+                            },
+                            "margin": {
+                                "value": 0,
+                                "displayValue": "$0.00",
+                                "currency": "USD"
+                            },
+                            "notAvailableIds": [],
+                            "shippingMethods": [
+                                {
+                                    "id": "3.99-Default shipping method",
+                                    "label": "Default shipping method",
+                                    "price": {
+                                        "value": 399,
+                                        "displayValue": "$3.99",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1194,
+                                        "displayValue": "$11.94",
+                                        "currency": "USD"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "errors": []
+        }
+    }
+}
+`
+
+---
+
+### Errors
+
+If the cart is not found then a corresponding error will be returned
+
+JSON
+
+`{
+    "errors": [
+        {
+            "message": "Cart not found: someInvalidCartId",
+            "path": [
+                "getCart"
+            ]
+        }
+    ],
+    "data": null
+}
+`
+
+If the provided items are not found in the inventory `PRODUCT_NOT_FOUND` error is returned
+
+JSON
+
+`{
+    "data": {
+        "deleteCartItems": {
+            "cart": {
+                "id": "4KkkP5uoug23WtiyoZ5c",
+                "buyerIdentity": {
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "address1": "360 w 34th st",
+                    "address2": "{{address2}}",
+                    "city": "new york",
+                    "provinceCode": "10001",
+                    "countryCode": "US",
+                    "postalCode": "10001",
+                    "email": "[[email protected]](/cdn-cgi/l/email-protection)",
+                    "phone": "425000000"
+                },
+                "stores": []
+            },
+            "errors": [
+                {
+                    "code": "PRODUCT_NOT_FOUND",
+                    "message": "Shopify product not found. Variant Id: 1"
+                },
+                {
+                    "code": "PRODUCT_NOT_FOUND",
+                    "message": "Amazon product not found. ASIN: 1"
+                }
+            ]
+        }
+    }
+}
+`
+
+If the provided items are present in inventory, but were not added to the cart, then `STORE_NOT_FOUND` error is returned
+
+JSON
+
+`{
+    "data": {
+        "deleteCartItems": {
+            "cart": {
+                "id": "4KkkP5uoug23WtiyoZ5c",
+                "buyerIdentity": {
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "address1": "360 w 34th st",
+                    "address2": "{{address2}}",
+                    "city": "new york",
+                    "provinceCode": "10001",
+                    "countryCode": "US",
+                    "postalCode": "10001",
+                    "email": "[[email protected]](/cdn-cgi/l/email-protection)",
+                    "phone": "425000000"
+                },
+                "stores": []
+            },
+            "errors": [
+                {
+                    "code": "STORE_NOT_FOUND",
+                    "message": "Store not found: rye-test-store.myshopify.com"
+                },
+                {
+                    "code": "STORE_NOT_FOUND",
+                    "message": "Store not found: amazon"
+                }
+            ]
+        }
+    }
+}
+`
+
+### Related mutations
+
+* [addCartItems](/reference/addcartitems)
+* [updateCartItems](/reference/updatecartitems)

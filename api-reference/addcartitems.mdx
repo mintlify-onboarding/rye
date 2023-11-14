@@ -1,0 +1,490 @@
+---
+title: "addCartItems"
+description: "Adds new items to an existing shopping cart. This mutation resets selected shipping method of updated stores, and user will need to select shipping method again"
+---
+
+> 📘
+> 
+> This mutation only adds non-existing products to the cart, skipping items that are already in the cart. To update quantity use [updateCartItems](/reference/updatecartitems).
+
+---
+
+### Arguments
+
+`input` : [CartItemsAddInput!](https://rye-docs.readme.io/reference/cartitemsaddinput)
+
+The `input` object contains the unique identifier (ID) for the cart and the items that need to be added.
+
+---
+
+### Returns
+
+[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
+
+Any requested field from the [CartResponse](/reference/cartresponse) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "input": {
+        "id": "{{cartId}}",
+        "items": {
+            "amazonCartItemsInput": [{
+                "quantity": 1,
+                "productId": "{{productId}}"
+            }],
+            "shopifyCartItemsInput": [{
+                "quantity": 1,
+                "variantId": "{{variantId}}"
+            }]
+        }
+    }
+}
+`
+
+GraphQL
+
+`mutation ($input: CartItemsAddInput!) {
+    addCartItems(input: $input) {
+        cart {
+            cost {
+                isEstimated
+                subtotal {
+                    value
+                    displayValue
+                    currency
+                }
+                tax {
+                    value
+                    displayValue
+                    currency
+                }
+                shipping {
+                    value
+                    displayValue
+                    currency
+                }
+                total {
+                    value
+                    displayValue
+                    currency
+                }
+            }
+            id
+            buyerIdentity {
+                firstName
+                lastName
+                address1
+                address2
+                city
+                provinceCode
+                countryCode
+                postalCode
+                email
+                phone
+            }
+            stores {
+                ... on AmazonStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            productIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        product {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on AmazonOfferErrorDetails {
+                                productIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+                ... on ShopifyStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            variantIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        variant {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on ShopifyOfferErrorDetails {
+                                variantIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        errors {
+            code
+            message
+        }
+    }
+}
+`
+
+Response
+
+`{
+    "data": {
+        "addCartItems": {
+            "cart": {
+                "id": "KVER2EJJ1kqrjI4H1fbi",
+                "stores": [
+                    {
+                        "errors": [],
+                        "store": "rye-test-store.myshopify.com",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "variant": {
+                                    "id": "39943631962199"
+                                }
+                            }
+                        ],
+                        "offer": {
+                            "errors": [],
+                            "subtotal": {
+                                "value": 10000,
+                                "displayValue": "$100.00",
+                                "currency": "USD"
+                            },
+                            "margin": {
+                                "value": 0,
+                                "displayValue": "$0.00",
+                                "currency": "USD"
+                            },
+                            "notAvailableIds": [],
+                            "shippingMethods": [
+                                {
+                                    "id": "0-Economy",
+                                    "label": "Economy",
+                                    "price": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 10000,
+                                        "displayValue": "$100.00",
+                                        "currency": "USD"
+                                    }
+                                },
+                                {
+                                    "id": "3-SonicSound",
+                                    "label": "SonicSound",
+                                    "price": {
+                                        "value": 300,
+                                        "displayValue": "$3.00",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 10300,
+                                        "displayValue": "$103.00",
+                                        "currency": "USD"
+                                    }
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "errors": [],
+                        "store": "amazon",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "product": {
+                                    "id": "B00A2KD8NY"
+                                }
+                            }
+                        ],
+                        "offer": {
+                            "errors": [],
+                            "subtotal": {
+                                "value": 795,
+                                "displayValue": "$7.95",
+                                "currency": "USD"
+                            },
+                            "margin": {
+                                "value": 0,
+                                "displayValue": "$0.00",
+                                "currency": "USD"
+                            },
+                            "notAvailableIds": [],
+                            "shippingMethods": [
+                                {
+                                    "id": "3.99-Default shipping method",
+                                    "label": "Default shipping method",
+                                    "price": {
+                                        "value": 399,
+                                        "displayValue": "$3.99",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1194,
+                                        "displayValue": "$11.94",
+                                        "currency": "USD"
+                                    }
+                                }
+                            ]
+                        }
+                    }
+                ]
+            },
+            "errors": []
+        }
+    }
+}
+`
+
+---
+
+### Errors
+
+If the cart is not found then a corresponding error is returned
+
+JSON
+
+`{
+    "errors": [
+        {
+            "message": "Cart not found: someInvalidCartId",
+            "path": [
+                "getCart"
+            ]
+        }
+    ],
+    "data": null
+}
+`
+
+If the provided items are not found in the inventory `PRODUCT_NOT_FOUND` error is returned
+
+JSON
+
+`{
+    "data": {
+        "addCartItems": {
+            "cart": {
+                "id": "4KkkP5uoug23WtiyoZ5c",
+            },
+            "errors": [
+                {
+                    "code": "PRODUCT_NOT_FOUND",
+                    "message": "Shopify product not found. Variant Id: 1"
+                },
+                {
+                    "code": "PRODUCT_NOT_FOUND",
+                    "message": "Amazon product not found. ASIN: 1"
+                }
+            ]
+        }
+    }
+}
+`
+
+If the provided product/variant quantity is less or equal to zero then `ADD_PRODUCTS_FAILED` error is returned
+
+JSON
+
+`{
+    "data": {
+        "addCartItems": {
+            "cart": {
+                "id": "2wAoSo7cBTAwFKjnhYnb",
+                "stores": [
+                    {
+                        "errors": [
+                            {
+                                "code": "ADD_PRODUCTS_FAILED",
+                                "message": "Product quantity must be greater than zero",
+                                "details": {
+                                    "variantIds": [
+                                        "39943631962199"
+                                    ]
+                                }
+                            }
+                        ],
+                        "isSubmitted": false,
+                        "store": "rye-test-store.myshopify.com",
+                        "cartLines": [],
+                        "offer": {
+                            "errors": [
+                                {
+                                    "code": "PRODUCTS_EMPTY",
+                                    "message": "product list is empty",
+                                    "details": null
+                                }
+                            ],
+                            "subtotal": null,
+                            "margin": null,
+                            "notAvailableIds": [],
+                            "shippingMethods": []
+                        }
+                    }
+                ]
+            },
+            "errors": []
+        }
+    }
+}
+`
+
+> 📘
+> 
+> If the store has no items added to it then after attempting to get an offer for this store `PRODUCTS_EMPTY`error is returned for [AmazonOffer](/reference/amazonoffer-1)/[ShopifyOffer](/reference/shopifyoffer-1) object as in the example above.
+
+---
+
+### Related mutations
+
+* [deleteCartItems](/reference/deletecartitems)
+* [updateCartItems](/reference/updatecartitems)
+
+### Recipes
+
+* [Add item to cart](/recipes/add-item-to-cart)

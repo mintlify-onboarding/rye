@@ -1,0 +1,30 @@
+---
+title: "Checkout"
+description: "Represents information related to the checkout process of a user's order submission, which includes details such as the user's shipping address, payment method, and any applicable discounts or promotions."
+---
+
+## Fields
+
+---
+
+`cart`: [Cart!](/reference/cart-2)
+
+The cart associated with the checkout.
+
+---
+
+`status`: [CheckoutStatus!](/reference/checkoutstatus)
+
+The status of the checkout.
+
+---
+
+`orders`: [\[Order!\]!](/reference/order-new)
+
+The list of orders associated with the checkout.
+
+---
+
+### Mutations
+
+* [checkoutByCartID](/reference/orderbyid)

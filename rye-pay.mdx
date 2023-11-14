@@ -1,0 +1,31 @@
+---
+title: "Rye Pay"
+---
+
+The Rye Pay JavaScript script is a replacement for Stripe and allows vaulting user credit card details for further transactions. When a customer enters their credit card information, the script automatically gets an environment token used for vaulting credit card data.
+
+The script itself does not provide any UI, it should be done by developers. Instead, the script encapsulates the steps necessary to transfer payment information to Spreedly, get the token, and submit the cart with the required data.
+
+When the customer submits their payment information, the payment details are automatically sent to the Spreedly backend where they are securely vaulted.
+
+Once the payment details are securely stored in Spreedly, the frontend script returns the vaulted session token, which can be used to make purchases on the Shopify gateway. This process ensures that sensitive payment information is never stored or transmitted by the merchant, and is instead handled securely by Spreedly.
+
+> 📘
+> 
+> npm package: [@rye-api/rye-pay](https://www.npmjs.com/package/@rye-api/rye-pay)
+
+### Usage
+
+---
+
+#### Preparing a payment form
+
+Developers are responsible for creating a form that collects user credit card data. It is up to a developer how to style and layout the form. In order to be PCI Complaint a developer should not use any input fields to collect a credit card number and CVV. Instead, they should provide two HTML elements with `id` attribute where the number and CVV Spreedly iFrame fields should be rendered.
+
+#### RyePay initialization and cart submission
+
+Here is an example of how you can submit a cart via rye-pay:
+
+Submit cart via rye-pay
+
+Open Recipe

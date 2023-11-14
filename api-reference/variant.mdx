@@ -1,0 +1,25 @@
+---
+title: "Variant"
+description: "An interface for product variants across different marketplaces, such as Amazon and Shopify. By implementing the Variant interface, different marketplace product types like AmazonProduct and ShopifyVariant can have a standardized way to handle product variants."
+---
+
+## Fields
+
+---
+
+`title`: `String!`
+
+ The title of the product variant. This field usually contains specific information about the variant, such as color, size, or other distinguishing characteristics.
+
+---
+
+`image`: [Image!](/reference/image)
+
+An Image type that contains information about the variant's image, including its URL, dimensions, and other attributes.
+
+---
+
+### Implementations
+
+* [AmazonVariant](/reference/amazonvariant)
+* [ShopifyVariant](/reference/shopifyvariant)

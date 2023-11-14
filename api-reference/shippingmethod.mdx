@@ -1,0 +1,43 @@
+---
+title: "ShippingMethod"
+description: "Represents various price-related information and shipping methods for the products in the cart."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+A unique identifier for the shipping method. This ID can be used to reference the shipping method when updating or selecting a specific shipping method.
+
+---
+
+`label`: `String!`
+
+A label that describes the shipping method. This can be displayed to the user to help them understand the shipping option, such as "Standard Shipping" or "Express Shipping."
+
+---
+
+`price`: [Price](https://rye-docs.readme.io/reference/price)
+
+ The base price of the shipping method. This is the cost of shipping before any taxes are applied.
+
+---
+
+`taxes`: [Price](https://rye-docs.readme.io/reference/price)
+
+ This field contains information about the amount of taxes that are included in the total taxes based on the shipping price.
+
+---
+
+`total`: [Price](https://rye-docs.readme.io/reference/price)
+
+ The total cost of the offer, including subtotal, shipping price, and taxes. This is the final amount that the user would pay.
+
+---
+
+### Related types
+
+* [AmazonOffer](/reference/amazonoffer-1)
+* [ShopifyOffer](/reference/shopifyoffer-1)

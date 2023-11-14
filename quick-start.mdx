@@ -1,0 +1,63 @@
+---
+title: "Quick start"
+description: "Get your API key and send your first Rye API request!"
+---
+
+<Steps>
+  <Step title="Grab your API Key">
+    To make requests to the Rye GraphQL API, you will need to get an API access key by signing up on the Rye console. To do so:
+
+    1. Navigate, and log in to [https://console.rye.com](https://console.rye.com/account)
+    2. Under Access and Security, view and copy your API key
+
+    ![Grab the API header from console](/images/d883882-image.png)
+
+    Grab the API header from console
+  </Step>
+  <Step title="Initialize GQL client">
+
+Initialize a GQL client with your API key via the following recipe:
+
+```javascript
+import { GraphQLClient, gql } from 'graphql-request'
+
+const endpoint = 'https://graphql.api.rye.com/v1/query'
+const client = new GraphQLClient(endpoint)
+const headers = {
+  'Authorization': 'Basic <API Key Here>',
+  'rye-shopper-ip': 'xxx.xxx.x.x'
+}
+
+```
+  </Step>
+  <Step title="Making your first GraphQL request">
+    Rye uses GraphQL as the underlying technology to expose its API to developers. Read more about GraphQL [here](https://graphql.org/).
+
+    Here is an example of fetching an Amazon product from GraphQL. Make sure to replace your API key in the examples below.
+
+<CodeGroup>
+    ```javascript Shopify
+    async function fetchProduct() {
+  const variables = {
+    "input": {
+      "id": "7074033139917",
+      "marketplace": "SHOPIFY"
+    }
+  };    
+    ```
+
+    ```javascript Amazon
+    function fetchProduct() {
+  const variables = {
+    "input": {
+      "id": "B09H6T8LTR",
+      "marketplace": "AMAZON"
+    }
+  };
+```
+</CodeGroup>
+  </Step>
+<Step title="Explore the rest of the API">
+Explore the entire API offering live on the [Rye Console](https://console.rye.com/). Take a glance through the remaining docs to figure out how the Rye API can integrate into your app!
+  </Step>
+</Steps>

@@ -1,0 +1,42 @@
+---
+title: "HTTP Headers"
+description: "It is important to have certain HTTP headers as part of your Rye API requests."
+---
+
+### Authorization
+
+The authorization header is required for developers to be able to access all queries/mutations of the Rye API. The header can be obtained from the [Rye console](https://console.rye.com/account), Under Account → Access and Security, view and copy your API key.
+
+![](/images/c48ab4d-image.png)
+
+The header is of the following format:
+
+```JSON JSON
+{
+  "Authorization": "Basic << API Key here >>",
+  "rye-shopper-ip": "<< Your IP address her e>>"
+}
+```
+
+---
+
+### rye-shopper-ip (Optional)
+
+This header is required for making requests on behalf of the end user because some systems such as Shopify have fraud risk calculations based on the end user IP (ex: if the IP matches the billing address IP).
+
+```JSON JSON
+{
+	"rye-shopper-ip": "103.123.5.23"
+}
+```
+
+<Warning>
+  rye-shopper-ip header is required to use the [submitCart ](/reference/submitcart)mutation.
+</Warning>
+---
+
+### Where to find these headers
+
+These headers can be found if you head to [https://console.rye.com/graphql](https://console.rye.com/graphql) and click on the HTTP Headers tab at the bottom of the screen.
+
+![](/images/f8ac507-Screenshot_2023-07-06_at_11.08.03_AM.png)

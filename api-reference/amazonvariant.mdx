@@ -1,0 +1,42 @@
+---
+title: "AmazonVariant"
+description: "Represents a variant of an Amazon product, which typically includes different colors or dimensions."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+The identifier of the variant
+
+---
+
+`title`: `String!`
+
+The title of the variant.
+
+---
+
+`image`: [Image!](/reference/image)
+
+The Image type object associated with this specific variant.
+
+---
+
+`url`: [URL!](/reference/url)
+
+The URL to the product page for this specific variant.
+
+---
+
+`dimensions`: [\[AmazonVariantDimension!\]!](/reference/amazonvariantdimension)
+
+A list of objects that describe the dimensions of this specific variant.
+
+---
+
+### Related types
+
+* [AmazonProduct](/reference/amazonproduct)

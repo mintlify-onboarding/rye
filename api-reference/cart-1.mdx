@@ -1,0 +1,412 @@
+---
+title: "getCart"
+description: "Retrieve a Cart by its ID. This query can be used to retrieve information about an existing cart."
+---
+
+### Arguments
+
+`id`: `ID!`
+
+The ID of the [Cart](https://rye-docs.readme.io/reference/cart-2)
+
+---
+
+### Returns
+
+[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
+
+Any requested field from the [CartResponse](/reference/cartresponse) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "id": "{{cartId}}"
+}
+`
+
+GraphQL
+
+`query ($id: ID!) {
+    getCart(id: $id) {
+        cart {
+            cost {
+                isEstimated
+                subtotal {
+                    value
+                    displayValue
+                    currency
+                }
+                tax {
+                    value
+                    displayValue
+                    currency
+                }
+                shipping {
+                    value
+                    displayValue
+                    currency
+                }
+                total {
+                    value
+                    displayValue
+                    currency
+                }
+            }
+            id
+            buyerIdentity {
+                firstName
+                lastName
+                address1
+                address2
+                city
+                provinceCode
+                countryCode
+                postalCode
+                email
+                phone
+            }
+            stores {
+                ... on AmazonStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            productIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        product {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on AmazonOfferErrorDetails {
+                                productIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+                ... on ShopifyStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            variantIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        variant {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on ShopifyOfferErrorDetails {
+                                variantIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        errors {
+            code
+            message
+        }
+    }
+}
+`
+
+Response
+
+`{
+    "data": {
+        "getCart": {
+            "cart": {
+                "cost": {
+                    "isEstimated": false,
+                    "subtotal": {
+                        "value": 1544,
+                        "displayValue": "$15.44",
+                        "currency": "USD"
+                    },
+                    "tax": null,
+                    "shipping": null,
+                    "total": null
+                },
+                "id": "teWvPufPy8c2AcfkfBo9",
+                "buyerIdentity": {
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "address1": "1st St.",
+                    "address2": "apt.1",
+                    "city": "Redmond",
+                    "provinceCode": "WA",
+                    "countryCode": "US",
+                    "postalCode": "98052",
+                    "email": "[[email protected]](/cdn-cgi/l/email-protection)",
+                    "phone": "4255100000"
+                },
+                "stores": [
+                    {
+                        "errors": [],
+                        "store": "test.myshopify.com",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "variant": {
+                                    "id": "44454219743530"
+                                }
+                            }
+                        ],
+                        "offer": {
+                            "errors": [],
+                            "subtotal": {
+                                "value": 749,
+                                "displayValue": "$7.49",
+                                "currency": "USD"
+                            },
+                            "margin": {
+                                "value": 0,
+                                "displayValue": "$0.00",
+                                "currency": "USD"
+                            },
+                            "notAvailableIds": [],
+                            "shippingMethods": [
+                                {
+                                    "id": "79da7f8d68e18f7616e6841112693fce",
+                                    "label": "Economy",
+                                    "price": {
+                                        "value": 490,
+                                        "displayValue": "$4.90",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1239,
+                                        "displayValue": "$12.39",
+                                        "currency": "USD"
+                                    }
+                                },
+                                {
+                                    "id": "ee768830e386b87e4f230f4292c237a3",
+                                    "label": "Standard",
+                                    "price": {
+                                        "value": 690,
+                                        "displayValue": "$6.90",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1439,
+                                        "displayValue": "$14.39",
+                                        "currency": "USD"
+                                    }
+                                }
+                            ],
+                            "selectedShippingMethod": null
+                        }
+                    },
+                    {
+                        "errors": [],
+                        "store": "amazon",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "product": {
+                                    "id": "B00A2KD8NY"
+                                }
+                            }
+                        ],
+                        "offer": {
+                            "errors": [],
+                            "subtotal": {
+                                "value": 795,
+                                "displayValue": "$7.95",
+                                "currency": "USD"
+                            },
+                            "margin": {
+                                "value": 0,
+                                "displayValue": "$0.00",
+                                "currency": "USD"
+                            },
+                            "notAvailableIds": [],
+                            "shippingMethods": [
+                                {
+                                    "id": "3.99-Default shipping method",
+                                    "label": "Default shipping method",
+                                    "price": {
+                                        "value": 399,
+                                        "displayValue": "$3.99",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1194,
+                                        "displayValue": "$11.94",
+                                        "currency": "USD"
+                                    }
+                                }
+                            ],
+                            "selectedShippingMethod": null
+                        }
+                    }
+                ]
+            },
+            "errors": []
+        }
+    }
+}
+`
+
+### Errors
+
+If the cart is not found then a corresponding error is returned
+
+JSON
+
+`{
+    "errors": [
+        {
+            "message": "Cart not found: someInvalidCartId",
+            "path": [
+                "getCart"
+            ]
+        }
+    ],
+    "data": null
+}
+`
+
+### Recipes
+
+* [Get existing carts details](/recipes/get-an-existing-carts-details)

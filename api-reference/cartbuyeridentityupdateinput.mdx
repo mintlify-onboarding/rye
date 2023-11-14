@@ -1,0 +1,31 @@
+---
+title: "CartBuyerIdentityUpdateInput"
+description: "The input fields to provide the necessary information to update the buyer identity associated with a cart through the updateCartBuyerIdentity mutation. By providing the cart ID and the updated buyer identity information, the API can update the cart's buyer identity accordingly."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+The ID of the cart that the user wants to update the buyer identity for.
+
+---
+
+`buyerIdentity`: [BuyerIdentityInput](https://rye-docs.readme.io/reference/buyeridentityinput)
+
+The `BuyerIdentityInput` object containing the updated buyer identity information.
+
+---
+
+### Mutations
+
+* [updateCartBuyerIdentity](/reference/updatecartbuyeridentity)
+
+---
+
+### Related types
+
+* [BuyerIdentityInput](/reference/buyeridentityinput)
+* [CartResponse](/reference/cartresponse)

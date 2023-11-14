@@ -1,0 +1,46 @@
+---
+title: "ShopifyOffer"
+description: "Represents various price-related information and shipping methods for the products in the cart."
+---
+
+## Fields
+
+---
+
+`subtotal`: [Price](https://rye-docs.readme.io/reference/price)
+
+ A Price object representing the subtotal of the products in the cart before taxes and shipping fees are applied.
+
+---
+
+`margin`: [Price](https://rye-docs.readme.io/reference/price)
+
+A Price object representing the margin on the products in the cart.
+
+---
+
+`notAvailableIds`: `[String!]!`
+
+An array of string IDs representing the products that are not available for purchase. This can be helpful in notifying the user about any unavailable items in their cart.
+
+---
+
+`shippingMethods`: [\[ShippingMethod!\]!](https://rye-docs.readme.io/reference/shippingmethod)
+
+An array of [ShippingMethod](https://rye-docs.readme.io/reference/shippingmethod) objects that contain information about the available shipping options for the cart.
+
+---
+
+`selectedShippingMethod`: [\[ShippingMethod!\]!](https://rye-docs.readme.io/reference/shippingmethod)
+
+A [ShippingMethod](https://rye-docs.readme.io/reference/shippingmethod) object that contains information about the selected shipping option for a store.
+
+---
+
+`errors`: [\[ShopifyOfferError!\]!](https://rye-docs.readme.io/reference/shopifyoffererror)
+
+---
+
+### Related types
+
+* [ShopifyStore](/reference/shopifystore)

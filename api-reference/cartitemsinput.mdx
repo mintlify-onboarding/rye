@@ -1,0 +1,31 @@
+---
+title: "CartItemsInput"
+description: "The input fields to gather and organize the items a buyer wants to add or update in their cart, taking into account the specific platform the products are from (Amazon or Shopify). By including both Amazon and Shopify items, this input object allows the Rye's cart API to handle products from different platforms within a single cart, enabling a more seamless and integrated shopping experience for the user."
+---
+
+## Fields
+
+---
+
+`amazonCartItemsInput`: [\[AmazonCartItemsInput!\]](https://rye-docs.readme.io/reference/amazoncartitemsinput)
+
+This is an array of [AmazonCartItemsInput](https://rye-docs.readme.io/reference/amazoncartitemsinput) objects.
+
+---
+
+`shopifyCartItemsInput`: [\[ShopifyCartItemsInput!\]](https://rye-docs.readme.io/reference/shopifycartitemsinput)
+
+This is an array of [ShopifyCartItemsInput](https://rye-docs.readme.io/reference/shopifycartitemsinput) objects.
+
+---
+
+### Mutations
+
+* [createCart](/reference/createcart)
+* [addCartItems](/reference/addcartitems)
+* [updateCartItems](/reference/updatecartitems)
+
+### Related types
+
+* [AmazonCartItemsInput](/reference/amazoncartitemsinput)
+* [ShopifyCartItemsInput](/reference/shopifycartitemsinput)

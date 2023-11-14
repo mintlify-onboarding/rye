@@ -1,0 +1,186 @@
+---
+title: "AmazonProduct"
+description: "Represents products from the Amazon marketplace. It includes details such as the product's title, description, price, availability, images, and other attributes. These details help the API to handle products from Amazon in a way that's consistent with products from other sources, like Shopify, and to provide users with a seamless shopping experience across different platforms."
+---
+
+> 📘
+> 
+> [AmazonProduct](/reference/amazonproduct) and [ShopifyProduct](/reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/docs/amazon-and-shopify-product-comparison)
+
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+The unique identifier for the Amazon product.
+
+---
+
+`marketplace`: [Marketplace!](/reference/marketplace)
+
+Value for a marketplace for `AmazonProduct` is set to `Marketplace.AMAZON`.
+
+---
+
+`title`: `String!`
+
+The title of the Amazon product.
+
+---
+
+`description`: `String!`
+
+The description of the product.
+
+---
+
+`vendor`: `String!`
+
+The brand of the product.
+
+---
+
+`url`: [URL!](/reference/url)
+
+The canonical URL for the product on Amazon's website.
+
+---
+
+`price`: [Price](/reference/price)
+
+The price of the Amazon product, including its value, currency, and display value.
+
+---
+
+`isAvailable`: `Boolean!`
+
+Indicates whether the product is available in stock. This field is required.
+
+---
+
+`tags`: `[String!]!`
+
+A list of tags associated with the Amazon product
+
+---
+
+`images`: [\[Image!\]!](/reference/image)
+
+A list of images for the Amazon product. This field is required.
+
+---
+
+`variants`: [\[Variant!\]!](https://rye-docs.readme.io/reference/variant)
+
+A list of product variants, such as different colors or sizes.
+
+---
+
+`ASIN`: `ID!`
+
+Amazon's canonical product ID (Amazon Standard Identification Number). This field is required.
+
+---
+
+`titleExcludingVariantName`: `String!`
+
+The Amazon product title without any additional context of the variant.
+
+---
+
+`featureBullets`: `[String!]!`
+
+A list of summary bullets about the product, found next to the product image on Amazon.
+
+---
+
+`parentID`: `ID`
+
+The parent ID of the product if the product has multiple variants.
+
+---
+
+`protectionPlans`: [\[AmazonProtectionPlan!\]!](https://rye-docs.readme.io/reference/amazonprotectionplan)
+
+ A list of protection plans available for the product.
+
+---
+
+`categories`: [\[AmazonCategory!\]!](https://rye-docs.readme.io/reference/amazoncategory)
+
+A list of categories to which the product belongs.
+
+---
+
+`ratingsTotal`: `Int!`
+
+The total number of ratings for this item.
+
+---
+
+`reviewsTotal`: `Int!`
+
+The total number of reviews for this item.
+
+---
+
+`subtitle`: [AmazonSubtitle](https://rye-docs.readme.io/reference/amazonsubtitle)
+
+The secondary title for the product, displayed below the main title on the product detail page.
+
+---
+
+`videos`: [\[AmazonVideo!\]!](https://rye-docs.readme.io/reference/amazonvideo)
+
+A list of videos associated with the product.
+
+---
+
+`specifications`: [\[AmazonSpecification!\]!](https://rye-docs.readme.io/reference/amazonspecification)
+
+A list of product specifications.
+
+---
+
+`color`: `String`
+
+The color of the product.
+
+---
+
+`manufacturer`: `String`
+
+The manufacturer of the product.
+
+---
+
+`weight`: `String`
+
+The weight of the product.
+
+---
+
+`firstAvailable`: [Time](/reference/time)
+
+The date when the product was first listed on Amazon.
+
+---
+
+`dimensions`: `String`
+
+The dimensions of the product.
+
+---
+
+`modelNumber`: `String`
+
+The manufacturer's model number for the product.
+
+---
+
+### Related types
+
+* [AmazonCartLine](/reference/amazoncartline)

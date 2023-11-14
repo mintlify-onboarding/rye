@@ -1,0 +1,119 @@
+---
+title: "cancelOrder"
+description: "Cancel an existing order."
+---
+
+> 📘
+> 
+> This endpoint currently only supports canceling amazon orders. Shopify support will come at a later date.
+
+---
+
+### Arguments
+
+`input` : [CancelOrderInput!](https://rye-docs.readme.io/reference/cancelorderinput)
+
+The `input` object contains the orderId.
+
+---
+
+### Returns
+
+[CancelOrderResponse!](/reference/cancelorderresponse#fields)
+
+Any requested field from the [CancelOrderResponse](/reference/cancelorderresponse) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "input": {
+        "orderId": "orderId-123-456-789"
+    }
+}
+`
+
+GraphQL
+
+`mutation ($input: CancelOrderInput!) {
+    cancelOrder(input:$input){
+        result {
+        ...on CancelAmazonOrderResult { items { amazonOrderId, status, failReason } }
+        ...on CancelShopifyOrderResult { status }
+        }
+        error {
+            message
+            code
+        }
+    }
+}
+`
+
+Calling the endpoint initiates a cancellation attempt. Response below is an example response for an amazon order
+
+Response
+
+`{
+    "data": {
+        "cancelOrder": {
+            "result": {
+                "items": [
+                    {
+                        "amazonOrderId": "111-9474033-3741041",
+                        "status": "CANCEL_PROCESSING",
+                        "failReason": null
+                    }
+                ]
+            },
+            "error": null
+        }
+    }
+}
+`
+
+---
+
+### Errors
+
+If a cancellation request has a status `CANCEL_FAILED` the payload would look like below:
+
+Response
+
+`{
+    "data": {
+        "cancelOrder": {
+            "result": {
+                "items": [
+                    {
+                        "amazonOrderId": "111-9474033-3741041",
+                        "status": "CANCEL_FAILED",
+                        "failReason": "Error attempting to request cancellation"
+                    }
+                ]
+            },
+            "error": null
+        }
+    }
+}
+`
+
+The error field will display errors not related to actual status of a cancellation request.
+
+Response
+
+`{
+    "data": {
+        "cancelOrder": {
+            "result": [],
+            "error": {
+              "message":
+                'There was a problem cancelling this order. Contact Rye to cancel the order manually.',
+              code: "REQUEST_MANUAL_CANCELLATION"
+          },
+        }
+    }
+}
+`

@@ -1,0 +1,135 @@
+---
+title: "Handling GraphQL Input Validation Errors"
+description: "As part of our commitment to provide a robust experience, we've enhanced our GraphQL API with input validation. This guide will help you understand how to handle input validation errors on the client side for smooth integration and error handling in your applications."
+---
+
+### Understand Error Responses
+
+When an input validation error occurs, our API will return a response with specific error messages and codes. These error responses will help you identify the nature of the issue in your data.
+
+Validation error example
+
+`{
+    "errors": [
+        {
+            "message": "ArgumentValidationError",
+            "locations": [
+                {
+                    "line": 2,
+                    "column": 5
+                }
+            ],
+            "path": [
+                "createCart"
+            ],
+            "extensions": {
+                "code": "BAD_USER_INPUT",
+                "exception": {
+                    "validationErrors": [
+                        {
+                            "field": [
+                                "buyerIdentity",
+                                "firstName"
+                            ],
+                            "constraints": [
+                                "firstName must be longer than or equal to 1 characters"
+                            ],
+                            "value": ""
+                        }
+                    ],
+                }
+            }
+        }
+    ],
+    "data": null
+}
+`
+
+### Extract and Display Errors
+
+Extracring errors
+
+`// Auxiliary interfaces for strict typings
+
+// This structure is returned by Rye API inside extensions field of a standard GQL error
+interface GqlException {
+  validationErrors: ValidationError[];
+}
+
+// All Rye API input validation errors have this structure
+interface ValidationError {
+  // Original value of an invalid field
+  value: any;
+  // Name of the invalid field including names of all parent nodes
+  field: string[];
+  // An array of failing constrains that describe validation errors
+  constraints: string[];
+}
+
+// Example of client side errors structure
+// Element id can be used as a key. Value is a list of constrains/error messages for the element
+interface UserErrors {
+  [elementId: string]: string[];
+}
+
+// Store validation errors in dictionary
+const [errors, setErrors] = useState<UserErrors>({});
+
+// Error handling example
+// Here we try to update shipping address by calling updateCartBuyerIdentity mutation
+const updateShippingInfo = async () => {
+    const input: UpdateBuyerIdentityInput = {
+      id,
+      buyerIdentity: {
+        city,
+        address1,
+        address2,
+        firstName,
+        lastName,
+        email,
+        phone,
+        postalCode,
+        provinceCode,
+        countryCode,
+      },
+    };
+    try {
+      await updateCartBuyerIdentity({ variables: { input } });
+      setErrors({});
+    } catch (e) {
+      // Make sure the error is an instance of ApolloError
+      if (e instanceof ApolloError) {
+        // Get GQL specific errors
+        const gqlErrors = e.graphQLErrors;
+        for (const gqlError of gqlErrors) {
+          const code = gqlError.extensions.code as string;
+          // Check that error is related to invalid user input
+          if (code === 'BAD_USER_INPUT') {
+            const userErrors: UserErrors = {};
+            // Extract validaiton errors from root error object
+            const validationErrors = (gqlError.extensions.exception as GqlException)
+              .validationErrors;
+
+            // Once errors are extracted we can decide how to show them to user
+            for (const validationErr of validationErrors) {
+              // Use a full path to the filed as a field identifier
+              const elementId = validationErr.field.join('.');
+              userErrors[elementId] = validationErr.constraints;
+            }
+
+            // Set errors to display to a user
+            setErrors(userErrors);
+          }
+        }
+      }
+    }
+  };
+
+// Exmaple of an input field that is used to enter buyer name
+<TextField
+value={firstName}
+onChange={(e) => setName(e.target.value)}
+error={errors["buyerIdentity.firstName"]?.length > 0}// <<<<-------- Check for errors
+helperText={errors["buyerIdentity.firstName"]} // <<<<-------- Show error messages
+/>
+`

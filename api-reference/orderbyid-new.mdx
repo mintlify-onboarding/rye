@@ -1,0 +1,99 @@
+---
+title: "orderById"
+description: "Returns an Order object by ID. This query can be used to retrieve information about the individual order."
+---
+
+> 📘
+> 
+> When called for a not submitted cart, [Order.status](/reference/orderstatus) will always be `PENDING` and [Order.events](/reference/orderevent) array will be empty. After cart submission [Order.status](/reference/orderstatus) will change according to the current checkout state and the [Order.events](/reference/orderevent) array will be populated.
+
+Sometimes, when using the orderById query, the returned status may be `ACTION_REQUIRED`. In this case, you should check the "requiredActions" field for each order with this status and perform the necessary actions. Currently, there is only one required action: `CompletePaymentChallenge`, also known as 3D-S Challenge.
+
+3D-S (3D-Secure) is a security protocol designed to provide an additional layer of authentication for online credit and debit card transactions. When a customer attempts to make a payment, they are redirected to their bank's website, where they are asked to enter a unique password to confirm their identity. This helps prevent fraud and unauthorized purchases.
+
+If 3D-S challenge completion is required, you should display the `redirectURL` to the end buyer. Once the end buyer completes the challenge, Rye will continue with order processing.
+
+---
+
+> 🚧
+> 
+> This query returns a successful response even if the invalid order id is provided
+
+---
+
+### Arguments
+
+`id`: `ID!`
+
+The ID of the [Order](/reference/order-new)
+
+---
+
+### Returns
+
+[Order.\*](/reference/order-new): [Order](/reference/order-new)
+
+Any requested field from the [Order](/reference/order-new) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "id": "{{orderId}}"
+}
+`
+
+GraphQL
+
+`query OrderById($id: ID!) {
+  orderByID(id: $id) {
+    id
+    status
+    events {
+      id
+      createdAt
+    }
+    requiredActions {
+    	... on CompletePaymentChallenge {
+    		redirectURL
+    	}
+    }
+  }
+}
+`
+
+Response
+
+`{
+    "data": {
+        "orderByID": {
+            "id": "00401732-8a19-48eb-be6a-6138d2f666c7",
+            "status": "SUCCEEDED",
+            "events": [
+                {
+                    "id": "8f5e46ce-9d59-4038-a1c7-4523f1306a30",
+                    "createdAt": "2023-04-11T20:40:15.737Z"
+                },
+                {
+                    "id": "9b109988-2332-4490-9bb2-e71f0220131a",
+                    "createdAt": "2023-04-11T20:40:48.367Z"
+                },
+                {
+                    "id": "b083aa71-c169-4065-80f5-281dfc8952e3",
+                    "createdAt": "2023-04-11T20:40:48.408Z"
+                }
+            ],
+          	"requiredActions": []
+        }
+    }
+}
+`
+
+---
+
+### Related queries
+
+[checkoutByCartID](/reference/orderbyid)

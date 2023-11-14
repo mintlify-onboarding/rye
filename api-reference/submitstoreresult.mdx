@@ -1,0 +1,42 @@
+---
+title: "SubmitStoreResult"
+description: "Represents the result of submitting a store within a cart."
+---
+
+## Fields
+
+---
+
+`store`: [Store!](https://rye-docs.readme.io/reference/store)
+
+This field represents the store's information for which the cart submission result is provided.
+
+---
+
+`status`: [SubmitStoreStatus!](https://rye-docs.readme.io/reference/submitstorestatus)
+
+This non-null field is an enumeration that represents the status of the checkout process for the store.
+
+---
+
+`requestId`: `ID`
+
+This nullable field represents the request ID received from the checkout process. It can be used for tracking or troubleshooting purposes.
+
+---
+
+`isSubmitted`: `Boolean!`
+
+True if the store items ended up with a successful checkout
+
+---
+
+`errors`: [\[SubmitStoreResultError!\]](/reference/submitstoreresulterror)
+
+Store submit errors.
+
+---
+
+### Related types
+
+* [SubmitCartData](/reference/submitcartdata)

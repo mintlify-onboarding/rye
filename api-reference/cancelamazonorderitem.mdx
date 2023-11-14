@@ -1,0 +1,24 @@
+---
+title: "CancelAmazonOrderItem"
+description: "Represents an order that a customer places for a product."
+---
+
+## Fields
+
+---
+
+`amazonOrderId`: `ID!`
+
+ A Price object representing the subtotal of the products in the cart before taxes and shipping fees are applied.
+
+---
+
+`status`: [CancelOrderStatus!](/reference/cancelorderstatus)
+
+The status of the order.
+
+---
+
+`failReason`: `String`
+
+If status is `CANCEL_FAILED` then this property gives details on the reason for the failure.

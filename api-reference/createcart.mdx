@@ -1,0 +1,527 @@
+---
+title: "createCart"
+description: "Creates a new shopping cart with the specified items from Amazon and/or Shopify stores. Allows users to add products (for Amazon) or product variants (for Shopify) along with their quantities to a new cart."
+---
+
+> 📘
+> 
+> This mutation is an entry point for Cart API. Any other queries and mutations should be called after the cart is created via this mutation.
+
+---
+
+### Arguments
+
+`input` : [CartCreateInput!](https://rye-docs.readme.io/reference/cartcreateinput)
+
+The `input` object contains items with their quantities and optionally the identity of the buyer.
+
+If [BuyerIdentity](/reference/buyeridentity) is not provided upon cart creation then [AmazonOffer.shippingMethods](/reference/shippingmethod) and [ShopifyOffer.shippingMethods](/reference/shippingmethod) will contain only the preliminary estimated default shipping method. To get more accurate shipping information use [updateCartBuyerIdentity](/reference/updatecartbuyeridentity) mutation to provide buyer information.
+
+---
+
+### Returns
+
+[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
+
+Any requested field from the [CartResponse](/reference/cartresponse) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "input": {
+        "items": {
+            "amazonCartItemsInput": [{
+                "quantity": 1,
+                "productId": "{{productId}}"
+            }],
+            "shopifyCartItemsInput": [{
+                "quantity": 1,
+                "variantId": "{{variantId}}"
+            }]
+        },
+        "buyerIdentity": {
+            "firstName": "{{firstName}}",
+            "lastName": "{{lastName}}",
+            "email": "{{email}}",
+            "phone": "{{phone}}",
+            "address1": "{{address1}}",
+            "address2": "{{address2}}",
+            "city": "{{city}}",
+            "provinceCode": "{{provinceCode}}",
+            "countryCode": "US",
+            "postalCode": "{{postalCode}}"
+        }
+    }
+}
+`
+
+GraphQL
+
+`mutation ($input: CartCreateInput!) {
+    createCart(input: $input) {
+        cart {
+            cost {
+                isEstimated
+                subtotal {
+                    value
+                    displayValue
+                    currency
+                }
+                tax {
+                    value
+                    displayValue
+                    currency
+                }
+                shipping {
+                    value
+                    displayValue
+                    currency
+                }
+                total {
+                    value
+                    displayValue
+                    currency
+                }
+            }
+            id
+            buyerIdentity {
+                firstName
+                lastName
+                address1
+                address2
+                city
+                provinceCode
+                countryCode
+                postalCode
+                email
+                phone
+            }
+            stores {
+                ... on AmazonStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            productIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        product {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on AmazonOfferErrorDetails {
+                                productIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+                ... on ShopifyStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            variantIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        variant {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on ShopifyOfferErrorDetails {
+                                variantIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        errors {
+            code
+            message
+        }
+    }
+}
+`
+
+Response
+
+`{
+    "data": {
+        "createCart": {
+            "cart": {
+                "cost": {
+                    "isEstimated": false,
+                    "subtotal": {
+                        "value": 1544,
+                        "displayValue": "$15.44",
+                        "currency": "USD"
+                    },
+                    "tax": null,
+                    "shipping": null,
+                    "total": null
+                },
+                "id": "teWvPufPy8c2AcfkfBo9",
+                "buyerIdentity": {
+                    "firstName": "John",
+                    "lastName": "Doe",
+                    "address1": "1st St.",
+                    "address2": "apt.1",
+                    "city": "Redmond",
+                    "provinceCode": "WA",
+                    "countryCode": "US",
+                    "postalCode": "98052",
+                    "email": "[[email protected]](/cdn-cgi/l/email-protection)",
+                    "phone": "4255100000"
+                },
+                "stores": [
+                    {
+                        "errors": [],
+                        "store": "test.myshopify.com",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "variant": {
+                                    "id": "44454219743530"
+                                }
+                            }
+                        ],
+                        "offer": {
+                            "errors": [],
+                            "subtotal": {
+                                "value": 749,
+                                "displayValue": "$7.49",
+                                "currency": "USD"
+                            },
+                            "margin": {
+                                "value": 0,
+                                "displayValue": "$0.00",
+                                "currency": "USD"
+                            },
+                            "notAvailableIds": [],
+                            "shippingMethods": [
+                                {
+                                    "id": "79da7f8d68e18f7616e6841112693fce",
+                                    "label": "Economy",
+                                    "price": {
+                                        "value": 490,
+                                        "displayValue": "$4.90",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1239,
+                                        "displayValue": "$12.39",
+                                        "currency": "USD"
+                                    }
+                                },
+                                {
+                                    "id": "ee768830e386b87e4f230f4292c237a3",
+                                    "label": "Standard",
+                                    "price": {
+                                        "value": 690,
+                                        "displayValue": "$6.90",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1439,
+                                        "displayValue": "$14.39",
+                                        "currency": "USD"
+                                    }
+                                }
+                            ],
+                            "selectedShippingMethod": null
+                        }
+                    },
+                    {
+                        "errors": [],
+                        "store": "amazon",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "product": {
+                                    "id": "B00A2KD8NY"
+                                }
+                            }
+                        ],
+                        "offer": {
+                            "errors": [],
+                            "subtotal": {
+                                "value": 795,
+                                "displayValue": "$7.95",
+                                "currency": "USD"
+                            },
+                            "margin": {
+                                "value": 0,
+                                "displayValue": "$0.00",
+                                "currency": "USD"
+                            },
+                            "notAvailableIds": [],
+                            "shippingMethods": [
+                                {
+                                    "id": "3.99-Default shipping method",
+                                    "label": "Default shipping method",
+                                    "price": {
+                                        "value": 399,
+                                        "displayValue": "$3.99",
+                                        "currency": "USD"
+                                    },
+                                    "taxes": {
+                                        "value": 0,
+                                        "displayValue": "$0.00",
+                                        "currency": "USD"
+                                    },
+                                    "total": {
+                                        "value": 1194,
+                                        "displayValue": "$11.94",
+                                        "currency": "USD"
+                                    }
+                                }
+                            ],
+                            "selectedShippingMethod": null
+                        }
+                    }
+                ]
+            },
+            "errors": []
+        }
+    }
+}
+`
+
+---
+
+### Errors
+
+If the provided items are not found in the inventory `PRODUCT_NOT_FOUND` error is returned
+
+JSON
+
+`{
+    "data": {
+        "createCart": {
+            "cart": {
+                "id": "EZPCcdgCdCRpbNH0z2jq",
+                "stores": []
+            },
+            "errors": [
+                {
+                    "code": "PRODUCT_NOT_FOUND",
+                    "message": "Shopify product not found. Variant Id: 1"
+                }
+            ]
+        }
+    }
+}
+`
+
+if the provided [BuyerIdentity](/reference/buyeridentity) contains invalid fields then a corresponding [error](/reference/carterrorcode) is returned.
+
+JSON
+
+`{
+    "data": {
+        "createCart": {
+            "cart": {
+                "id": "T73U0MRahZT7moqg4cKT",
+                "buyerIdentity": null
+            },
+            "errors": [
+                {
+                    "code": "BUYER_IDENTITY_INVALID_EMAIL",
+                    "message": "email address is invalid"
+                }
+            ]
+        }
+    }
+}
+`
+
+> 📘
+> 
+> In this case the cart will still be created and the provided products will be added to the cart, providing they are present in the invetory.
+> 
+> `buyerIdentity` field in this case will be `null`
+
+If the provided product/variant quantity is less or equal to zero then `ADD_PRODUCTS_FAILED` error is returned
+
+`{
+    "data": {
+        "createCart": {
+            "cart": {
+                "id": "2wAoSo7cBTAwFKjnhYnb",
+                "stores": [
+                    {
+                        "errors": [
+                            {
+                                "code": "ADD_PRODUCTS_FAILED",
+                                "message": "Product quantity must be greater than zero",
+                                "details": {
+                                    "variantIds": [
+                                        "39943631962199"
+                                    ]
+                                }
+                            }
+                        ],
+                        "isSubmitted": false,
+                        "store": "rye-test-store.myshopify.com",
+                        "cartLines": [],
+                        "offer": {
+                            "errors": [
+                                {
+                                    "code": "PRODUCTS_EMPTY",
+                                    "message": "product list is empty",
+                                    "details": null
+                                }
+                            ],
+                            "subtotal": null,
+                            "margin": null,
+                            "notAvailableIds": [],
+                            "shippingMethods": []
+                        }
+                    }
+                ]
+            },
+            "errors": []
+        }
+    }
+}
+`
+
+> 📘
+> 
+> If the store has no items added to it then after attempting to get an offer for this store `PRODUCTS_EMPTY`error is returned for [AmazonOffer](/reference/amazonoffer-1)/[ShopifyOffer](/reference/shopifyoffer-1) object as in the example above.
+
+### Recipes
+
+* [Create a cart](/recipes/create-a-cart)

@@ -1,0 +1,61 @@
+{
+    "name": "Rye",
+    "logo": {
+      "light": "/logo/light.png",
+      "dark": "/logo/dark.png"
+    },
+    "favicon": "/favicon.svg",
+    "colors": {
+      "primary": "#4ED558",
+      "light": "#71F47B",
+      "dark": "#4ED558"
+    },
+    "modeToggle": {
+        "default": "dark"
+    },
+    "topbarCtaButton": {
+      "name": "Get Started",
+      "url": "https://rye.com/sign-up"
+    },
+    "tabs": [
+        {
+            "name": "API Reference",
+            "url": "api-reference"
+        }
+    ],
+    "anchors": [
+    {
+        "name": "GitHub",
+        "icon": "github",
+        "url": "https://github.com/rye-com"
+    },
+    {
+        "name": "Blog",
+        "icon": "newspaper",
+        "url": "https://rye.com/blog"
+    }
+    ],
+    "navigation": [
+        {
+            "group": "Start Here",
+            "pages": [
+              "getting-started-1",
+              "rye-glossary",
+              "quick-start",
+              "authorization-headers"
+            ]
+          },
+          {
+            "group": "Queries",
+            "pages": [
+              "api-reference/productbyid",
+              "api-reference/productsbydomainv2"
+            ]
+          }
+    ],
+    "footerSocials":
+      {
+          "twitter": "https://twitter.com/rye",
+          "linkedin": "https://www.linkedin.com/company/rye/"
+      }
+  }

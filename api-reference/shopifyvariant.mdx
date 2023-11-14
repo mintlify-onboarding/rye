@@ -1,0 +1,90 @@
+---
+title: "ShopifyVariant"
+description: "The ShopifyVariant type allows Rye's cart API to manage and display information about specific variants of Shopify products, such as their availability, pricing, and custom options."
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+The unique identifier for the Shopify product variant. This field is required.
+
+---
+
+`title`: `String!`
+
+The title of the Shopify product variant. This field is required.
+
+---
+
+`image`: [Image!](/reference/image)
+
+The image associated with the Shopify product variant. This field is required.
+
+---
+
+`isAvailable`: `Boolean!`
+
+Indicates whether the variant is available in stock. This field is required.
+
+---
+
+`compareAtPrice`: `String!`
+
+The original price of the variant, which can be used to show the current price at a discount against this price.
+
+---
+
+`price`: `String!`
+
+The current price of the product variant.
+
+---
+
+`isShippingRequired`: `Boolean!`
+
+Indicates whether this product requires shipping, which can be used to distinguish between physical and digital products.
+
+---
+
+`SKU`: `String!`
+
+The product SKU (Stock Keeping Unit) of the variant.
+
+---
+
+`isTaxable`: `Boolean!`
+
+Indicates whether taxes can be applied to this product.
+
+---
+
+`weight`: `Int!`
+
+The weight of the product in grams.
+
+---
+
+`option1`: `String`
+
+Additional options available for this product, usually representing extra customizations.
+
+---
+
+`option2`: `String`
+
+Additional options available for this product, usually representing extra customizations.
+
+---
+
+`option3`: `String`
+
+Additional options available for this product, usually representing extra customizations.
+
+---
+
+### Related types
+
+* [ShopifyProduct](/reference/shopifyproduct)

@@ -1,0 +1,31 @@
+---
+title: "DeleteCartLinesInput"
+description: "The input fields to specify the products that need to be removed from the cart."
+---
+
+## Fields
+
+---
+
+`shopifyProducts`: [\[ShopifyVariantIDInput!\]!](https://rye-docs.readme.io/reference/shopifyvariantidinput)
+
+An array of [ShopifyVariantIDInput](https://rye-docs.readme.io/reference/shopifyvariantidinput) objects, representing the Shopify product variants to be removed from the cart.
+
+---
+
+`amazonProducts`: [\[AmazonProductIDInput!\]!](https://rye-docs.readme.io/reference/amazonproductidinput)
+
+An array of [AmazonProductIDInput](https://rye-docs.readme.io/reference/amazonproductidinput) objects, representing the Amazon products to be removed from the cart.
+
+---
+
+### Mutations
+
+* [deleteCartItems](/reference/deletecartitems)
+
+---
+
+### Related types
+
+* [ShopifyVariantIDInput](https://rye-docs.readme.io/reference/shopifyvariantidinput)
+* [AmazonProductIDInput](https://rye-docs.readme.io/reference/amazonproductidinput)

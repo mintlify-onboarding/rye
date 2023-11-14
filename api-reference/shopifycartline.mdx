@@ -1,0 +1,25 @@
+---
+title: "ShopifyCartLine"
+description: "Represents cart items from a Shopify store. Allows updating the quantity of each item and providing detailed information about each product variant."
+---
+
+## Fields
+
+---
+
+`quantity`: `Int!`
+
+The number of items of this particular product variant in the cart.
+
+---
+
+`variant`: [ShopifyVariant!](https://rye-docs.readme.io/reference/shopifyvariant)
+
+The product variant from the Shopify store that corresponds to this cart line item.
+
+---
+
+### Related types
+
+* [ShopifyStore](/reference/shopifystore)
+* [CartLine](/reference/cartline)

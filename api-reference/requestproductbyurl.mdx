@@ -1,0 +1,80 @@
+---
+title: "requestProductByURL"
+description: "Requests a product to be tracked by Rye's API. Products will be refreshed on some interval. A product must be requested before it can be queried."
+---
+
+### Arguments
+
+`input` : [RequestProductByURLInput!](https://rye-docs.readme.io/reference/requestproductbyurlinput-1)
+
+An object containing the product's URL.
+
+---
+
+### Returns
+
+[RequestProductResponse.productID](https://rye-docs.readme.io/reference/requestproductresponse): [RequestProductResponse](https://rye-docs.readme.io/reference/requestproductresponse)
+
+The `productID` is the unique identifier for the requested product, which can be used in subsequent queries to fetch product information.
+
+---
+
+### Examples
+
+GraphQL
+
+`mutation RequestProductByURL {
+  requestProductByURL(
+    input: {
+      url: "https://www.berkeyfilters.com/products/big-berkey"
+      marketplace: SHOPIFY
+    }
+  ) {
+    productID
+  }
+}
+`
+
+Response
+
+`{
+  "data": {
+    "requestProductByURL": {
+      "productID": "2863034826852"
+    }
+  }
+}
+`
+
+---
+
+### Errors
+
+If the marketplace is set to `AMAZON` and provided URL is not a valid Amazon product URL then `invalid amazon url` error is returned
+
+JSON
+
+`{
+    "errors": [
+        {
+            "message": "invalid amazon url",
+            "path": [
+                "requestProductByURL"
+            ]
+        }
+    ],
+    "data": null
+}
+`
+
+---
+
+### Related mutations
+
+* [requestStoreByURL](/reference/requeststorebyurl)
+
+---
+
+### Recipes
+
+* [Add external product to Rye inventory](/recipes/add-external-product-to-rye-inventory)

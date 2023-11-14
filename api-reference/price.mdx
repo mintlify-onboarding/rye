@@ -1,0 +1,26 @@
+---
+title: "Price"
+description: "Represents pricing information. It allows for easy calculation, conversion, and display of prices for various products and services throughout the application, ensuring a seamless and accurate user experience."
+---
+
+## Fields
+
+---
+
+`value`: `Int!`
+
+ An integer representing the amount of money the product or service costs. The value is multiplied by 100 to avoid floating-point errors, which can cause inaccuracies when working with decimals. For example, if the price is $10.99, the value will be stored as 1099.
+
+---
+
+`currency`: [Currency!](/reference/currency)
+
+A Currency value indicating the currency in which the price is denominated. This is typically represented by a standardized three-letter currency code, such as USD for United States Dollars or EUR for Euros.
+
+---
+
+`displayValue`: `String!`
+
+A formatted string that represents the price in a human-readable format, including the currency symbol and appropriate decimal places. For example, if the price is $10.99 in US Dollars, the displayValue will be "$10.99".
+
+---

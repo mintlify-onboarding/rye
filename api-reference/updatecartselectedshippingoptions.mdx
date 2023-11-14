@@ -1,0 +1,286 @@
+---
+title: "updateCartSelectedShippingOptions"
+description: "Updates shipping methods for stores in the cart"
+---
+
+> 📘
+> 
+> Selected shipping options must be provided either by using this mutation, or they should be passed to [RyePay](/docs/rye-pay).submit method or, if you use 'backend only' payment flow, should be passed to [submitCart](/reference/submitcart) mutation directly. If not provided, cart submission will fail with `SUBMIT_STORE_FAILED` error.
+
+---
+
+### Arguments
+
+`input` : [UpdateCartSelectedShippingOptionsInput!](/reference/updatecartselectedshippingoptionsinput)
+
+The `input` object contains the unique identifier (ID) for the cart and an array of shipping options associated with a store the shipping belongs to
+
+> 📘
+> 
+> [SelectedShippingOption.store](/reference/selectedshippingoption#fields)must be the same as as [AmazonStore.store](/reference/amazonstore#fields) or [ShopifyStore.store](/reference/shopifystore#fields) fields
+
+---
+
+### Returns
+
+[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
+
+Any requested field from the [CartResponse](/reference/cartresponse) object.
+
+### Examples
+
+Query arguments
+
+`{
+    "input": {
+        "id": "{{cart_id}}",
+        "shippingOptions": [ 
+            { 
+            "store": "{{store_domain}}", 
+            "shippingId": "{{shipping_id}}}" 
+            } 
+        ]
+    }
+}
+`
+
+GraphQL
+
+`mutation ($input: UpdateCartSelectedShippingOptionsInput!) {
+    updateCartSelectedShippingOptions(input: $input) {
+        cart {
+            id
+            buyerIdentity {
+                firstName
+                lastName
+                address1
+                address2
+                city
+                provinceCode
+                countryCode
+                postalCode
+                email
+                phone
+            }
+            stores {
+                ... on AmazonStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            productIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        product {
+                            id
+                        }
+                    }
+                    offer {
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                displayValue
+                                value
+                                currency
+                            }
+                            taxes {
+                                displayValue
+                                value
+                                currency
+                            }
+                            total {
+                                displayValue
+                                value
+                                currency
+                            }
+                        }
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on AmazonOfferErrorDetails {
+                                productIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+                ... on ShopifyStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            variantIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        variant {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on ShopifyOfferErrorDetails {
+                                variantIds
+                            }
+                            }
+                        }
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                displayValue
+                                value
+                                currency
+                            }
+                            taxes {
+                                displayValue
+                                value
+                                currency
+                            }
+                            total {
+                                displayValue
+                                value
+                                currency
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        errors {
+            code
+            message
+        }
+    }
+}
+`
+
+Response
+
+``
+
+---
+
+### Errors
+
+If the cart is not found then a corresponding error is returned
+
+JSON
+
+`{
+    "errors": [
+        {
+            "message": "Cart not found: someInvalidCartId",
+            "path": [
+                "getCart"
+            ]
+        }
+    ],
+    "data": null
+}
+`
+
+If the provided store is not present in the cart then `STORE_NOT_FOUND`error is returned
+
+JSON
+
+`{
+    "data": {
+        "updateCartSelectedShippingOptions": {
+            "cart": {
+                "id": "0OSTHkAAhrGxr9nBN33c",
+                "stores": [
+                    {
+                        "errors": [],
+                        "store": "rye-test-store.myshopify.com",
+                        "cartLines": [
+                            {
+                                "quantity": 1,
+                                "variant": {
+                                    "id": "39943631962199"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            "errors": [
+                {
+                    "code": "STORE_NOT_FOUND",
+                    "message": "store NonExistingStore not found"
+                }
+            ]
+        }
+    }
+}
+`

@@ -1,0 +1,78 @@
+---
+title: "BuyerIdentity"
+description: "Represents the buyer's information within the cart API schema. It enables the system to accurately process orders, calculate shipping costs, handle taxes, and communicate with the buyer as needed throughout the purchasing process. This object ensures a smooth and efficient experience for both the buyer and the seller."
+---
+
+## Fields
+
+---
+
+`firstName`: `String`
+
+A string representing the first name of the person or the company.
+
+---
+
+`lastName`: `String`
+
+A string representing the last name of the person or the company.
+
+---
+
+`email`: `String`
+
+A string representing the email address of the person or the company.
+
+---
+
+`phone`: `String`
+
+A string representing the 10-digit phone number of the person or the company.
+
+---
+
+`address1`: `String`
+
+A string representing the first line of the address, such as the street name and number.
+
+---
+
+`address2`: `String`
+
+A string representing the second line of the address, typically used for additional information such as an apartment or suite number.
+
+---
+
+`city`: `String`
+
+A string representing the name of the city, district, village, or town where the buyer is located.
+
+---
+
+`provinceCode`: `String`
+
+A string representing the 2-letter state or province code (e.g., "NY" for New York or "ON" for Ontario).
+
+---
+
+`countryCode`: [Country!](/reference/country)
+
+A Country value representing the 2-letter country code (e.g., "US" for United States or "CA" for Canada).
+
+---
+
+`postalCode`: `String`
+
+A string representing the area postal code or ZIP code.
+
+---
+
+### Mutations
+
+[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](https://rye-docs.readme.io/reference/updatecartbuyeridentity)
+
+Updates buyer identity if not provided in [createCart](https://rye-docs.readme.io/reference/createcart) mutation
+
+### Related types
+
+* [BuyerIdentityInput](/reference/buyeridentityinput)

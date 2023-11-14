@@ -1,0 +1,116 @@
+---
+title: "productsByDomainV2"
+description: "Returns an array of Products filtered by a given store domain. This query can be used for paging through a set of products from a domain from Shopify."
+---
+
+<Note>
+  For example, if the store's canonical URL is [https://abc.myshopify.com](https://abc.myshopify.com), then the domain is abc.myshopify.com, all lowercased.
+
+  As the number of products may be significantly large, it's recommended to paginate through the results.
+</Note>
+
+<br />
+
+<Note>
+  [AmazonProduct](/reference/amazonproduct) and [ShopifyProduct](/reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/docs/amazon-and-shopify-product-comparison)
+</Note>
+
+---
+
+### Arguments
+
+<ParamField path="`input`" type="ProductsByDomainInput!">
+  An object containing the domain name of the store. The search is case-insensitive.
+</ParamField>
+<ParamField path="`pagination``" type="OffsetPaginationInput!">
+  An object containing pagination parameters.
+</ParamField>
+---
+
+### Returns
+
+<ParamField path="Product" type="Product">
+  Any requested field from an object which implements the [Product](https://rye-docs.readme.io/reference/product) interface.
+</ParamField>
+
+<Note>The query returns an empty array if no products are found</Note>
+
+---
+
+### Examples
+
+```GraphQL GraphQL
+query DemoShopifyProductByDomain {
+  productsByDomainV2(
+    input: { domain: "hiutdenim.co.uk" }
+    pagination: { limit: 3, offset: 2 }
+  ) {
+    id
+    title
+    marketplace
+    description
+    isAvailable
+    price {
+      ... on Price {
+        value
+        currency
+        displayValue
+      }
+    }
+  }
+}
+```
+
+<ResponseExample>
+```json Response
+{
+  "data": {
+    "productsByDomainV2": [
+      {
+        "id": "4638144397382",
+        "title": "Do One Thing Well Poster - Walden Arts",
+        "marketplace": "SHOPIFY",
+        "description": "We have one mantra: Do One Thing Well.\n\nThat idea is the life-blood of the business.\n\nWe make jeans. Some of the best in the world.\n\nAnd that it is. It's enough.\n\nWe have one mantra and many passions.\n\nOne of those passions is print.\n\nBecause you can't beat the power of print.\n\nOrder a copy now. Only 50 available.\n\nDimensions: A2 (420mm x 594mm).\n\nScreen printed in Cardigan by Walden Arts.\n\nArt by Marion Deuchars.",
+        "isAvailable": true,
+        "price": {
+          "value": 4167,
+          "currency": "GBP",
+          "displayValue": "£41.67"
+        }
+      },
+      {
+        "id": "6919671087174",
+        "title": "Khaki Japanese Chino Selvedge - Work - Regular Fit",
+        "marketplace": "SHOPIFY",
+        "description": "*Fit*\n\n* True classic cut\n* Low - Mid rise\n* Regular, straight leg\n* Authentic 5 pocket jean\n* Button fly\n* Hiut Denim branded leather patch\n* Fastened with copper rivets on pockets\n* Super tough ecru twill pocket lining\n* Signature red owl rivet on left back pocket\n* Our Advice - In this Fabric Size down\n\nModel wears Work@ - Regular Fit.",
+        "isAvailable": false,
+        "price": {
+          "value": 16667,
+          "currency": "USD",
+          "displayValue": "$166.67"
+        }
+      },
+      {
+        "id": "6919660372038",
+        "title": "Green Japanese Chino Selvedge - Work - Regular Fit",
+        "marketplace": "SHOPIFY",
+        "description": "*Fit*\n\n* True classic cut\n* Low - Mid rise\n* Regular, straight leg\n* Authentic 5 pocket jean\n* Button fly\n* Hiut Denim branded leather patch\n* Fastened with copper rivets on pockets\n* Super tough ecru twill pocket lining\n* Signature red owl rivet on left back pocket\n\nModel wears Work@ - Regular Fit.",
+        "isAvailable": false,
+        "price": {
+          "value": 15000,
+          "currency": "GBP",
+          "displayValue": "£150.00"
+        }
+      }
+    ]
+  }
+}
+```
+</ResponseExample>
+
+---
+
+### Related queries
+
+* [productByID](/reference/productbyid)
+* [productsByVendorV2](/reference/productsbyvendorv2)

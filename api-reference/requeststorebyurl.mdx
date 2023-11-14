@@ -1,0 +1,78 @@
+---
+title: "requestStoreByURL"
+description: "Requests a store to be tracked by Rye's API."
+---
+
+> 📘
+> 
+> Currently requesting a store is only available for Shopify. 
+> 
+> In order to request all products from an Amazon merchant, you must issue individual requests for each product.
+
+---
+
+### Arguments
+
+`input` : [RequestStoreByURLInput!](https://rye-docs.readme.io/reference/requestproductbyurlinput)
+
+An object containing the store's URL.
+
+---
+
+### Returns
+
+[RequestStoreResponse.requestID](https://rye-docs.readme.io/reference/requeststoreresponse): [RequestStoreResponse](https://rye-docs.readme.io/reference/requeststoreresponse)
+
+The `requestID` is the unique identifier for the requested store, which can be used in subsequent queries to fetch store and product information.
+
+> 📘
+> 
+> The mutation returns `requestId` even if invalid URL has been provided
+
+---
+
+### Examples
+
+GraphQLcURL
+
+`mutation RequestStoreByURL {
+  requestStoreByURL(input: { url: "https://rye-test-store.myshopify.com" }) {
+    requestID
+  }
+}
+`
+
+`echo '
+{
+  "variables": {
+    "input": {
+      "url": "https://rye-test-store.myshopify.com"
+    }
+  },
+  "query": "mutation RequestStoreByURL($input: RequestStoreByURLInput!) {
+      requestStoreByURL(input: $input) {
+        requestID
+      }
+    }"
+}' | curl 'https://graphql.api.rye.com/v1/query' \
+  -u "<YOUR RYE API KEY>:"  \
+  -H 'content-type: application/json' \
+  --data @-
+`
+
+Response
+
+`{
+  "data": {
+    "requestStoreByURL": {
+      "requestID": "7206452499174533"
+    }
+  }
+}
+`
+
+---
+
+### Related mutations
+
+* [requestProductByURL](/reference/requestproductbyurl)

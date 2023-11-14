@@ -1,0 +1,35 @@
+---
+title: "SelectedShippingOption"
+description: "Represents shipping option selected for a store."
+---
+
+## Fields
+
+---
+
+`store`: `String!`
+
+The store the shipping option is selected for.
+
+> 📘
+> 
+> This field must be equal to [AmazonStore.store](/reference/amazonstore#fields) or [ShopifyStore.store](/reference/shopifystore#fields) fields.
+> 
+> For Amazon store the value is always `amazon`
+
+---
+
+`shippingId`: `String!`
+
+The ID of the shipping option selected.
+
+> 📘
+> 
+> The id can be retrieved from [ShopifyOffer.shippingMethods](/reference/shopifyoffer-1#fields)/[AmazonOffer.shippingMethods](/reference/amazonoffer-1)
+
+---
+
+### Related types
+
+* [CartSubmitInput](/reference/cartsubmitinput)
+* [UpdateCartSelectedShippingOptionsInput](/reference/updatecartselectedshippingoptionsinput)

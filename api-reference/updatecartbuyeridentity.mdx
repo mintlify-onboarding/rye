@@ -1,0 +1,284 @@
+---
+title: "updateCartBuyerIdentity"
+description: "Updates the buyer's identity if it was not provided in the createCart mutation."
+---
+
+> 📘
+> 
+> BuyerIdentity must be provided either by `createCart`mutation or by `updateCartBuyerIdentity` mutation before checkout. Otherwise, `BUYER_IDENTITY_MISSING` error will be returned upon cart submission.
+
+---
+
+### Arguments
+
+`input` : [CartBuyerIdentityUpdateInput!](https://rye-docs.readme.io/reference/cartbuyeridentityupdateinput)
+
+The `input` object contains the unique identifier (ID) for the cart and the buyer identity details that need to be associated with the cart.
+
+---
+
+### Returns
+
+[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
+
+Any requested field from the [CartResponse](/reference/cartresponse) object.
+
+---
+
+### Examples
+
+Query arguments
+
+`{
+    "input": {
+        "id": "{{cartId}}",
+        "buyerIdentity": {
+            "firstName": "{{firstName}}",
+            "lastName": "{{lastName}}",
+            "email": "{{email}}",
+            "phone": "{{phone}}",
+            "address1": "{{address1}}",
+            "address2": "{{address2}}",
+            "city": "{{city}}",
+            "provinceCode": "{{provinceCode}}",
+            "countryCode": "US",
+            "postalCode": "{{postalCode}}"
+        }
+    }
+}
+`
+
+GraphQL
+
+`mutation ($input: CartBuyerIdentityUpdateInput!) {
+    updateCartBuyerIdentity(input: $input) {
+        cart {
+            cost {
+                isEstimated
+                subtotal {
+                    value
+                    displayValue
+                    currency
+                }
+                tax {
+                    value
+                    displayValue
+                    currency
+                }
+                shipping {
+                    value
+                    displayValue
+                    currency
+                }
+                total {
+                    value
+                    displayValue
+                    currency
+                }
+            }
+            id
+            buyerIdentity {
+                firstName
+                lastName
+                address1
+                address2
+                city
+                provinceCode
+                countryCode
+                postalCode
+                email
+                phone
+            }
+            stores {
+                ... on AmazonStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            productIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        product {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on AmazonOfferErrorDetails {
+                                productIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+                ... on ShopifyStore {
+                    errors {
+                        code
+                        message
+                        details {
+                            variantIds
+                        }
+                    }
+                    store
+                    cartLines {
+                        quantity
+                        variant {
+                            id
+                        }
+                    }
+                    offer {
+                        errors {
+                            code
+                            message
+                            details {
+                                ... on ShopifyOfferErrorDetails {
+                                variantIds
+                            }
+                            }
+                        }
+                        subtotal {
+                            value
+                            displayValue
+                            currency
+                        }
+                        margin {
+                            value
+                            displayValue
+                            currency
+                        }
+                        notAvailableIds
+                        shippingMethods {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+
+                        selectedShippingMethod {
+                            id
+                            label
+                            price {
+                                value
+                                displayValue
+                                currency
+                            }
+                            taxes {
+                                value
+                                displayValue
+                                currency
+                            }
+                            total {
+                                value
+                                displayValue
+                                currency
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        errors {
+            code
+            message
+        }
+    }
+}
+`
+
+Response
+
+``
+
+---
+
+### Errors
+
+If the cart is not found then a corresponding error is returned
+
+JSON
+
+`{
+    "errors": [
+        {
+            "message": "Cart not found: someInvalidCartId",
+            "path": [
+                "getCart"
+            ]
+        }
+    ],
+    "data": null
+}
+`
+
+### Recipes
+
+* [Update buyer identity for a cart](/recipes/update-buyer-identity-for-a-cart)

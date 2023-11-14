@@ -1,0 +1,36 @@
+---
+title: "StorePromoCodesInput"
+description: "The input fields to provide information about promo codes applied to stores in the cart"
+---
+
+## Fields
+
+---
+
+`store`: `String!`
+
+The store the promo codes are applied to
+
+> 📘
+> 
+> This field must be equal to [AmazonStore.store](/reference/amazonstore#fields) or [ShopifyStore.store](/reference/shopifystore#fields) fields.
+> 
+> For Amazon store the value is always `amazon`
+
+---
+
+`promoCodes`: `[String!]!`
+
+List of promo codes to apply for a store
+
+---
+
+### Mutations
+
+* [submitCart](/reference/submitcart)
+
+---
+
+### Related types
+
+* [CartSubmitInput](/reference/cartsubmitinput)

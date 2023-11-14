@@ -1,0 +1,62 @@
+---
+title: "CartResponse"
+description: "Represents a shopping cart which is a result of queries or mutations, along with any possible errors that occurred during operations."
+---
+
+## Fields
+
+---
+
+`cart`: [Cart!](/reference/cart-2)
+
+The unique identifier (ID) of the cart, used to reference and interact with the cart in subsequent API operations.
+
+---
+
+`errors`: [\[CartError!\]!](/reference/carterror)
+
+An array of possible cart errors.
+
+---
+
+## Queries
+
+---
+
+[cart(id: ID!)](https://rye-docs.readme.io/reference/cart-1)
+
+Returns a `CartResponse` object by ID.
+
+---
+
+## Mutations
+
+---
+
+[createCart(input: CartCreateInput!)](https://rye-docs.readme.io/reference/createcart)
+
+Create a Cart with buyer identity details
+
+---
+
+[updateCartItems(input: CartItemsUpdateInput!)](https://rye-docs.readme.io/reference/updatecartitems)
+
+Updates only existing products in a Cart. Returns an error if prompted to update non-existing product.
+
+---
+
+[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](https://rye-docs.readme.io/reference/updatecartbuyeridentity)
+
+Updates buyer identity if not provided in [createCart](https://rye-docs.readme.io/reference/createcart) mutation
+
+---
+
+[addCartItems(input: CartItemsAddInput!)](https://rye-docs.readme.io/reference/addcartitems%28https://rye-docs.readme.io/reference/addcartitems%29)
+
+Adds only non-existing products in a Cart. Skips already existing products.
+
+---
+
+[deleteCartItems(input: CartItemsDeleteInput!)](https://rye-docs.readme.io/reference/deletecartitems)
+
+Removes existing products in a Cart. Returns an error if prompted to delete non-existing product.
