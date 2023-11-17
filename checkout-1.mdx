@@ -20,10 +20,10 @@ To place an order using Rye, you must first add the product(s) to a virtual cart
 Once the product(s) have been added to the cart, you can place the order by programmatically ‘submitting’ the cart. This involves making an API call to forward the gifter’s email for receipt, shipping, and billing information to Rye. Instructions on how to submit customer information and ‘carts’:
 
 * [Update a cart by submitting customer information](https://www.notion.so/External-Rye-Enterprise-Payment-integration-guide-a4a6f5e268ed4dfab9dba4ffdf79d3e6?pvs=21)
-* [Select shipping method](/reference/updatecartselectedshippingoptions)
+* [Select shipping method](/api-reference/updatecartselectedshippingoptions)
 * Submitting the cart:  
-   * [via Rye Pay](/docs/rye-pay)  
-   * [via submitCart mutation](/reference/submitcart)
+   * [via Rye Pay](/rye-pay)  
+   * [via submitCart mutation](/api-reference/submitcart)
   
 **Order placement confirmation**
 
@@ -31,7 +31,5 @@ Successful order placement at Rye’s endpoint would return a unique order id fo
 
 Note that the email submitted will be used to deliver order receipts. This is automatically sent for purchases at Shopify stores, but we do not currently support email receipts for Amazon stores.
 
-  
----
 
   

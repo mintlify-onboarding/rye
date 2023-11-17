@@ -4,9 +4,9 @@ title: "Overview"
 
 The Products API lets you request data on any product from any Shopify or Amazon US store. 
 
-The product data can be combined with the ability to place orders for those products via our [Cart API](/docs/order), to build powerful and complete eCommerce experiences anywhere.
+The product data can be combined with the ability to place orders for those products via our [Cart API](/order), to build powerful and complete eCommerce experiences anywhere.
 
-[You can find the full list of product data available here](/docs/amazon-and-shopify-product-comparison).
+[You can find the full list of product data available here](/amazon-and-shopify-product-comparison).
 
 Examples include: 
 
@@ -25,7 +25,7 @@ To fetch product data for your app, you need to first select and add desired pro
 ## Requirements
 
 * You have created a [Rye Developer Account](https://console.rye.com/account).
-* You have access to your API key [(Follow these steps if not)](/docs/quick-start#1-grab-your-api-key).
+* You have access to your API key [(Follow these steps if not)](/quick-start#1-grab-your-api-key).
   
 ## 1\. Add products to the Rye Inventory
 
@@ -37,13 +37,6 @@ You can add products to the Rye Inventory either by individual product links or 
 | Whole stores        | Merchant store [URL](/reference/requestproductbyurlinput)                                                          | [https://www.allbirds.com](https://www.allbirds.com)                                                                | [requestStoreByURL](/reference/requeststorebyurl)     |
 
   
-2️⃣
-
-Add external product to Rye inventory
-
-Open Recipe
-
-  
 ## 2\. Query product data from the Rye Inventory to your app
 
 You can query product data of individual products (on all Shopify & Amazon stores) or all of the products of a single store (only supported for Shopify stores for now).
@@ -53,19 +46,10 @@ You can query product data of individual products (on all Shopify & Amazon store
 | Individual products   | Product [id](/reference/productbyidinput)and [marketplace](/reference/productbyidinput) | 6767362474059, SHOPIFY;B07H2V5YLH, AMAZON   | [productByID](/reference/productbyid)              |
 | Whole stores          | Merchant store [domain](/reference/productsbydomaininput)                               | [www.allbirds.com](http://www.allbirds.com) | [productByDomainV2](/reference/productsbydomainv2) |
 
-  
-3️⃣
-
-Fetch product data from Rye inventory
-
-Open Recipe
-
----
-
 ## Next Steps
 
 * [Sign up](https://rye.com/sign-up) now to get access to Rye and your API key
-* Use our [tutorial](/docs/tutorial) to practice how to use the Product API (Requires API Key)
+* Use our [tutorial](/tutorial) to practice how to use the Product API (Requires API Key)
 * Run queries on the GraphQL on either of the following playgrounds:  
    * Use [docs playground](https://docs.rye.com/graphql), does not require API key to view the GraphQL schema (However, ensure you set proper HTTP headers to issue requests)  
    * Use [console playground](https://console.rye.com/graphql), requires API key

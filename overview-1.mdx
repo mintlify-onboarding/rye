@@ -11,13 +11,12 @@ description: "Before you start integrating Rye's Cart API, it’s important to u
 
  The API enables creating, deleting, and submitting carts for customers. It allows users to manage multiple carts and supports various cart states like active, abandoned, and completed.
 
-> 📘
-> 
-> Documentation
-> 
-> * [Creating carts](/reference/createcart)
-> * [Deleting carts](/reference/removecart)
-> * [Submitting carts](/reference/submitcart)
+<Note>
+   **Documentation**
+   * [Creating carts](/api-reference/createcart)
+   * [Deleting carts](/api-reference/removecart)
+   * [Submitting carts](/api-reference/submitcart)
+</Note>
 
   
 ---
@@ -26,14 +25,14 @@ description: "Before you start integrating Rye's Cart API, it’s important to u
 
 The cart API allows customers to add, update, and remove items from their cart. They can modify the quantity, product options, and other related details of the items in their cart.
 
-> 📘
-> 
-> Documentation
-> 
-> * [Add an item to cart](/reference/addcartitems)
-> * [Delete an item from a cart](/reference/deletecartitems)
-> * [Update an item in a cart](/reference/updatecartitems)
+<Note>
 
+   **Documentation**
+
+   * [Add an item to cart](/api-reference/addcartitems)
+   * [Delete an item from a cart](/api-reference/deletecartitems)
+   * [Update an item in a cart](/api-reference/updatecartitems)
+</Note>
   
 ---
 
@@ -41,12 +40,12 @@ The cart API allows customers to add, update, and remove items from their cart. 
 
 Users can query cart information such as the list of products, their quantities, and prices. It also allows fetching details about applied discounts, taxes, and shipping costs.
 
-> 📘
-> 
-> Documentation
-> 
-> * [Get cart via cart ID](/reference/cart-1)
+<Note>
 
+    **Documentation**
+
+   * [Get cart via cart ID](/api-reference/cart-1)
+</Note>
   
 ---
 
@@ -67,12 +66,12 @@ The API can be integrated with shipping and tax calculation services to provide 
 ## Next steps
 
 * Check out the [tutorial](https://tutorial.rye.com/) to understand how to use the Rye API
-* Check out the [documentation](/reference/cart-1) to start using the Rye API
+* Check out the [documentation](/api-reference/cart-1) to start using the Rye API
 * Run queries on the GraphQL on either of the following playgrounds:  
    * [https://docs.rye.com/graphql](https://docs.rye.com/graphql)  
-   > 🚧  
-   >  
-   > Ensure you have the HTTP headers set  
-   >  
-   > Before testing on [https://docs.rye.com/graphql](https://docs.rye.com/graphql), you will need the correct HTTP headers. Check this guide here on how to get them.  
+   <Warning> 
+   **Ensure you have the HTTP headers set**
+   
+    Before testing on [https://docs.rye.com/graphql](https://docs.rye.com/graphql), you will need the correct HTTP headers. Check this guide here on how to get them.  
    * [https://console.rye.com/graphql](https://console.rye.com/graphql)
+   </Warning>

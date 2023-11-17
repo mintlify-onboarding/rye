@@ -10,9 +10,7 @@ When the customer submits their payment information, the payment details are aut
 
 Once the payment details are securely stored in Spreedly, the frontend script returns the vaulted session token, which can be used to make purchases on the Shopify gateway. This process ensures that sensitive payment information is never stored or transmitted by the merchant, and is instead handled securely by Spreedly.
 
-> 📘
-> 
-> npm package: [@rye-api/rye-pay](https://www.npmjs.com/package/@rye-api/rye-pay)
+<Note>npm package: [@rye-api/rye-pay](https://www.npmjs.com/package/@rye-api/rye-pay)</Note>
 
 ### Usage
 
@@ -26,6 +24,79 @@ Developers are responsible for creating a form that collects user credit card da
 
 Here is an example of how you can submit a cart via rye-pay:
 
-Submit cart via rye-pay
+<Steps>
+  <Step title="Integrate rye-pay">
+    Import RyePay from '@rye-api/rye-pay' and create a new object for it.
 
-Open Recipe
+```java
+import { RyePay, SubmitStoreResult, SubmitCartResult } from '@rye-api/rye-pay';
+
+const ryePay = new RyePay();
+```
+  </Step>
+  <Step title="Initialize rye-pay via Spreedly iFrames">
+    In your front-end, you should have input objects which allow users to enter their spreedly number and cvv. The object IDs should be spreedly-number and spreedly-cvv respectively.
+
+Initialize the RyePay object by passing in the spreedly-number and spreedly-cvv.
+
+Feel free to play around with the other auxilliary methods that rye-pay offers.
+
+```java
+const loadSpreedly = () => {
+    ryePay.init({
+      apiKey,
+      numberEl: 'spreedly-number',
+      cvvEl: 'spreedly-cvv',
+      environment: prod,
+      onReady: () => {
+        // Customize card number field and cvv field
+        ryePay.setStyle(
+          'number',
+          'display:inline; width: 30%; border-radius: 3px; border: 1px solid #ccc;',
+        );
+        ryePay.setStyle(
+          'cvv',
+          'display: inline; width: 30%; border-radius: 3px; border: 1px solid #ccc;',
+        );
+      },
+      onErrors: (errors: SpreedlyError[]) => {
+        for (const { key, message, attribute } of errors) {
+          console.log(`new error: ${key}-${message}-${attribute}`);
+        }
+      },
+      enableLogging: true,
+      onIFrameError: (err: FrameError) => {
+        console.log(`frameError: ${JSON.stringify(err)}`);
+      }
+    });
+  };
+
+loadSpreedly();
+```
+  </Step>
+  <Step title="Submit cart via rye-pay">
+    Call ryePay.submit to submit your cart. It is important that you have set the cartId to be an existing cartId and your shopperIp.
+
+```java
+const submit = () => {
+  ryePay.submit({
+    first_name: 'John',
+    last_name: 'Doe',
+    month: '04',
+    year: '2025',
+    cartId: 'cartId', // IMPORTANT! Make sure the cartId is valid
+    address1: 'address1',
+    address2: 'address2',
+    zip: 'zip',
+    city: 'city',
+    country: 'country',
+    state: 'state',
+    selectedShippingOptions: [],
+    shopperIp: 'xxx.xxx.x.x', // IMPORTANT! Make sure this is set correctly
+  });
+}
+
+submit();
+```
+  </Step>
+</Steps>

@@ -15,12 +15,6 @@ description: "In this tutorial, you'll understand how to use Rye's cart API to c
 
 Use your API Key to initialize authorization headers for your GQL client.
 
-1️⃣
-
-Initialize GQL client with your API Key
-
-Open Recipe
-
 ---
 
 ### Step 2: Add external product to Rye inventory
@@ -28,23 +22,11 @@ Open Recipe
 Adding product data to inventory may take a few seconds, but the product id will be returned immediately. You can then use this product id to fetch product data in the next step.  
 You can also do this via the Rye Console.
 
-2️⃣
-
-Add external product to Rye inventory
-
-Open Recipe
-
 ---
 
 ### Step 3: Fetch product data from Rye inventory
 
 The product ID can be found in the response to the `requestProduct` mutation.
-
-3️⃣
-
-Fetch product data from Rye inventory
-
-Open Recipe
 
 ---
 
@@ -120,9 +102,10 @@ The result of the`ryePay.submit` should return the cart data and any possible er
 * Check out the [documentation](/reference/cart-1) to start using the Cart API
 * Run queries on the GraphQL on either of the following playgrounds:  
    * [https://docs.rye.com/graphql](https://docs.rye.com/graphql)  
-   > 🚧  
-   >  
-   > Ensure you have the HTTP headers set  
-   >  
-   > Before testing on [https://docs.rye.com/graphql](https://docs.rye.com/graphql), you will need the correct HTTP headers. Check this guide here on how to get them.  
+   <Warning> 
+     
+   Ensure you have the HTTP headers set  
+     
+   Before testing on [https://docs.rye.com/graphql](https://docs.rye.com/graphql), you will need the correct HTTP headers. Check this guide here on how to get them.  
    * [https://console.rye.com/graphql](https://console.rye.com/graphql)
+   </Warning>

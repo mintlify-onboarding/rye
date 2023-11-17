@@ -7,9 +7,8 @@ description: "As part of our commitment to provide a robust experience, we've en
 
 When an input validation error occurs, our API will return a response with specific error messages and codes. These error responses will help you identify the nature of the issue in your data.
 
-Validation error example
-
-`{
+```json Validation error example
+{
     "errors": [
         {
             "message": "ArgumentValidationError",
@@ -43,13 +42,12 @@ Validation error example
     ],
     "data": null
 }
-`
+```
 
 ### Extract and Display Errors
 
-Extracring errors
-
-`// Auxiliary interfaces for strict typings
+```java Extracring errors
+// Auxiliary interfaces for strict typings
 
 // This structure is returned by Rye API inside extensions field of a standard GQL error
 interface GqlException {
@@ -132,4 +130,4 @@ onChange={(e) => setName(e.target.value)}
 error={errors["buyerIdentity.firstName"]?.length > 0}// <<<<-------- Check for errors
 helperText={errors["buyerIdentity.firstName"]} // <<<<-------- Show error messages
 />
-`
+```

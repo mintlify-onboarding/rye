@@ -25,7 +25,7 @@
     ],
     "anchors": [
     {
-        "name": "Github",
+        "name": "GithubZ",
         "icon": "github",
         "url": "https://github.com/rye-com"
     },
@@ -50,6 +50,56 @@
             "pages": [
               "api-reference/productbyid",
               "api-reference/productsbydomainv2"
+            ]
+          },
+          {
+            "group": "Solutions & Guides",
+            "pages": [
+              {
+                "group": "Gifting Platforms",
+                "pages": [
+                  "overview-3",
+                  "project-management",
+                  "onboarding",
+                  "identifying-products-and-vendors",
+                  "sync-inventory",
+                  "checkout-1",
+                  "integrate-rye-into-existing-checkout-system",
+                  "post-purchase-experience"
+                ]
+              },
+              "handling-input-validation-errors"
+            ]
+          },
+          {
+            "group": "Products API",
+            "pages": [
+              "products-api-overview",
+              "amazon-and-shopify-product-comparison"
+            ]
+          },
+          {
+            "group": "Cart & Order API",
+            "pages": [
+              "overview-1",
+              "tutorial-1",
+              "webhook-updates",
+              "rye-pay",
+              "returns"
+            ]
+          },
+          {
+            "group": "Monetization API",
+            "pages": [
+              "affiliate",
+              "mark-up"
+            ]
+          },
+          {
+            "group": "Environment",
+            "pages": [
+              "production",
+              "testing"
             ]
           }
     ],
