@@ -25,7 +25,7 @@
     ],
     "anchors": [
     {
-        "name": "Github",
+        "name": "GithubZ",
         "icon": "github",
         "url": "https://github.com/rye-com"
     },
@@ -48,8 +48,245 @@
           {
             "group": "Queries",
             "pages": [
-              "api-reference/productbyid",
-              "api-reference/productsbydomainv2"
+            ]
+          },
+          {
+            "group": "Product API",
+            "pages": [
+              {
+                "group": "Queries",
+                "pages": [
+                  "api-reference/productbyid",
+                  "api-reference/productsbydomainv2"
+                ]
+              },
+              {
+                "group": "Mutations",
+                "pages": [
+                  "api-reference/requestproductbyurl",
+                  "api-reference/requestproductbyurl",
+                  "api-reference/requeststorebyurl"
+                ]
+              },
+              {
+                "group": "Input",
+                "pages": [
+                  "api-reference/productbyidinput",
+                  "api-reference/productbyidinput",
+                  "api-reference/productsbydomaininput",
+                  "api-reference/productsbyvendorinput",
+                  "api-reference/requestproductbyurlinput",
+                  "api-reference/requestproductbyurlinput-1",
+                  "api-reference/offsetpaginationinput"
+                ]
+              },
+              {
+                "group": "Objects",
+                "pages": [
+                  "api-reference/amazoncategory",
+                  "api-reference/amazoncategory",
+                  "api-reference/amazonimage",
+                  "api-reference/amazonproduct",
+                  "api-reference/amazonprotectionplan",
+                  "api-reference/amazonspecification",
+                  "api-reference/amazonsubtitle",
+                  "api-reference/amazonvariant",
+                  "api-reference/amazonvariantdimension",
+                  "api-reference/amazonvideo",
+                  "api-reference/productoption",
+                  "api-reference/requestproductresponse",
+                  "api-reference/requeststoreresponse",
+                  "api-reference/shopifyimage",
+                  "api-reference/shopifyimageurl",
+                  "api-reference/shopifyproduct",
+                  "api-reference/shopifyproductreview",
+                  "api-reference/shopifyproductreviewedge",
+                  "api-reference/shopifyproductreviewsconnection",
+                  "api-reference/shopifyvariant"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Cart API",
+            "pages": [
+              {
+                "group": "Queries",
+                "pages": [
+                  "api-reference/orderbyid",
+                  "api-reference/orderbyid",
+                  "api-reference/cart-1",
+                  "api-reference/orderbyid-new"
+                ]
+              },
+              {
+                "group": "Mutations",
+                "pages": [
+                  "api-reference/addcartitems",
+                  "api-reference/addcartitems",
+                  "api-reference/cancelorder",
+                  "api-reference/createcart",
+                  "api-reference/deletecartitems",
+                  "api-reference/removecart",
+                  "api-reference/submitcart",
+                  "api-reference/updatecartitems",
+                  "api-reference/updatecartbuyeridentity",
+                  "api-reference/updatecartselectedshippingoptions"
+                ]
+              },
+              {
+                "group": "Input",
+                "pages": [
+                  "api-reference/amazoncartitemsinput",
+                  "api-reference/amazoncartitemsinput",
+                  "api-reference/amazonproductidinput",
+                  "api-reference/billingaddressinput",
+                  "api-reference/buyeridentityinput",
+                  "api-reference/cancelorderinput",
+                  "api-reference/cartbuyeridentityupdateinput",
+                  "api-reference/cartcreateinput",
+                  "api-reference/cartdeleteinput",
+                  "api-reference/cartitemsaddinput",
+                  "api-reference/cartitemsdeleteinput",
+                  "api-reference/cartitemsinput",
+                  "api-reference/cartitemsupdateinput",
+                  "api-reference/cartsubmitinput",
+                  "api-reference/storepromocodesinput",
+                  "api-reference/deletecartlinesinput",
+                  "api-reference/shopifycartitemsinput",
+                  "api-reference/shopifyvariantidinput",
+                  "api-reference/updatecartselectedshippingoptionsinput"
+                ]
+              },
+              {
+                "group": "Objects",
+                "pages": [
+                  "api-reference/amazoncartline",
+                  "api-reference/amazoncartline",
+                  "api-reference/amazonoffer-1",
+                  "api-reference/amazonstore",
+                  "api-reference/buyeridentity",
+                  "api-reference/cart-2",
+                  "api-reference/cartcost",
+                  "api-reference/cartresponse",
+                  "api-reference/checkout-new",
+                  "api-reference/deletedcart",
+                  "api-reference/cancelorderresponse",
+                  "api-reference/order-new",
+                  "api-reference/cancelshopifyorderresult",
+                  "api-reference/cancelamazonorderresult",
+                  "api-reference/cancelamazonorderitem",
+                  "api-reference/ordercancelfailedorderevent",
+                  "api-reference/ordercancelstartedorderevent",
+                  "api-reference/ordercancelstartedorderevent-copy",
+                  "api-reference/returnapprovededevent",
+                  "api-reference/returnclosedevent",
+                  "api-reference/amazonreturnrequestedeventdata",
+                  "api-reference/amazonreturnlineitem",
+                  "api-reference/shopifyreturnlineitem",
+                  "api-reference/shopifyreturnrequestedeventdata",
+                  "api-reference/amazonreturnapprovedeventdata",
+                  "api-reference/shopifyreturnapprovedeventdata",
+                  "api-reference/amazonreturnclosedeventdata",
+                  "api-reference/shopifyreturnclosedeventdata",
+                  "api-reference/ordercancelsucceededorderevent",
+                  "api-reference/orderfailedorderevent",
+                  "api-reference/orderplacedorderevent",
+                  "api-reference/ordersubmissionstartedorderevent",
+                  "api-reference/ordersubmissionsucceededorderevent",
+                  "api-reference/paymentfailedorderevent",
+                  "api-reference/paymentrefundedorderevent",
+                  "api-reference/paymentsucceededorderevent",
+                  "api-reference/selectedshippingoption",
+                  "api-reference/shippingmethod",
+                  "api-reference/shopifycartline",
+                  "api-reference/shopifyoffer-1",
+                  "api-reference/shopifystore",
+                  "api-reference/submitcartdata",
+                  "api-reference/submitcartresult",
+                  "api-reference/submitstoreresult",
+                  "api-reference/trackingobtainedorderevent"
+                ]
+              },
+              {
+                "group": "Errors",
+                "pages": [
+                  "api-reference/amazonoffererror",
+                  "api-reference/amazonoffererror",
+                  "api-reference/amazonoffererrordetails",
+                  "api-reference/amazonstoreerror",
+                  "api-reference/amazonstoreerrordetails",
+                  "api-reference/carterror",
+                  "api-reference/cancelordererror",
+                  "api-reference/shopifyoffererror",
+                  "api-reference/shopifyoffererrordetails",
+                  "api-reference/shopifystoreerror",
+                  "api-reference/shopifystoreerrordetails",
+                  "api-reference/submitcartresulterror",
+                  "api-reference/submitstoreresulterror"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "GraphQL Types",
+            "pages": [
+              {
+                "group": "Enums",
+                "pages": [
+                  "api-reference/carterrorcode",
+                  "api-reference/carterrorcode",
+                  "api-reference/country",
+                  "api-reference/currency",
+                  "api-reference/marketplace",
+                  "api-reference/offererrorcode",
+                  "api-reference/orderstateenum",
+                  "api-reference/orderstatus",
+                  "api-reference/cancelorderstatus",
+                  "api-reference/cancelerrorcode",
+                  "api-reference/checkoutstatus",
+                  "api-reference/storeerrorcode",
+                  "api-reference/submitcartresulterrorcode",
+                  "api-reference/submitstoreresulterrorcode",
+                  "api-reference/submitstorestatus"
+                ]
+              },
+              {
+                "group": "Interfaces",
+                "pages": [
+                  "api-reference/image",
+                  "api-reference/image",
+                  "api-reference/product",
+                  "api-reference/variant",
+                  "api-reference/orderevent"
+                ]
+              },
+              {
+                "group": "Scalars",
+                "pages": [
+                  "api-reference/time",
+                  "api-reference/time",
+                  "api-reference/url"
+                ]
+              },
+              {
+                "group": "Unions",
+                "pages": [
+                  "api-reference/cancelorderresult",
+                  "api-reference/cancelorderresult",
+                  "api-reference/cartline",
+                  "api-reference/productconnection",
+                  "api-reference/store"
+                ]
+              },
+              {
+                "group": "Objects",
+                "pages": [
+                  "api-reference/pageinfo",
+                  "api-reference/pageinfo",
+                  "api-reference/price"
+                ]
+              }
             ]
           },
           {
