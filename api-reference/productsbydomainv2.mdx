@@ -12,7 +12,7 @@ description: "Returns an array of Products filtered by a given store domain. Thi
 <br />
 
 <Note>
-  [AmazonProduct](/reference/amazonproduct) and [ShopifyProduct](/reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/docs/amazon-and-shopify-product-comparison)
+  [AmazonProduct](/api-reference/amazonproduct) and [ShopifyProduct](/api-reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/docs/amazon-and-shopify-product-comparison)
 </Note>
 
 ---
@@ -30,7 +30,7 @@ description: "Returns an array of Products filtered by a given store domain. Thi
 ### Returns
 
 <ParamField path="Product" type="Product">
-  Any requested field from an object which implements the [Product](https://rye-docs.readme.io/reference/product) interface.
+  Any requested field from an object which implements the [Product](https://rye-docs.readme.io/api-reference/product) interface.
 </ParamField>
 
 <Note>The query returns an empty array if no products are found</Note>
@@ -112,5 +112,5 @@ query DemoShopifyProductByDomain {
 
 ### Related queries
 
-* [productByID](/reference/productbyid)
-* [productsByVendorV2](/reference/productsbyvendorv2)
+* [productByID](/api-reference/productbyid)
+* [productsByVendorV2](/api-reference/productsbyvendorv2)

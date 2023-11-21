@@ -3,33 +3,31 @@ title: "updateCartBuyerIdentity"
 description: "Updates the buyer's identity if it was not provided in the createCart mutation."
 ---
 
-> 📘
-> 
-> BuyerIdentity must be provided either by `createCart`mutation or by `updateCartBuyerIdentity` mutation before checkout. Otherwise, `BUYER_IDENTITY_MISSING` error will be returned upon cart submission.
+<Note>BuyerIdentity must be provided either by `createCart`mutation or by `updateCartBuyerIdentity` mutation before checkout. Otherwise, `BUYER_IDENTITY_MISSING` error will be returned upon cart submission.</Note>
 
 ---
 
 ### Arguments
 
-`input` : [CartBuyerIdentityUpdateInput!](https://rye-docs.readme.io/reference/cartbuyeridentityupdateinput)
-
-The `input` object contains the unique identifier (ID) for the cart and the buyer identity details that need to be associated with the cart.
+<ParamField path="input" type="CartBuyerIdentityUpdateInput!">
+  The `input` object contains the unique identifier (ID) for the cart and the buyer identity details that need to be associated with the cart.
+</ParamField>
 
 ---
 
 ### Returns
 
-[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
 
-Any requested field from the [CartResponse](/reference/cartresponse) object.
+<ParamField path="CartResponse." type="CartResponse">
+  Any requested field from the [CartResponse](/api-reference/cartresponse) object.
+</ParamField>
 
 ---
 
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments
+{
     "input": {
         "id": "{{cartId}}",
         "buyerIdentity": {
@@ -46,11 +44,10 @@ Query arguments
         }
     }
 }
-`
+```
 
-GraphQL
-
-`mutation ($input: CartBuyerIdentityUpdateInput!) {
+```GraphQL GraphQL
+mutation ($input: CartBuyerIdentityUpdateInput!) {
     updateCartBuyerIdentity(input: $input) {
         cart {
             cost {
@@ -252,11 +249,10 @@ GraphQL
         }
     }
 }
-`
+```
 
 Response
 
-``
 
 ---
 
@@ -264,9 +260,8 @@ Response
 
 If the cart is not found then a corresponding error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -277,8 +272,4 @@ JSON
     ],
     "data": null
 }
-`
-
-### Recipes
-
-* [Update buyer identity for a cart](/recipes/update-buyer-identity-for-a-cart)
+```

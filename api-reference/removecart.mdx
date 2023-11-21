@@ -3,58 +3,57 @@ title: "removeCart"
 description: "Removes an existing shopping cart based on the provided cart ID. It allows users to remove a cart that is no longer needed or relevant."
 ---
 
-> 🚧
-> 
-> The cart will be removed regardless if the products are present in the cart or not and regardless cart submission status.
+<Warning> The cart will be removed regardless if the products are present in the cart or not and regardless cart submission status.</Warning>
 
 ---
 
 ### Arguments
 
-`input` : [CartDeleteInput!](https://rye-docs.readme.io/reference/cartdeleteinput)
-
-The `input` object contains the unique identifier (ID) for the cart that needs to be deleted.
+<ParamField path="input" type="CartDeleteInput!">
+  The `input` object contains the unique identifier (ID) for the cart that needs to be deleted.
+</ParamField>
 
 ---
 
 ### Returns
 
-[DeletedCart.deletedId](https://rye-docs.readme.io/reference/deletedcart): [DeletedCart](https://rye-docs.readme.io/reference/deletedcart)
-
-The unique identifier (ID) of the deleted cart.
+<ParamField path="DeletedCart.deletedId" type="DeletedCart">
+  The unique identifier (ID) of the deleted cart.
+</ParamField>
 
 ---
 
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments
+{
     "input": {
         "id": "{{cartId}}"
     }
 }
-`
+```
 
-GraphQL
 
-`mutation ($input: CartDeleteInput!) {
+```GraphQL GraphQL
+mutation ($input: CartDeleteInput!) {
     removeCart(input: $input) {
         deletedId
     }
 }
-`
+```
 
-Response
+<ResponseExample>
 
-`{
+```json Response
+{
     "data": {
         "removeCart": {
             "deletedId": "teWvPufPy8c2AcfkfBo9"
         }
     }
 }
-`
+```
+</ResponseExample>
 
 ---
 
@@ -62,9 +61,9 @@ Response
 
 If the cart is not found then a corresponding error is returned
 
-JSON
 
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -75,4 +74,4 @@ JSON
     ],
     "data": null
 }
-`
+```

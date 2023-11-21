@@ -7,24 +7,25 @@ description: "Represents an option for customizing a product."
 
 ---
 
-`name`: `String!`
+<ParamField path="name" type="String!">
+  The name of the option.
+</ParamField>
 
-The name of the option.
-
----
-
-`position`: `Int!`
-
-The position of the option (1, 2, or 3).
 
 ---
 
-`values`: `[String!]`
+<ParamField path="position" type="String!">
+  The position of the option (1, 2, or 3).
+</ParamField>
 
-A list of possible values for the option.
+---
+
+<ParamField path="values" type="[String!]">
+  A list of possible values for the option.
+</ParamField>
 
 ---
 
 ### Related types
 
-* [ShopifyProduct](/reference/shopifyproduct)
+* [ShopifyProduct](/api-reference/shopifyproduct)

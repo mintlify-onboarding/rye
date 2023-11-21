@@ -7,36 +7,36 @@ description: "Represents a variant of an Amazon product, which typically include
 
 ---
 
-`id`: `ID!`
-
-The identifier of the variant
-
----
-
-`title`: `String!`
-
-The title of the variant.
+<ParamField path="id" type="ID!">
+  The identifier of the variant
+</ParamField>
 
 ---
 
-`image`: [Image!](/reference/image)
-
-The Image type object associated with this specific variant.
-
----
-
-`url`: [URL!](/reference/url)
-
-The URL to the product page for this specific variant.
+<ParamField path="title" type="String!">
+  The title of the variant.
+</ParamField>
 
 ---
 
-`dimensions`: [\[AmazonVariantDimension!\]!](/reference/amazonvariantdimension)
+<ParamField path="image" type="Image!">
+  The Image type object associated with this specific variant.
+</ParamField>
 
-A list of objects that describe the dimensions of this specific variant.
+---
+
+<ParamField path="url" type="URL!">
+  The URL to the product page for this specific variant.
+</ParamField>
+
+---
+
+<ParamField path="dimensions" type="AmazonVariantDimension!">
+  A list of objects that describe the dimensions of this specific variant.
+</ParamField>
 
 ---
 
 ### Related types
 
-* [AmazonProduct](/reference/amazonproduct)
+* [AmazonProduct](/api-reference/amazonproduct)

@@ -13,19 +13,19 @@ The unique identifier (ID) of the cart, used to reference and interact with the 
 
 ---
 
-`stores`: [\[Store!\]!](https://rye-docs.readme.io/reference/store)
+`stores`: [\[Store!\]!](https://rye-docs.readme.io/api-reference/store)
 
-An array of [Store](https://rye-docs.readme.io/reference/store) objects (either [AmazonStore](https://rye-docs.readme.io/reference/amazonstore) or [ShopifyStore](https://rye-docs.readme.io/reference/shopifystore)), each representing a store with items in the cart. Each store object contains its own specific data, such as store name, cart lines, and offer information.
+An array of [Store](https://rye-docs.readme.io/api-reference/store) objects (either [AmazonStore](https://rye-docs.readme.io/api-reference/amazonstore) or [ShopifyStore](https://rye-docs.readme.io/api-reference/shopifystore)), each representing a store with items in the cart. Each store object contains its own specific data, such as store name, cart lines, and offer information.
 
 ---
 
-`buyerIdentity`: [BuyerIdentity](https://rye-docs.readme.io/reference/buyeridentity)
+`buyerIdentity`: [BuyerIdentity](https://rye-docs.readme.io/api-reference/buyeridentity)
 
 An object containing information about the buyer, such as first name, last name, email, phone, and address details. This information is used during the checkout process and for communication with the buyer.
 
 ---
 
-`cost`: [CartCost](/reference/cartcost)
+`cost`: [CartCost](/api-reference/cartcost)
 
 The costs that the buyer will pay at checkout
 
@@ -35,7 +35,7 @@ The costs that the buyer will pay at checkout
 
 ---
 
-[getCart(id: ID!)](https://rye-docs.readme.io/reference/cart-1)
+[getCart(id: ID!)](https://rye-docs.readme.io/api-reference/cart-1)
 
 Returns a `Cart` object by ID.
 
@@ -45,31 +45,31 @@ Returns a `Cart` object by ID.
 
 ---
 
-[createCart(input: CartCreateInput!)](https://rye-docs.readme.io/reference/createcart)
+[createCart(input: CartCreateInput!)](https://rye-docs.readme.io/api-reference/createcart)
 
 Create a Cart with buyer identity details
 
 ---
 
-[updateCartItems(input: CartItemsUpdateInput!)](https://rye-docs.readme.io/reference/updatecartitems)
+[updateCartItems(input: CartItemsUpdateInput!)](https://rye-docs.readme.io/api-reference/updatecartitems)
 
 Updates only existing products in a Cart. Returns an error if prompted to update a non-existing product.
 
 ---
 
-[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](https://rye-docs.readme.io/reference/updatecartbuyeridentity)
+[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](https://rye-docs.readme.io/api-reference/updatecartbuyeridentity)
 
-Updates buyer identity if not provided in [createCart](https://rye-docs.readme.io/reference/createcart) mutation
+Updates buyer identity if not provided in [createCart](https://rye-docs.readme.io/api-reference/createcart) mutation
 
 ---
 
-[addCartItems(input: CartItemsAddInput!)](https://rye-docs.readme.io/reference/addcartitems%28https://rye-docs.readme.io/reference/addcartitems%29)
+[addCartItems(input: CartItemsAddInput!)](https://rye-docs.readme.io/api-reference/addcartitems%28https://rye-docs.readme.io/api-reference/addcartitems%29)
 
 Adds only non-existing products in a Cart. Skips already existing products.
 
 ---
 
-[deleteCartItems(input: CartItemsDeleteInput!)](https://rye-docs.readme.io/reference/deletecartitems)
+[deleteCartItems(input: CartItemsDeleteInput!)](https://rye-docs.readme.io/api-reference/deletecartitems)
 
 Removes existing products in a Cart. Returns an error if prompted to delete a non-existing product.
 
@@ -77,4 +77,4 @@ Removes existing products in a Cart. Returns an error if prompted to delete a no
 
 ### Related types
 
-* [CartResponse](/reference/cartresponse)
+* [CartResponse](/api-reference/cartresponse)

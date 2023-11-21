@@ -5,32 +5,30 @@ description: "Retrieve a Cart by its ID. This query can be used to retrieve info
 
 ### Arguments
 
-`id`: `ID!`
-
-The ID of the [Cart](https://rye-docs.readme.io/reference/cart-2)
+<ParamField path="id" type="ID!">
+  The ID of the [Cart](/api-reference/cart-2)
+</ParamField>
 
 ---
 
 ### Returns
 
-[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
-
-Any requested field from the [CartResponse](/reference/cartresponse) object.
-
+<ParamField path="CartResponse." type="CartResponse">
+  Any requested field from the [CartResponse](/api-reference/cartresponse) object.
+</ParamField>
 ---
 
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments 
+{
     "id": "{{cartId}}"
 }
-`
+```
 
-GraphQL
 
-`query ($id: ID!) {
+```GraphQL GraphQL
+query ($id: ID!) {
     getCart(id: $id) {
         cart {
             cost {
@@ -232,11 +230,11 @@ GraphQL
         }
     }
 }
-`
+```
 
-Response
-
-`{
+<ResponseExample>
+```json Response
+{
     "data": {
         "getCart": {
             "cart": {
@@ -386,15 +384,15 @@ Response
         }
     }
 }
-`
+```
+</ResponseExample>
 
 ### Errors
 
 If the cart is not found then a corresponding error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -405,8 +403,4 @@ JSON
     ],
     "data": null
 }
-`
-
-### Recipes
-
-* [Get existing carts details](/recipes/get-an-existing-carts-details)
+```

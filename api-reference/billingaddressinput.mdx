@@ -7,66 +7,64 @@ description: "The input fields for a billing address."
 
 ---
 
-`firstName`: `String!`
+<ParamField path="firstName" type="String!">
+  First name of the person or company.
+</ParamField>
+---
 
-First name of the person or company.
+<ParamField path="lastName" type="String!">
+  Last name of the person or company.
+</ParamField>
 
 ---
 
-`lastName`: `String!`
-
-Last name of the person or company.
-
----
-
-`phone`: `String!`
-
+<ParamField path="phone" type="String!">
 A 10-digit phone number.
+</ParamField>
 
 ---
 
-`address1`: `String!`
-
-The first line of the address.
-
----
-
-`address2`: `String!`
-
-The second line of the address, such as an apartment number (optional).
+<ParamField path="address1" type="String!">
+  The first line of the address.
+</ParamField>
 
 ---
 
-`city`: `String!`
+<ParamField path="address2" type="String!">
+  The second line of the address, such as an apartment number (optional).
+</ParamField>
+---
 
-Name of the city, district, village, or town.
+<ParamField path="city" type="String!">
+  Name of the city, district, village, or town.
+</ParamField>
 
 ---
 
-`provinceCode`: `String!`
-
-2-letter province code.
-
----
-
-`countryCode`: `String!`
-
-2-letter country code.
+<ParamField path="provinceCode" type="String!">
+  2-letter province code.
+</ParamField>
 
 ---
 
-`postalCode`: `String!`
+<ParamField path="countryCode" type="String!">
+  2-letter country code.
+</ParamField>
 
-Postal code.
+---
+
+<ParamField path="postalCode" type="String!">
+  Postal code.
+</ParamField>
 
 ---
 
 ### Mutations
 
-* [submitCart](/reference/submitcart)
+* [submitCart](/api-reference/submitcart)
 
 ---
 
 ### Related types
 
-* [CartSubmitInput](/reference/cartsubmitinput)
+* [CartSubmitInput](/api-reference/cartsubmitinput)

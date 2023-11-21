@@ -5,25 +5,24 @@ description: "Deletes items from an existing shopping cart. This mutation resets
 
 ### Arguments
 
-`input` : [CartItemsDeleteInput!](https://rye-docs.readme.io/reference/cartitemsdeleteinput)
-
-The `input` object contains the unique identifier (ID) for the cart and the items that need to be deleted.
+<ParamField path="input" type="CartItemsDeleteInput!">
+  The `input` object contains the unique identifier (ID) for the cart and the items that need to be deleted.
+</ParamField>
 
 ---
 
 ### Returns
 
-[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
-
-Any requested field from the [CartResponse](/reference/cartresponse) object.
+<ParamField path="CartResponse." type="CartResponse">
+  Any requested field from the [CartResponse](/api-reference/cartresponse) object.
+</ParamField>
 
 ---
 
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments
+{
     "input": {
         "id": "{{cartId}}",
         "items": {
@@ -36,11 +35,11 @@ Query arguments
         }
     }
 }
-`
+```
 
-GraphQL
 
-`mutation ($input: CartItemsDeleteInput!) {
+```GraphQL GraphQL
+mutation ($input: CartItemsDeleteInput!) {
     deleteCartItems(input: $input) {
         cart {
             id
@@ -179,11 +178,11 @@ GraphQL
         }
     }
 }
-`
+```
 
-Response
-
-`{
+<ResponseExample>
+```json Response
+{
     "data": {
         "deleteCartItems": {
             "cart": {
@@ -254,7 +253,8 @@ Response
         }
     }
 }
-`
+```
+</ResponseExample>
 
 ---
 
@@ -262,9 +262,8 @@ Response
 
 If the cart is not found then a corresponding error will be returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -275,13 +274,12 @@ JSON
     ],
     "data": null
 }
-`
+```
 
 If the provided items are not found in the inventory `PRODUCT_NOT_FOUND` error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "data": {
         "deleteCartItems": {
             "cart": {
@@ -313,13 +311,12 @@ JSON
         }
     }
 }
-`
+```
 
 If the provided items are present in inventory, but were not added to the cart, then `STORE_NOT_FOUND` error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "data": {
         "deleteCartItems": {
             "cart": {
@@ -351,9 +348,9 @@ JSON
         }
     }
 }
-`
+```
 
 ### Related mutations
 
-* [addCartItems](/reference/addcartitems)
-* [updateCartItems](/reference/updatecartitems)
+* [addCartItems](/api-reference/addcartitems)
+* [updateCartItems](/api-reference/updatecartitems)

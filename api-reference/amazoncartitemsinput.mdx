@@ -7,26 +7,24 @@ description: "The input fields to provide the necessary information to add or up
 
 ---
 
-`quantity`: `Int!`
-
-An integer representing the number of products. This value indicates how many units of the specific Amazon product the buyer wants to add to the cart.
-
+<ParamField path="quantity" type="Int!">
+  An integer representing the number of products. This value indicates how many units of the specific Amazon product the buyer wants to add to the cart.
+</ParamField>
 ---
 
-`productId`: `Int!`
-
-The ID of the Amazon product (ASIN) that the buyer wants to add to the cart. ASIN stands for Amazon Standard Identification Number, and it's a unique identifier for products on the Amazon platform.
-
+<ParamField path="productId" type="Int!">
+  The ID of the Amazon product (ASIN) that the buyer wants to add to the cart. ASIN stands for Amazon Standard Identification Number, and it's a unique identifier for products on the Amazon platform.
+</ParamField>
 ---
 
 ### Mutations
 
-* [createCart](/reference/createcart)
-* [addCartItems](/reference/addcartitems)
-* [updateCartItems](/reference/updatecartitems)
+* [createCart](/api-reference/createcart)
+* [addCartItems](/api-reference/addcartitems)
+* [updateCartItems](/api-reference/updatecartitems)
 
 ---
 
 ### Related types
 
-* [CartItemsInput](/reference/cartitemsinput)
+* [CartItemsInput](/api-reference/cartitemsinput)

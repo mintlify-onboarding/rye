@@ -3,46 +3,44 @@ title: "requestStoreByURL"
 description: "Requests a store to be tracked by Rye's API."
 ---
 
-> 📘
-> 
-> Currently requesting a store is only available for Shopify. 
-> 
-> In order to request all products from an Amazon merchant, you must issue individual requests for each product.
+<Note>
+**Currently requesting a store is only available for Shopify.**
 
+In order to request all products from an Amazon merchant, you must issue individual requests for each product.
+</Note>
 ---
 
 ### Arguments
 
-`input` : [RequestStoreByURLInput!](https://rye-docs.readme.io/reference/requestproductbyurlinput)
-
-An object containing the store's URL.
+<ParamField path="input" type="RequestStoreByURLInput!">
+  An object containing the store's URL.
+</ParamField>
 
 ---
 
 ### Returns
 
-[RequestStoreResponse.requestID](https://rye-docs.readme.io/reference/requeststoreresponse): [RequestStoreResponse](https://rye-docs.readme.io/reference/requeststoreresponse)
+<ParamField path="RequestStoreResponse.requestID" type="RequestStoreResponse">
+  The `requestID` is the unique identifier for the requested store, which can be used in subsequent queries to fetch store and product information.
+</ParamField>
 
-The `requestID` is the unique identifier for the requested store, which can be used in subsequent queries to fetch store and product information.
-
-> 📘
-> 
-> The mutation returns `requestId` even if invalid URL has been provided
+<Note>The mutation returns `requestId` even if invalid URL has been provided</Note>
 
 ---
 
 ### Examples
 
-GraphQLcURL
-
-`mutation RequestStoreByURL {
+<CodeGroup>
+```grapql GraphQL
+mutation RequestStoreByURL {
   requestStoreByURL(input: { url: "https://rye-test-store.myshopify.com" }) {
     requestID
   }
 }
-`
+```
 
-`echo '
+```bash cURL
+echo `
 {
   "variables": {
     "input": {
@@ -58,21 +56,23 @@ GraphQLcURL
   -u "<YOUR RYE API KEY>:"  \
   -H 'content-type: application/json' \
   --data @-
-`
+```
+</CodeGroup>
 
-Response
-
-`{
+<ResponseExample>
+```json Response
+{
   "data": {
     "requestStoreByURL": {
       "requestID": "7206452499174533"
     }
   }
 }
-`
+```
+</ResponseExample>
 
 ---
 
 ### Related mutations
 
-* [requestProductByURL](/reference/requestproductbyurl)
+* [requestProductByURL](/api-reference/requestproductbyurl)

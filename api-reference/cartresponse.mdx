@@ -7,13 +7,13 @@ description: "Represents a shopping cart which is a result of queries or mutatio
 
 ---
 
-`cart`: [Cart!](/reference/cart-2)
+`cart`: [Cart!](/api-reference/cart-2)
 
 The unique identifier (ID) of the cart, used to reference and interact with the cart in subsequent API operations.
 
 ---
 
-`errors`: [\[CartError!\]!](/reference/carterror)
+`errors`: [\[CartError!\]!](/api-reference/carterror)
 
 An array of possible cart errors.
 
@@ -23,7 +23,7 @@ An array of possible cart errors.
 
 ---
 
-[cart(id: ID!)](https://rye-docs.readme.io/reference/cart-1)
+[cart(id: ID!)](https://rye-docs.readme.io/api-reference/cart-1)
 
 Returns a `CartResponse` object by ID.
 
@@ -33,30 +33,30 @@ Returns a `CartResponse` object by ID.
 
 ---
 
-[createCart(input: CartCreateInput!)](https://rye-docs.readme.io/reference/createcart)
+[createCart(input: CartCreateInput!)](https://rye-docs.readme.io/api-reference/createcart)
 
 Create a Cart with buyer identity details
 
 ---
 
-[updateCartItems(input: CartItemsUpdateInput!)](https://rye-docs.readme.io/reference/updatecartitems)
+[updateCartItems(input: CartItemsUpdateInput!)](https://rye-docs.readme.io/api-reference/updatecartitems)
 
 Updates only existing products in a Cart. Returns an error if prompted to update non-existing product.
 
 ---
 
-[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](https://rye-docs.readme.io/reference/updatecartbuyeridentity)
+[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](https://rye-docs.readme.io/api-reference/updatecartbuyeridentity)
 
-Updates buyer identity if not provided in [createCart](https://rye-docs.readme.io/reference/createcart) mutation
+Updates buyer identity if not provided in [createCart](https://rye-docs.readme.io/api-reference/createcart) mutation
 
 ---
 
-[addCartItems(input: CartItemsAddInput!)](https://rye-docs.readme.io/reference/addcartitems%28https://rye-docs.readme.io/reference/addcartitems%29)
+[addCartItems(input: CartItemsAddInput!)](https://rye-docs.readme.io/api-reference/addcartitems%28https://rye-docs.readme.io/api-reference/addcartitems%29)
 
 Adds only non-existing products in a Cart. Skips already existing products.
 
 ---
 
-[deleteCartItems(input: CartItemsDeleteInput!)](https://rye-docs.readme.io/reference/deletecartitems)
+[deleteCartItems(input: CartItemsDeleteInput!)](https://rye-docs.readme.io/api-reference/deletecartitems)
 
 Removes existing products in a Cart. Returns an error if prompted to delete non-existing product.

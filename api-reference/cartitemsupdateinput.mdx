@@ -7,24 +7,25 @@ description: "The input fields to provide the necessary information to update th
 
 ---
 
-`id`: `ID!`
+<ParamField path="id" type="ID!">
+  The ID of the cart that the user wants to update. It's a unique identifier for the cart in the system.
 
-The ID of the cart that the user wants to update. It's a unique identifier for the cart in the system.
-
+</ParamField>
 ---
 
-`items`: [CartItemsInput!](https://rye-docs.readme.io/reference/cartitemsinput)
+<ParamField path="items" type="CartItemsInput!">
+  The [CartItemsInput](/api-reference/cartitemsinput) object containing the updated list of items to be added to or modified in the cart.
 
-The [CartItemsInput](https://rye-docs.readme.io/reference/cartitemsinput) object containing the updated list of items to be added to or modified in the cart.
+</ParamField>
 
 ---
 
 ### Mutations
 
-* [updateCartItems](/reference/updatecartitems)
+* [updateCartItems](/api-reference/updatecartitems)
 
 ---
 
 ### Related types
 
-* [CartResponse](/reference/cartresponse)
+* [CartResponse](/api-reference/cartresponse)

@@ -4,26 +4,23 @@ description: "Requests a product to be tracked by Rye's API. Products will be re
 ---
 
 ### Arguments
-
-`input` : [RequestProductByURLInput!](https://rye-docs.readme.io/reference/requestproductbyurlinput-1)
-
-An object containing the product's URL.
+<ParamField path="input" type="RequestProductByURLInput!">
+  An object containing the product's URL.
+</ParamField>
 
 ---
 
 ### Returns
 
-[RequestProductResponse.productID](https://rye-docs.readme.io/reference/requestproductresponse): [RequestProductResponse](https://rye-docs.readme.io/reference/requestproductresponse)
-
-The `productID` is the unique identifier for the requested product, which can be used in subsequent queries to fetch product information.
-
+<ParamField path="RequestProductResponse.productID" type="RequestProductResponse">
+  The `productID` is the unique identifier for the requested product, which can be used in subsequent queries to fetch product information.
+</ParamField>
 ---
 
 ### Examples
 
-GraphQL
-
-`mutation RequestProductByURL {
+```grapql GraphQL
+mutation RequestProductByURL {
   requestProductByURL(
     input: {
       url: "https://www.berkeyfilters.com/products/big-berkey"
@@ -33,18 +30,21 @@ GraphQL
     productID
   }
 }
-`
+```
 
-Response
+<ResponseExample>
 
-`{
+
+```json Response
+{
   "data": {
     "requestProductByURL": {
       "productID": "2863034826852"
     }
   }
 }
-`
+```
+</ResponseExample>
 
 ---
 
@@ -52,9 +52,8 @@ Response
 
 If the marketplace is set to `AMAZON` and provided URL is not a valid Amazon product URL then `invalid amazon url` error is returned
 
-JSON
-
-`{
+``` JSON JSON
+{
     "errors": [
         {
             "message": "invalid amazon url",
@@ -65,16 +64,10 @@ JSON
     ],
     "data": null
 }
-`
+```
 
 ---
 
 ### Related mutations
 
-* [requestStoreByURL](/reference/requeststorebyurl)
-
----
-
-### Recipes
-
-* [Add external product to Rye inventory](/recipes/add-external-product-to-rye-inventory)
+* [requestStoreByURL](/api-reference/requeststorebyurl)

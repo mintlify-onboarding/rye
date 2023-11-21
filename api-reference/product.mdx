@@ -13,7 +13,7 @@ A non-null unique identifier for the product.
 
 ---
 
-`marketplace`: [Marketplace!](/reference/marketplace)
+`marketplace`: [Marketplace!](/api-reference/marketplace)
 
 A non-null enumeration value representing the marketplace.
 
@@ -37,7 +37,7 @@ A non-null string representing the product's vendor or brand.
 
 ---
 
-`url`: [URL!](/reference/url)
+`url`: [URL!](/api-reference/url)
 
 A non-null URL pointing to the product's page on the marketplace.
 
@@ -55,19 +55,19 @@ A non-null list of strings representing tags associated with the product.
 
 ---
 
-`images`: [\[Image!\]!](/reference/image)
+`images`: [\[Image!\]!](/api-reference/image)
 
 A non-null list of image objects associated with the product, implementing the Image interface.
 
 ---
 
-`variants`: [\[Variant!\]!](/reference/variant)
+`variants`: [\[Variant!\]!](/api-reference/variant)
 
 A non-null list of product variants available, implementing the Variant interface. These can include different sizes, colors, or other options for the product.
 
 ---
 
-`price`: [Price!](/reference/price)
+`price`: [Price!](/api-reference/price)
 
 A nullable Price object representing the product's price. The price might be null if it is not available or cannot be determined.
 
@@ -75,5 +75,5 @@ A nullable Price object representing the product's price. The price might be nul
 
 ### Implementations
 
-* [AmazonProduct](/reference/amazonproduct)
-* [ShopifyProduct](/reference/shopifyproduct)
+* [AmazonProduct](/api-reference/amazonproduct)
+* [ShopifyProduct](/api-reference/shopifyproduct)

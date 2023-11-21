@@ -3,35 +3,29 @@ title: "updateCartSelectedShippingOptions"
 description: "Updates shipping methods for stores in the cart"
 ---
 
-> 📘
-> 
-> Selected shipping options must be provided either by using this mutation, or they should be passed to [RyePay](/docs/rye-pay).submit method or, if you use 'backend only' payment flow, should be passed to [submitCart](/reference/submitcart) mutation directly. If not provided, cart submission will fail with `SUBMIT_STORE_FAILED` error.
+<Note>Selected shipping options must be provided either by using this mutation, or they should be passed to [RyePay](/docs/rye-pay).submit method or, if you use 'backend only' payment flow, should be passed to [submitCart](/api-reference/submitcart) mutation directly. If not provided, cart submission will fail with `SUBMIT_STORE_FAILED` error.</Note>
 
 ---
 
 ### Arguments
 
-`input` : [UpdateCartSelectedShippingOptionsInput!](/reference/updatecartselectedshippingoptionsinput)
+<ParamField path="input" type="UpdateCartSelectedShippingOptionsInput!">
+  The `input` object contains the unique identifier (ID) for the cart and an array of shipping options associated with a store the shipping belongs to
+</ParamField>
 
-The `input` object contains the unique identifier (ID) for the cart and an array of shipping options associated with a store the shipping belongs to
-
-> 📘
-> 
-> [SelectedShippingOption.store](/reference/selectedshippingoption#fields)must be the same as as [AmazonStore.store](/reference/amazonstore#fields) or [ShopifyStore.store](/reference/shopifystore#fields) fields
+<Note>[SelectedShippingOption.store](/api-reference/selectedshippingoption#fields)must be the same as as [AmazonStore.store](/api-reference/amazonstore#fields) or [ShopifyStore.store](/api-reference/shopifystore#fields) fields</Note>
 
 ---
 
 ### Returns
 
-[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
-
-Any requested field from the [CartResponse](/reference/cartresponse) object.
-
+<ParamField path="CartResponse." type="CartResponse">
+  Any requested field from the [CartResponse](/api-reference/cartresponse) object.
+</ParamField>
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments
+{
     "input": {
         "id": "{{cart_id}}",
         "shippingOptions": [ 
@@ -42,11 +36,10 @@ Query arguments
         ]
     }
 }
-`
+```
 
-GraphQL
-
-`mutation ($input: UpdateCartSelectedShippingOptionsInput!) {
+```GraphQL GraphQL
+mutation ($input: UpdateCartSelectedShippingOptionsInput!) {
     updateCartSelectedShippingOptions(input: $input) {
         cart {
             id
@@ -223,11 +216,10 @@ GraphQL
         }
     }
 }
-`
+```
 
 Response
 
-``
 
 ---
 
@@ -235,9 +227,8 @@ Response
 
 If the cart is not found then a corresponding error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -248,13 +239,12 @@ JSON
     ],
     "data": null
 }
-`
+```
 
 If the provided store is not present in the cart then `STORE_NOT_FOUND`error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "data": {
         "updateCartSelectedShippingOptions": {
             "cart": {
@@ -283,4 +273,4 @@ JSON
         }
     }
 }
-`
+```

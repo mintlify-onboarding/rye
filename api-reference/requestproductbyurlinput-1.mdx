@@ -7,18 +7,19 @@ description: "The input fields to represent the information required to fetch a 
 
 ---
 
-`url`: [URL!](https://rye-docs.readme.io/reference/url)
-
-The URL of the product.
+<ParamField path="url" type="URL!">
+  The URL of the product.
+</ParamField>
 
 ---
 
-`marketplace`: [Marketplace!](https://rye-docs.readme.io/reference/marketplace)
+<ParamField path="marketplace" type="Marketplace!">
+  An enum representing the marketplace where the product is listed.
+</ParamField>
 
-An enum representing the marketplace where the product is listed.
 
 ---
 
 ### Related mutations
 
-* [requestProductByURL](/reference/requestproductbyurl)
+* [requestProductByURL](/api-reference/requestproductbyurl)

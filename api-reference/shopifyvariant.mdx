@@ -7,84 +7,67 @@ description: "The ShopifyVariant type allows Rye's cart API to manage and displa
 
 ---
 
-`id`: `ID!`
-
-The unique identifier for the Shopify product variant. This field is required.
+<ParamField path="id" type="ID!">
+  The unique identifier for the Shopify product variant. This field is required.
+</ParamField>
+---
+<ParamField path="title" type="String!">
+  The title of the Shopify product variant. This field is required.
+</ParamField>
 
 ---
-
-`title`: `String!`
-
-The title of the Shopify product variant. This field is required.
+<ParamField path="image" type="Image!">
+  The image associated with the Shopify product variant. This field is required.
+</ParamField>
+---
+<ParamField path="isAvailable" type="Boolean!">
+  Indicates whether the variant is available in stock. This field is required.
+</ParamField>
+---
+<ParamField path="compareAtPrice" type="String!">
+  The original price of the variant, which can be used to show the current price at a discount against this price.
+</ParamField>
+---
+<ParamField path="price" type="String!">
+  The current price of the product variant.
+</ParamField>
 
 ---
-
-`image`: [Image!](/reference/image)
-
-The image associated with the Shopify product variant. This field is required.
-
----
-
-`isAvailable`: `Boolean!`
-
-Indicates whether the variant is available in stock. This field is required.
+<ParamField path="isShippingRequired" type="Boolean!">
+  Indicates whether this product requires shipping, which can be used to distinguish between physical and digital products.
+</ParamField>
 
 ---
-
-`compareAtPrice`: `String!`
-
-The original price of the variant, which can be used to show the current price at a discount against this price.
-
----
-
-`price`: `String!`
-
-The current price of the product variant.
+<ParamField path="SKU" type="String!">
+  The product SKU (Stock Keeping Unit) of the variant.
+</ParamField>
 
 ---
-
-`isShippingRequired`: `Boolean!`
-
-Indicates whether this product requires shipping, which can be used to distinguish between physical and digital products.
-
----
-
-`SKU`: `String!`
-
-The product SKU (Stock Keeping Unit) of the variant.
+<ParamField path="isTaxable" type="Boolean!">
+  Indicates whether taxes can be applied to this product.
+</ParamField>
 
 ---
-
-`isTaxable`: `Boolean!`
-
-Indicates whether taxes can be applied to this product.
-
----
-
-`weight`: `Int!`
-
-The weight of the product in grams.
+<ParamField path="weight" type="Int!">
+  The weight of the product in grams.
+</ParamField>
 
 ---
-
-`option1`: `String`
-
-Additional options available for this product, usually representing extra customizations.
-
----
-
-`option2`: `String`
-
-Additional options available for this product, usually representing extra customizations.
+<ParamField path="option1" type="String">
+  Additional options available for this product, usually representing extra customizations.
+</ParamField>
 
 ---
+<ParamField path="option2" type="String">
+  Additional options available for this product, usually representing extra customizations.
+</ParamField>
 
-`option3`: `String`
-
-Additional options available for this product, usually representing extra customizations.
-
+---
+<ParamField path="option3" type="String">
+  Additional options available for this product, usually representing extra customizations.
+</ParamField>
 ---
 
 ### Related types
 
-* [ShopifyProduct](/reference/shopifyproduct)
+* [ShopifyProduct](/api-reference/shopifyproduct)

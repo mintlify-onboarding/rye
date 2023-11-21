@@ -7,30 +7,30 @@ description: "The input fields to provide information about promo codes applied 
 
 ---
 
-`store`: `String!`
+<ParamField path="store" type="String!">
+  The store the promo codes are applied to
+</ParamField>
 
-The store the promo codes are applied to
+<Note>
+ 
+** This field must be equal to [AmazonStore.store](/api-reference/amazonstore#fields) or [ShopifyStore.store](/api-reference/shopifystore#fields) fields.**
 
-> 📘
-> 
-> This field must be equal to [AmazonStore.store](/reference/amazonstore#fields) or [ShopifyStore.store](/reference/shopifystore#fields) fields.
-> 
-> For Amazon store the value is always `amazon`
-
+ For Amazon store the value is always `amazon`
+</Note>
 ---
 
-`promoCodes`: `[String!]!`
-
+<ParamField path="promoCodes" type="[String!]!">
 List of promo codes to apply for a store
+</ParamField>
 
 ---
 
 ### Mutations
 
-* [submitCart](/reference/submitcart)
+* [submitCart](/api-reference/submitcart)
 
 ---
 
 ### Related types
 
-* [CartSubmitInput](/reference/cartsubmitinput)
+* [CartSubmitInput](/api-reference/cartsubmitinput)

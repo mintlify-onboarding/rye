@@ -7,54 +7,55 @@ description: "Represents an image for a Shopify product."
 
 ---
 
-`url`: [URL!](/reference/url)
-
-The original source URL of the image.
-
----
-
-`position`: `Int!`
-
-The position of the image in a carousel of images.
+<ParamField path="url" type="URL!">
+  The original source URL of the image.
+</ParamField>
 
 ---
 
-`width`: `Int!`
-
-The width of the image in pixels.
-
----
-
-`height`: `Int!`
-
-The height of the image in pixels.
+<ParamField path="position" type="Int!">
+  The position of the image in a carousel of images.
+</ParamField>
 
 ---
 
-`id`: `ID!`
-
-The unique ID for the Shopify Image.
-
----
-
-`variantIDs`: `[ID!]!`
-
-A list of variant IDs associated with the image.
+<ParamField path="width" type="Int!">
+  The width of the image in pixels.
+</ParamField>
 
 ---
 
-`createdAt`: [Time!](/reference/time)
-
-The date and time the image was created (deprecated).
+<ParamField path="height" type="Int!">
+  The height of the image in pixels.
+</ParamField>
 
 ---
 
-`updatedAt`: [Time!](/reference/time) 
+<ParamField path="id" type="ID!">
+  The unique ID for the Shopify Image.
+</ParamField>
 
-The date and time the image was updated (deprecated).
+---
+
+<ParamField path="variantIDs" type="[ID!]!">
+  A list of variant IDs associated with the image.
+</ParamField>
+
+---
+
+<ParamField path="createdAt" type="Time!">
+  The date and time the image was created (deprecated).
+</ParamField>
+
+
+---
+
+<ParamField path="updatedAt" type="Time!">
+  The date and time the image was updated (deprecated).
+</ParamField>
 
 ---
 
 ### Related types
 
-* [ShopifyProduct](/reference/shopifyproduct)
+* [ShopifyProduct](/api-reference/shopifyproduct)

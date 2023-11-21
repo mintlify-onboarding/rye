@@ -6,19 +6,19 @@ description: "The input fields to represent the information required to fetch a 
 ## Fields
 
 ---
+<ParamField path="id" type="ID!">
+  Product ID.
+</ParamField>
 
-`id`: `ID!`
-
-Product ID.
 
 ---
 
-`marketplace`: [Marketplace!](https://rye-docs.readme.io/reference/marketplace)
-
-Marketplace enum representing the marketplace where the product is listed.
+<ParamField path="marketplace" type="Marketplace!">
+  Marketplace enum representing the marketplace where the product is listed.
+</ParamField>
 
 ---
 
 ### Related queries
 
-* [productByID](/reference/productbyid)
+* [productByID](/api-reference/productbyid)

@@ -46,11 +46,6 @@
             ]
           },
           {
-            "group": "Queries",
-            "pages": [
-            ]
-          },
-          {
             "group": "Product API",
             "pages": [
               {
@@ -64,14 +59,12 @@
                 "group": "Mutations",
                 "pages": [
                   "api-reference/requestproductbyurl",
-                  "api-reference/requestproductbyurl",
                   "api-reference/requeststorebyurl"
                 ]
               },
               {
                 "group": "Input",
                 "pages": [
-                  "api-reference/productbyidinput",
                   "api-reference/productbyidinput",
                   "api-reference/productsbydomaininput",
                   "api-reference/productsbyvendorinput",
@@ -83,7 +76,6 @@
               {
                 "group": "Objects",
                 "pages": [
-                  "api-reference/amazoncategory",
                   "api-reference/amazoncategory",
                   "api-reference/amazonimage",
                   "api-reference/amazonproduct",
@@ -114,7 +106,6 @@
                 "group": "Queries",
                 "pages": [
                   "api-reference/orderbyid",
-                  "api-reference/orderbyid",
                   "api-reference/cart-1",
                   "api-reference/orderbyid-new"
                 ]
@@ -122,7 +113,6 @@
               {
                 "group": "Mutations",
                 "pages": [
-                  "api-reference/addcartitems",
                   "api-reference/addcartitems",
                   "api-reference/cancelorder",
                   "api-reference/createcart",
@@ -137,7 +127,6 @@
               {
                 "group": "Input",
                 "pages": [
-                  "api-reference/amazoncartitemsinput",
                   "api-reference/amazoncartitemsinput",
                   "api-reference/amazonproductidinput",
                   "api-reference/billingaddressinput",
@@ -161,7 +150,6 @@
               {
                 "group": "Objects",
                 "pages": [
-                  "api-reference/amazoncartline",
                   "api-reference/amazoncartline",
                   "api-reference/amazonoffer-1",
                   "api-reference/amazonstore",
@@ -212,7 +200,6 @@
                 "group": "Errors",
                 "pages": [
                   "api-reference/amazonoffererror",
-                  "api-reference/amazonoffererror",
                   "api-reference/amazonoffererrordetails",
                   "api-reference/amazonstoreerror",
                   "api-reference/amazonstoreerrordetails",
@@ -235,7 +222,6 @@
                 "group": "Enums",
                 "pages": [
                   "api-reference/carterrorcode",
-                  "api-reference/carterrorcode",
                   "api-reference/country",
                   "api-reference/currency",
                   "api-reference/marketplace",
@@ -255,7 +241,6 @@
                 "group": "Interfaces",
                 "pages": [
                   "api-reference/image",
-                  "api-reference/image",
                   "api-reference/product",
                   "api-reference/variant",
                   "api-reference/orderevent"
@@ -265,14 +250,12 @@
                 "group": "Scalars",
                 "pages": [
                   "api-reference/time",
-                  "api-reference/time",
                   "api-reference/url"
                 ]
               },
               {
                 "group": "Unions",
                 "pages": [
-                  "api-reference/cancelorderresult",
                   "api-reference/cancelorderresult",
                   "api-reference/cartline",
                   "api-reference/productconnection",
@@ -282,7 +265,6 @@
               {
                 "group": "Objects",
                 "pages": [
-                  "api-reference/pageinfo",
                   "api-reference/pageinfo",
                   "api-reference/price"
                 ]

@@ -7,25 +7,25 @@ description: "The input fields to provide the necessary information to update th
 
 ---
 
-`id`: `ID!`
+<ParamField path="id" type="ID!">
+  The ID of the cart that the user wants to update the buyer identity for.
+</ParamField>
 
-The ID of the cart that the user wants to update the buyer identity for.
 
 ---
 
-`buyerIdentity`: [BuyerIdentityInput](https://rye-docs.readme.io/reference/buyeridentityinput)
-
-The `BuyerIdentityInput` object containing the updated buyer identity information.
-
+<ParamField path="buyerIdentity" type="BuyerIdentityInput">
+  The `BuyerIdentityInput` object containing the updated buyer identity information.
+</ParamField>
 ---
 
 ### Mutations
 
-* [updateCartBuyerIdentity](/reference/updatecartbuyeridentity)
+* [updateCartBuyerIdentity](/api-reference/updatecartbuyeridentity)
 
 ---
 
 ### Related types
 
-* [BuyerIdentityInput](/reference/buyeridentityinput)
-* [CartResponse](/reference/cartresponse)
+* [BuyerIdentityInput](/api-reference/buyeridentityinput)
+* [CartResponse](/api-reference/cartresponse)

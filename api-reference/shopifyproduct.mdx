@@ -3,152 +3,139 @@ title: "ShopifyProduct"
 description: "Represents products from the Shopify stores. It includes details such as the product's title, description, price, availability, images, and other attributes. These details help the API to handle products from Shopify in a way that's consistent with products from other sources, like Amazon, and to provide users with a seamless shopping experience across different platforms."
 ---
 
-> 📘
-> 
-> [AmazonProduct](/reference/amazonproduct) and [ShopifyProduct](/reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/docs/amazon-and-shopify-product-comparison)
+<Note>[AmazonProduct](/api-reference/amazonproduct) and [ShopifyProduct](/api-reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/amazon-and-shopify-product-comparison)</Note>
 
 ---
 
 ## Fields
 
-`id`: `ID!`
+<ParamField path="id" type="ID!">
+  A unique Shopify Product ID, usually an integer.
+</ParamField>
 
-A unique Shopify Product ID, usually an integer.
-
----
-
-`marketplace`: [Marketplace!](/reference/marketplace)
-
-The marketplace associated with the product, in this case, Shopify.
 
 ---
 
-`title`: `String!`
-
-The title of the product.
-
----
-
-`description`: `String!`
-
-The description of the product scraped and extracted from the HTML of the product page.
+<ParamField path="marketplace" type="Marketplace!">
+  The marketplace associated with the product, in this case, Shopify.
+</ParamField>
 
 ---
 
-`vendor`: `String!`
-
-The vendor of the product.
-
----
-
-`url`: [URL!](/reference/url)
-
-The URL to the product page.
+<ParamField path="title" type="String!">
+  The title of the product.
+</ParamField>
 
 ---
 
-`price`: [Price](/reference/price)
+<ParamField path="description" type="String!">
+  The description of the product scraped and extracted from the HTML of the product page.
+</ParamField>
+---
 
-The price of the product in the form of a Price object.
+<ParamField path="vendor" type="String!">
+  The vendor of the product.
+</ParamField>
+
 
 ---
 
-`isAvailable`: `Boolean!`
+<ParamField path="url" type="URL!">
+  The URL to the product page.
+</ParamField>
+---
 
-A boolean flag to indicate whether any of the product variants are available.
+<ParamField path="price" type="Price!">
+  The price of the product in the form of a Price object.
+</ParamField>
 
 ---
 
-`tags`: `[String!]!`
-
-A list of additional tags associated with the product.
-
----
-
-`images`: [\[Image!\]!](/reference/image)
-
-A list of images of the product, implementing the Image interface.
+<ParamField path="isAvailable" type="Boolean!">
+  A boolean flag to indicate whether any of the product variants are available.
+</ParamField>
 
 ---
 
-`variants`: [\[Variant!\]!](/reference/variant)
-
-A list of product variants available, usually different sizes or colors, implementing the Variant interface.
-
----
-
-`descriptionHTML`: `String!`
-
-The raw HTML of the product page description.
+<ParamField path="tags" type="String!!">
+  A list of additional tags associated with the product.
+</ParamField>
 
 ---
 
-`collectionHandle`: `String!`
-
-A handle for the product collection, used to group products together.
-
----
-
-`handle`: `String!`
-
-A unique handle for the product.
+<ParamField path="images" type="Image!!">
+  A list of images of the product, implementing the Image interface.
+</ParamField>
 
 ---
 
-`maxPrice`: `Int!`
-
-The maximum price across the product variants.
-
----
-
-`minPrice`: `Int!`
-
-The minimum price across the product variants.
+<ParamField path="variants" type="Variant!!">
+  A list of product variants available, usually different sizes or colors, implementing the Variant interface.
+</ParamField>
 
 ---
 
-`productType`: `String!`
+<ParamField path="descriptionHTML" type="String!">
+  The raw HTML of the product page description.
+</ParamField>
 
-The type of the product.
+---
+<ParamField path="collectionHandle" type="String!">
+  A handle for the product collection, used to group products together.
+</ParamField>
+
+---
+<ParamField path="handle" type="String!">
+  A unique handle for the product.
+</ParamField>
+
+---
+<ParamField path="maxPrice" type="Int!">
+  The maximum price across the product variants.
+</ParamField>
+
+---
+<ParamField path="minPrice" type="Int!">
+  The minimum price across the product variants.
+</ParamField>
+
+---
+<ParamField path="productType" type="String!">
+  The type of the product.
+</ParamField>
+
+---
+<ParamField path="createdAt" type="Time!">
+  The date and time when the product was created.
+</ParamField>
+
+---
+<ParamField path="publishedAt" type="Time!">
+  The date and time when the product was published.
+</ParamField>
+
+---
+<ParamField path="storeCanonicalURL" type="URL!">
+  The canonical URL of the store.
+</ParamField>
+
+---
+<ParamField path="storeDomain" type="String!">
+  The domain name part of the store canonical URL, e.g., abc.myshopify.com.
+</ParamField>
+---
+<ParamField path="options" type="ProductOption!">
+   A list of extra customizations for a product.
+</ParamField>
 
 ---
 
-`createdAt`: [Time!](/reference/time)
+`reviewsConnection( before: ID after: ID first: Int last: Int )`: [ShopifyProductReviewsConnection](/api-reference/shopifyproductreviewsconnection)
 
-The date and time when the product was created.
-
----
-
-`publishedAt`: [Time!](/reference/time)
-
-The date and time when the product was published.
-
----
-
-`storeCanonicalURL`: [URL!](/reference/url)
-
-The canonical URL of the store.
-
----
-
-`storeDomain`: `String!`
-
-The domain name part of the store canonical URL, e.g., abc.myshopify.com.
-
----
-
-`options`: [\[ProductOption!\]](/reference/productoption)
-
- A list of extra customizations for a product.
-
----
-
-`reviewsConnection( before: ID after: ID first: Int last: Int )`: [ShopifyProductReviewsConnection](/reference/shopifyproductreviewsconnection)
-
-A connection to fetch product reviews. It accepts the arguments before, after, first, and last for pagination purposes and returns a [ShopifyProductReviewsConnection](/reference/shopifyproductreviewsconnection) object.
+A connection to fetch product reviews. It accepts the arguments before, after, first, and last for pagination purposes and returns a [ShopifyProductReviewsConnection](/api-reference/shopifyproductreviewsconnection) object.
 
 ---
 
 ### Related types
 
-* [ShopifyCartLine](/reference/shopifycartline)
+* [ShopifyCartLine](/api-reference/shopifycartline)

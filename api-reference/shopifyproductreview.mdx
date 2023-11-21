@@ -7,48 +7,44 @@ description: "Represents a product review for a Shopify product."
 
 ---
 
-`id`: `ID!`
-
-A unique review ID.
-
----
-
-`body`: `String`
-
-The body (message) of the review.
+<ParamField path="id" type="ID!">
+  A unique review ID.
+</ParamField>
 
 ---
 
-`helpfulnessCount`: `Int!`
-
-The number of people who found this review helpful.
-
----
-
-`rating`: `Int!`
-
-The rating given to the product, from 1 to 5.
+<ParamField path="body" type="String">
+  The body (message) of the review.
+</ParamField>
 
 ---
 
-`submittedAt`: [Time!](/reference/time)
-
-The date and time when the review was submitted.
-
----
-
-`reviewerDisplayName`: `String`
-
-The display name of the reviewer.
+<ParamField path="helpfulnessCount" type="Int!">
+  The number of people who found this review helpful.
+</ParamField>
 
 ---
+<ParamField path="rating" type="Int!">
+  The rating given to the product, from 1 to 5.
+</ParamField>
 
-`merchantReply`: `String`
+---
+<ParamField path="submittedAt" type="Time!">
+  The date and time when the review was submitted.
+</ParamField>
 
-The reply from the merchant, if it exists.
+---
+<ParamField path="reviewerDisplayName" type="String">
+  The display name of the reviewer.
+</ParamField>
+
+---
+<ParamField path="merchantReply" type="String">
+  The reply from the merchant, if it exists.
+</ParamField>
 
 ---
 
 ### Related types
 
-* [ShopifyProduct](/reference/shopifyproduct)
+* [ShopifyProduct](/api-reference/shopifyproduct)

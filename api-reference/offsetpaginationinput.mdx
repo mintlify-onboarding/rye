@@ -7,26 +7,27 @@ description: "The input fields to represent pagination information"
 
 ---
 
-`limit`: `Int! = 20`
+<ParamField path="limit" type="Int! = 20">
+  Maximum number of items to return (default is 20).
+</ParamField>
 
-Maximum number of items to return (default is 20).
 
 ---
 
-`offset`: `Int! = 0`
-
-A number of items to skip before starting to return items (default is 0).
+<ParamField path="offset" type="Int! = 20">
+  A number of items to skip before starting to return items (default is 0).
+</ParamField>
 
 ---
 
 ### Related queries
 
-* [productsByDomainV2](/reference/productsbydomainv2)
-* [productsByVendorV2](/reference/productsbyvendorv2)
+* [productsByDomainV2](/api-reference/productsbydomainv2)
+* [productsByVendorV2](/api-reference/productsbyvendorv2)
 
 ---
 
 ### Related types
 
-* [ProductsByDomainInput](/reference/productsbydomaininput)
-* [ProductsByVendorInput](/reference/productsbyvendorinput)
+* [ProductsByDomainInput](/api-reference/productsbydomaininput)
+* [ProductsByVendorInput](/api-reference/productsbyvendorinput)

@@ -7,42 +7,42 @@ description: "Represents a video describing an Amazon product."
 
 ---
 
-`durationSeconds`: `Int!`
-
- The duration of the video in seconds.
-
----
-
-`width`: `Int!`
-
-The width of the video, usually measured in pixels.
+<ParamField path="durationSeconds" type="Int!">
+   The duration of the video in seconds.
+</ParamField>
 
 ---
 
-`height`: `Int!`
+<ParamField path="width" type="Int!">
+   The width of the video, usually measured in pixels.
+</ParamField>
 
-The height of the video, usually measured in pixels.
-
----
-
-`url`: [URL!](/reference/url)
-
-A URL to the video itself.
 
 ---
 
-`thumbnailURL`: [URL!](/reference/url)
+<ParamField path="height" type="Int!">
+   The height of the video, usually measured in pixels.
+</ParamField>
+---
 
-A URL to the thumbnail image for the video, which is typically a still image representing the video content.
+<ParamField path="url" type="URL!">
+   A URL to the video itself.
+</ParamField>
 
 ---
 
-`title`: `String!`
+<ParamField path="thumbnailURL" type="URL!">
+   A URL to the thumbnail image for the video, which is typically a still image representing the video content.
+</ParamField>
 
-The title of the video, which can provide context or information about the video content.
+---
+
+<ParamField path="title" type="String!">
+   The title of the video, which can provide context or information about the video content.
+</ParamField>
 
 ---
 
 ### Related types
 
-* [AmazonProduct](/reference/amazonproduct)
+* [AmazonProduct](/api-reference/amazonproduct)

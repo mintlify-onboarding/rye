@@ -3,9 +3,7 @@ title: "AmazonProduct"
 description: "Represents products from the Amazon marketplace. It includes details such as the product's title, description, price, availability, images, and other attributes. These details help the API to handle products from Amazon in a way that's consistent with products from other sources, like Shopify, and to provide users with a seamless shopping experience across different platforms."
 ---
 
-> 📘
-> 
-> [AmazonProduct](/reference/amazonproduct) and [ShopifyProduct](/reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/docs/amazon-and-shopify-product-comparison)
+<Note>[AmazonProduct](/api-reference/amazonproduct) and [ShopifyProduct](/api-reference/shopifyproduct) returned by this query has similaries and differences that could be found in [the spreadsheet](/amazon-and-shopify-product-comparison)</Note>
 
 ---
 
@@ -13,174 +11,174 @@ description: "Represents products from the Amazon marketplace. It includes detai
 
 ---
 
-`id`: `ID!`
-
-The unique identifier for the Amazon product.
-
----
-
-`marketplace`: [Marketplace!](/reference/marketplace)
-
-Value for a marketplace for `AmazonProduct` is set to `Marketplace.AMAZON`.
+<ParamField path="id" type="ID!">
+  The unique identifier for the Amazon product.
+</ParamField>
 
 ---
 
-`title`: `String!`
-
-The title of the Amazon product.
-
----
-
-`description`: `String!`
-
-The description of the product.
+<ParamField path="marketplace" type="Marketplace!">
+  Value for a marketplace for `AmazonProduct` is set to `Marketplace.AMAZON`.
+</ParamField>
 
 ---
 
-`vendor`: `String!`
-
-The brand of the product.
-
----
-
-`url`: [URL!](/reference/url)
-
-The canonical URL for the product on Amazon's website.
+<ParamField path="title" type="String!">
+  The title of the Amazon product.
+</ParamField>
 
 ---
 
-`price`: [Price](/reference/price)
+<ParamField path="description" type="String!">
+  The description of the product.
+</ParamField>
 
-The price of the Amazon product, including its value, currency, and display value.
-
----
-
-`isAvailable`: `Boolean!`
-
-Indicates whether the product is available in stock. This field is required.
 
 ---
 
-`tags`: `[String!]!`
+<ParamField path="vendor" type="String!">
+  The brand of the product.
+</ParamField>
 
-A list of tags associated with the Amazon product
+---
+<ParamField path="url" type="URL!">
+  The canonical URL for the product on Amazon's website.
+</ParamField>
 
 ---
 
-`images`: [\[Image!\]!](/reference/image)
-
-A list of images for the Amazon product. This field is required.
-
----
-
-`variants`: [\[Variant!\]!](https://rye-docs.readme.io/reference/variant)
-
-A list of product variants, such as different colors or sizes.
+<ParamField path="price" type="Price!">
+  The price of the Amazon product, including its value, currency, and display value.
+</ParamField>
 
 ---
 
-`ASIN`: `ID!`
-
-Amazon's canonical product ID (Amazon Standard Identification Number). This field is required.
-
----
-
-`titleExcludingVariantName`: `String!`
-
-The Amazon product title without any additional context of the variant.
+<ParamField path="isAvailable" type="Boolean!">
+  Indicates whether the product is available in stock. This field is required.
+</ParamField>
 
 ---
 
-`featureBullets`: `[String!]!`
-
-A list of summary bullets about the product, found next to the product image on Amazon.
+<ParamField path="tags" type="String!">
+  A list of tags associated with the Amazon product
+</ParamField>
 
 ---
 
-`parentID`: `ID`
+<ParamField path="images" type="Image!">
+  A list of images for the Amazon product. This field is required.
+</ParamField>
+---
 
+<ParamField path="variants" type="Variant!">
+  A list of product variants, such as different colors or sizes.
+</ParamField>
+
+
+---
+
+<ParamField path="ASIN" type="ID!">
+  Amazon's canonical product ID (Amazon Standard Identification Number). This field is required
+</ParamField>
+
+---
+
+<ParamField path="titleExcludingVariantName" type="String!">
+  The Amazon product title without any additional context of the variant.
+</ParamField>
+---
+
+<ParamField path="featureBullets" type="[String!]!">
+  A list of summary bullets about the product, found next to the product image on Amazon.
+</ParamField>
+
+---
+
+<ParamField path="parentID" type="ID">
 The parent ID of the product if the product has multiple variants.
+</ParamField>
 
 ---
 
-`protectionPlans`: [\[AmazonProtectionPlan!\]!](https://rye-docs.readme.io/reference/amazonprotectionplan)
-
+<ParamField path="protectionPlans" type="AmazonProtectionPlan!!">
  A list of protection plans available for the product.
+</ParamField>
 
 ---
 
-`categories`: [\[AmazonCategory!\]!](https://rye-docs.readme.io/reference/amazoncategory)
-
-A list of categories to which the product belongs.
-
----
-
-`ratingsTotal`: `Int!`
-
-The total number of ratings for this item.
+<ParamField path="categories" type="AmazonCategory!!">
+ A list of categories to which the product belongs.
+</ParamField>
 
 ---
 
-`reviewsTotal`: `Int!`
+<ParamField path="ratingsTotal" type="Int!">
+ The total number of ratings for this item.
+</ParamField>
 
-The total number of reviews for this item.
-
----
-
-`subtitle`: [AmazonSubtitle](https://rye-docs.readme.io/reference/amazonsubtitle)
-
-The secondary title for the product, displayed below the main title on the product detail page.
 
 ---
 
-`videos`: [\[AmazonVideo!\]!](https://rye-docs.readme.io/reference/amazonvideo)
+<ParamField path="reviewsTotal" type="Int!">
+ The total number of reviews for this item.
+</ParamField>
+---
 
-A list of videos associated with the product.
+<ParamField path="subtitle" type="AmazonSubtitle">
+ The secondary title for the product, displayed below the main title on the product detail page.
+</ParamField>
+---
+
+<ParamField path="videos" type="AmazonVideo!!">
+ A list of videos associated with the product.
+</ParamField>
 
 ---
 
-`specifications`: [\[AmazonSpecification!\]!](https://rye-docs.readme.io/reference/amazonspecification)
-
-A list of product specifications.
-
----
-
-`color`: `String`
-
-The color of the product.
+<ParamField path="specifications" type="AmazonSpecification!!">
+ A list of product specifications.
+</ParamField>
 
 ---
 
-`manufacturer`: `String`
+<ParamField path="color" type="String">
+ The color of the product.
+</ParamField>
 
-The manufacturer of the product.
-
----
-
-`weight`: `String`
-
-The weight of the product.
 
 ---
 
-`firstAvailable`: [Time](/reference/time)
+<ParamField path="manufacturer" type="String">
+ The manufacturer of the product.
+</ParamField>
 
-The date when the product was first listed on Amazon.
-
----
-
-`dimensions`: `String`
-
-The dimensions of the product.
 
 ---
 
-`modelNumber`: `String`
+<ParamField path="weight" type="String">
+ The weight of the product.
+</ParamField>
 
-The manufacturer's model number for the product.
+---
+
+<ParamField path="firstAvailable" type="Time">
+ The date when the product was first listed on Amazon.
+</ParamField>
+
+---
+
+<ParamField path="dimensions" type="String">
+ The dimensions of the product.
+</ParamField>
+
+---
+
+<ParamField path="modelNumber" type="String">
+ The manufacturer's model number for the product.
+</ParamField>
 
 ---
 
 ### Related types
 
-* [AmazonCartLine](/reference/amazoncartline)
+* [AmazonCartLine](/api-reference/amazoncartline)

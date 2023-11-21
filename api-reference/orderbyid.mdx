@@ -3,9 +3,7 @@ title: "checkoutByCartID"
 description: "Returns a Checkout object by cart ID. This query can be used to retrieve information about the checkout status for an already submitted cart as well as order details for all orders associated with the checkout"
 ---
 
-> 📘
-> 
-> When called for a not submitted cart, [Checkout.status](/reference/checkoutstatus) will always be `PENDING`. After cart submission [Checkout.status](/reference/checkoutstatus) will change according to the current checkout state.
+<Note>When called for a not submitted cart, [Checkout.status](/api-reference/checkoutstatus) will always be `PENDING`. After cart submission [Checkout.status](/api-reference/checkoutstatus) will change according to the current checkout state.</Note>
 
 Sometimes, when using the checkoutByCartID query, the returned status may be `ACTION_REQUIRED`. In this case, you should check the "requiredActions" field for each order with this status and perform the necessary actions. Currently, there is only one required action: `CompletePaymentChallenge`, also known as 3D-S Challenge.
 
@@ -17,32 +15,31 @@ If 3D-S challenge completion is required, you should display the `redirectURL` t
 
 ### Arguments
 
-`cartID`: `ID!`
-
-The ID of the [Cart](/reference/cart-2) 
+<ParamField path="cartID" type="ID!">
+  The ID of the [Cart](/api-reference/cart-2) 
+</ParamField>
 
 ---
 
 ### Returns
-
-[Checkout.\*](/reference/checkout-new): [Checkout](/reference/checkout-new)
-
-Any requested field from the [Checkout](/reference/checkout-new) object.
+<ParamField path="Checkout." type="Checkout">
+  Any requested field from the [Checkout](/api-reference/checkout-new) object. 
+</ParamField>
 
 ---
 
 ### Examples
 
-Query arguments
+```json Query arguments
 
-`{
+{
     "cartID": "{{cartId}}"
 }
-`
+```
 
-GraphQL
 
-`query Checkout($cartID: ID!){
+```GraphQL GraphQL
+query Checkout($cartID: ID!){
   checkoutByCartID(cartID: $cartID) {
     status
     orders {
@@ -116,11 +113,12 @@ GraphQL
     }
   }
 }
-`
+```
 
-Response
+<ResponseExample>
 
-`{
+```json Response
+{
     "data": {
         "checkoutByCartID": {
             "status": "PENDING",
@@ -204,7 +202,10 @@ Response
         }
     }
 }
-`
+```
+
+</ResponseExample>
+
 
 ---
 
@@ -212,9 +213,8 @@ Response
 
 If the cart is not found then a corresponding error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -225,10 +225,10 @@ JSON
     ],
     "data": null
 }
-`
+```
 
 ---
 
 ### Related queries
 
-[OrderById](/reference/orderbyid-new)
+[OrderById](/api-reference/orderbyid-new)

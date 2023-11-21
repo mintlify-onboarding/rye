@@ -7,71 +7,71 @@ description: "The input fields to provide or update the buyer's identity and con
 
 ---
 
-`firstName`: `String`
+<ParamField path="firstName" type="String!">
+  The first name of the buyer. This field can be used to personalize communications with the buyer and to identify the buyer in any customer support interactions.
+</ParamField>
+---
 
-The first name of the buyer. This field can be used to personalize communications with the buyer and to identify the buyer in any customer support interactions.
+<ParamField path="lastName" type="String!">
+  The last name of the buyer. Similar to the `firstName` field, this field is used to personalize communications and identify the buyer in support interactions.
+</ParamField>
 
 ---
 
-`lastName`: `String`
-
-The last name of the buyer. Similar to the `firstName` field, this field is used to personalize communications and identify the buyer in support interactions.
-
----
-
-`phone`: `String`
-
-The 10-digit phone number of the buyer. This field can be used for contacting the buyer in case of any issues with their order or for providing customer support.
-
----
-
-`email`: `String`
-
+<ParamField path="email" type="String">
 The email address of the buyer. This field is important for sending transactional emails, like order confirmations, shipping updates, or password resets.
+</ParamField>
 
 ---
 
-`address1`: `String`
-
-The first line of the buyer's address, which typically includes the street name and building number.
-
----
-
-`address2`: `String`
-
-The second line of the buyer's address, can include additional information like apartment or suite numbers.
+<ParamField path="phone" type="String!">
+The 10-digit phone number of the buyer. This field can be used for contacting the buyer in case of any issues with their order or for providing customer support.
+</ParamField>
 
 ---
 
-`city`: `String!`
-
-The name of the city, district, village, or town where the buyer is located.
-
----
-
-`provinceCode`: `String`
-
-The 2-letter state or province code, is used to identify the buyer's location within a country.
+<ParamField path="address1" type="String!">
+  The first line of the buyer's address, which typically includes the street name and building number.
+</ParamField>
 
 ---
 
-`countryCode`: `Country!`
+<ParamField path="address2" type="String!">
+  The second line of the buyer's address, can include additional information like apartment or suite numbers.
+</ParamField>
+---
 
-The 2-letter country code identifies the buyer's country.
+<ParamField path="city" type="String!">
+  The name of the city, district, village, or town where the buyer is located.
+</ParamField>
 
 ---
 
-`postalCode`: `String!`
+<ParamField path="provinceCode" type="String!">
+  The 2-letter country code identifies the buyer's country.
+</ParamField>
 
-The postal or zip code for the buyer's area, which is used for shipping and billing purposes.
+---
+
+<ParamField path="countryCode" type="String!">
+  2-letter country code.
+</ParamField>
+
+---
+
+<ParamField path="postalCode" type="String!">
+  The postal or zip code for the buyer's area, which is used for shipping and billing purposes.
+</ParamField>
+---
+
 
 ### Mutations
 
-* [createCart](/reference/createcart)
-* [updateCartBuyerIdentity](/reference/updatecartbuyeridentity)
+* [createCart](/api-reference/createcart)
+* [updateCartBuyerIdentity](/api-reference/updatecartbuyeridentity)
 
 ---
 
 ### Related types
 
-* [CartBuyerIdentityUpdateInput](/reference/cartbuyeridentityupdateinput)
+* [CartBuyerIdentityUpdateInput](/api-reference/cartbuyeridentityupdateinput)

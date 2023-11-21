@@ -7,12 +7,13 @@ description: "Represents a response of requestStoreByURL mutation"
 
 ---
 
-`requestID`: `String!`
+<ParamField path="requestID" type="String!">
+  The `requestID` is the unique identifier for the requested store, which can be used in subsequent queries to fetch store and product information.
 
-The `requestID` is the unique identifier for the requested store, which can be used in subsequent queries to fetch store and product information.
+</ParamField>
 
 ---
 
 ### Related mutations
 
-* [requestStoreByURL](/reference/requeststorebyurl)
+* [requestStoreByURL](/api-reference/requeststorebyurl)

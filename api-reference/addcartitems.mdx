@@ -3,33 +3,28 @@ title: "addCartItems"
 description: "Adds new items to an existing shopping cart. This mutation resets selected shipping method of updated stores, and user will need to select shipping method again"
 ---
 
-> 📘
-> 
-> This mutation only adds non-existing products to the cart, skipping items that are already in the cart. To update quantity use [updateCartItems](/reference/updatecartitems).
+<Note>This mutation only adds non-existing products to the cart, skipping items that are already in the cart. To update quantity use [updateCartItems](/api-reference/updatecartitems).</Note>
 
 ---
 
 ### Arguments
 
-`input` : [CartItemsAddInput!](https://rye-docs.readme.io/reference/cartitemsaddinput)
-
-The `input` object contains the unique identifier (ID) for the cart and the items that need to be added.
-
+<ParamField path="input" type="CartItemsAddInput">
+  The `input` object contains the unique identifier (ID) for the cart and the items that need to be added.
+</ParamField>
 ---
 
 ### Returns
 
-[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
-
-Any requested field from the [CartResponse](/reference/cartresponse) object.
-
+<ParamField path="CartResponse." type="CartResponse">
+  Any requested field from the [CartResponse](/api-reference/cartresponse) object.
+</ParamField>
 ---
 
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments
+{
     "input": {
         "id": "{{cartId}}",
         "items": {
@@ -44,11 +39,10 @@ Query arguments
         }
     }
 }
-`
+```
 
-GraphQL
-
-`mutation ($input: CartItemsAddInput!) {
+```GraphQL GraphQL
+mutation ($input: CartItemsAddInput!) {
     addCartItems(input: $input) {
         cart {
             cost {
@@ -250,11 +244,12 @@ GraphQL
         }
     }
 }
-`
+```
 
-Response
+<ResponseExample>
 
-`{
+```json Response
+{
     "data": {
         "addCartItems": {
             "cart": {
@@ -379,7 +374,8 @@ Response
         }
     }
 }
-`
+```
+</ResponseExample>
 
 ---
 
@@ -387,9 +383,8 @@ Response
 
 If the cart is not found then a corresponding error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -400,13 +395,12 @@ JSON
     ],
     "data": null
 }
-`
+```
 
 If the provided items are not found in the inventory `PRODUCT_NOT_FOUND` error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "data": {
         "addCartItems": {
             "cart": {
@@ -425,13 +419,12 @@ JSON
         }
     }
 }
-`
+```
 
 If the provided product/variant quantity is less or equal to zero then `ADD_PRODUCTS_FAILED` error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "data": {
         "addCartItems": {
             "cart": {
@@ -472,19 +465,13 @@ JSON
         }
     }
 }
-`
+```
 
-> 📘
-> 
-> If the store has no items added to it then after attempting to get an offer for this store `PRODUCTS_EMPTY`error is returned for [AmazonOffer](/reference/amazonoffer-1)/[ShopifyOffer](/reference/shopifyoffer-1) object as in the example above.
+<Note>If the store has no items added to it then after attempting to get an offer for this store `PRODUCTS_EMPTY`error is returned for [AmazonOffer](/api-reference/amazonoffer-1)/[ShopifyOffer](/api-reference/shopifyoffer-1) object as in the example above.</Note>
 
 ---
 
 ### Related mutations
 
-* [deleteCartItems](/reference/deletecartitems)
-* [updateCartItems](/reference/updatecartitems)
-
-### Recipes
-
-* [Add item to cart](/recipes/add-item-to-cart)
+* [deleteCartItems](/api-reference/deletecartitems)
+* [updateCartItems](/api-reference/updatecartitems)

@@ -3,42 +3,37 @@ title: "cancelOrder"
 description: "Cancel an existing order."
 ---
 
-> 📘
-> 
-> This endpoint currently only supports canceling amazon orders. Shopify support will come at a later date.
+<Note>This endpoint currently only supports canceling amazon orders. Shopify support will come at a later date.</Note>
 
 ---
 
 ### Arguments
 
-`input` : [CancelOrderInput!](https://rye-docs.readme.io/reference/cancelorderinput)
-
-The `input` object contains the orderId.
+<ParamField path="input" type="CancelOrderInput!">
+  The `input` object contains the orderId.
+</ParamField>
 
 ---
 
 ### Returns
 
-[CancelOrderResponse!](/reference/cancelorderresponse#fields)
-
-Any requested field from the [CancelOrderResponse](/reference/cancelorderresponse) object.
-
+<ParamField path="CancelOrderResponse!" type="CancelOrderResponse">
+  Any requested field from the [CancelOrderResponse](/api-reference/cancelorderresponse) object.
+</ParamField>
 ---
 
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments
+{
     "input": {
         "orderId": "orderId-123-456-789"
     }
 }
-`
+```
 
-GraphQL
-
-`mutation ($input: CancelOrderInput!) {
+```GraphQL GraphQL
+mutation ($input: CancelOrderInput!) {
     cancelOrder(input:$input){
         result {
         ...on CancelAmazonOrderResult { items { amazonOrderId, status, failReason } }
@@ -50,13 +45,14 @@ GraphQL
         }
     }
 }
-`
+```
 
 Calling the endpoint initiates a cancellation attempt. Response below is an example response for an amazon order
 
-Response
+<ResponseExample>
 
-`{
+```json Response
+{
     "data": {
         "cancelOrder": {
             "result": {
@@ -72,7 +68,8 @@ Response
         }
     }
 }
-`
+```
+</ResponseExample>
 
 ---
 
@@ -80,9 +77,8 @@ Response
 
 If a cancellation request has a status `CANCEL_FAILED` the payload would look like below:
 
-Response
-
-`{
+```json Response
+{
     "data": {
         "cancelOrder": {
             "result": {
@@ -98,13 +94,12 @@ Response
         }
     }
 }
-`
+```
 
 The error field will display errors not related to actual status of a cancellation request.
 
-Response
-
-`{
+```json Response
+{
     "data": {
         "cancelOrder": {
             "result": [],
@@ -116,4 +111,4 @@ Response
         }
     }
 }
-`
+```

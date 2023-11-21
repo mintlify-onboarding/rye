@@ -7,24 +7,24 @@ description: "Represents a product category for an Amazon item. These categories
 
 ---
 
-`name`: `String!`
-
- The name of the category, which provides information about the product's classification.
-
----
-
-`url`: [URL!](/reference/url)
-
-A link to the product category on Amazon's website, offering more information about the category.
+<ParamField path="name" type="String!">
+   The name of the category, which provides information about the product's classification.
+</ParamField>
 
 ---
 
-`categoryID`: `ID!`
+<ParamField path="url" type="v!">
+   A link to the product category on Amazon's website, offering more information about the category.
+</ParamField>
 
-A unique identifier for the category associated with the Amazon product.
+---
+
+<ParamField path="categoryID" type="ID!">
+   A unique identifier for the category associated with the Amazon product.
+</ParamField>
 
 ---
 
 ### Related types
 
-* [AmazonProduct](/reference/amazonproduct)
+* [AmazonProduct](/api-reference/amazonproduct)

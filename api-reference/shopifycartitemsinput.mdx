@@ -7,26 +7,26 @@ description: "The input fields to provide the necessary information to add or up
 
 ---
 
-`quantity`: `Int!`
-
-An integer representing the number of products. This value indicates how many units of the specific Amazon product the buyer wants to add to the cart.
+<ParamField path="quantity" type="Int!">
+  An integer representing the number of products. This value indicates how many units of the specific Amazon product the buyer wants to add to the cart.
+</ParamField>
 
 ---
 
-`variantId`: `Int!`
-
-The ID of the Shopify product variant that the buyer wants to add to the cart. In Shopify, each product can have multiple variants, such as different colors, sizes, or materials. This ID is used to identify the specific variant the buyer has chosen.
+<ParamField path="variantId" type="Int!">
+  The ID of the Shopify product variant that the buyer wants to add to the cart. In Shopify, each product can have multiple variants, such as different colors, sizes, or materials. This ID is used to identify the specific variant the buyer has chosen.
+</ParamField>
 
 ---
 
 ### Mutations
 
-* [createCart](/reference/createcart)
-* [addCartItems](/reference/addcartitems)
-* [updateCartItems](/reference/updatecartitems)
+* [createCart](/api-reference/createcart)
+* [addCartItems](/api-reference/addcartitems)
+* [updateCartItems](/api-reference/updatecartitems)
 
 ---
 
 ### Related types
 
-* [CartItemsInput](/reference/cartitemsinput)
+* [CartItemsInput](/api-reference/cartitemsinput)

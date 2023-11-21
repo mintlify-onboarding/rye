@@ -3,33 +3,30 @@ title: "updateCartItems"
 description: "Updates the quantity of existing products in a cart. This mutation resets selected shipping method of updated stores, and user will need to select shipping method again"
 ---
 
-> 📘
-> 
-> If `quantity` is set to zero than the product will be removed from the cart. Negative quantity is not allowed and will result in error.
+<Note>If `quantity` is set to zero than the product will be removed from the cart. Negative quantity is not allowed and will result in error.</Note>
 
 ---
 
 ### Arguments
 
-`input` : [CartItemsUpdateInput!](https://rye-docs.readme.io/reference/cartitemsupdateinput)
-
-The `input` object contains the unique identifier (ID) for the cart and the items with their quantities that need to be updated.
+<ParamField path="input" type="CartItemsUpdateInput!">
+  The `input` object contains the unique identifier (ID) for the cart and the items with their quantities that need to be updated.
+</ParamField>
 
 ---
 
 ### Returns
 
-[CartResponse.\*](/reference/cartresponse#fields): [CartResponse](/reference/cartresponse)
-
-Any requested field from the [CartResponse](/reference/cartresponse) object.
+<ParamField path="CartResponse." type="CartResponse">
+  Any requested field from the [CartResponse](/api-reference/cartresponse) object.
+</ParamField>
 
 ---
 
 ### Examples
 
-Query arguments
-
-`{
+```json Query arguments
+{
     "input": {
         "id": "{{cartId}}",
         "items": {
@@ -44,11 +41,10 @@ Query arguments
         }
     }
 }
-`
+```
 
-GraphQL
-
-`mutation ($input: CartItemsUpdateInput!) {
+```GraphQL GraphQL
+mutation ($input: CartItemsUpdateInput!) {
     updateCartItems(input: $input) {
         cart {
             cost {
@@ -250,11 +246,12 @@ GraphQL
         }
     }
 }
-`
+```
 
-Response
+<ResponseExample>
 
-`{
+```json Response
+{
     "data": {
         "updateCartItems": {
             "cart": {
@@ -391,7 +388,8 @@ Response
         }
     }
 }
-`
+```
+</ResponseExample>
 
 ---
 
@@ -399,9 +397,8 @@ Response
 
 If the cart is not found then a corresponding error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "errors": [
         {
             "message": "Cart not found: someInvalidCartId",
@@ -412,13 +409,12 @@ JSON
     ],
     "data": null
 }
-`
+```
 
 If the provided product/variant quantity is then zero then `UPDATE_PRODUCTS_FAILED` error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "data": {
         "updateCartItems": {
             "cart": {
@@ -452,15 +448,14 @@ JSON
         }
     }
 }
-`
+```
 
 If the cart is already submitted then `CART_MODIFICATION_FORBIDDEN` error is returned
 
 If products are not present in the cart then `UPDATE_PRODUCTS_FAILED` error is returned
 
-JSON
-
-`{
+```JSON JSON
+{
     "data": {
         "updateCartItems": {
             "cart": {
@@ -481,9 +476,9 @@ JSON
         }
     }
 }
-`
+```
 
 ### Related mutations
 
-* [addCartItems](/reference/addcartitems)
-* [deleteCartItems](/reference/deletecartitems)
+* [addCartItems](/api-reference/addcartitems)
+* [deleteCartItems](/api-reference/deletecartitems)

@@ -7,24 +7,22 @@ description: "Represents product protection plans offered by the seller or manuf
 
 ---
 
-`id`: `ID!`
-
- The unique identifier for the protection plan. This is used to differentiate between various protection plans available for the product.
-
----
-
-`title`: `String!`
-
-The title of the protection plan, which describes the coverage offered. This could include information like the duration of the plan and the type of coverage provided (e.g., "2-Year Accident Protection Plan").
+<ParamField path="id" type="ID!">
+   The unique identifier for the protection plan. This is used to differentiate between various protection plans available for the product.
+</ParamField>
 
 ---
 
-`price`: [Price!](/reference/price)
+<ParamField path="title" type="String!">
+   The title of the protection plan, which describes the coverage offered. This could include information like the duration of the plan and the type of coverage provided (e.g., "2-Year Accident Protection Plan").
+</ParamField>
+---
 
-The price of the protection plan, represented as a Price type. This includes the value, currency, and display value of the price, allowing for accurate representation and calculation of the protection plan cost.
-
+<ParamField path="price" type="Price!">
+   The price of the protection plan, represented as a Price type. This includes the value, currency, and display value of the price, allowing for accurate representation and calculation of the protection plan cost.
+</ParamField>
 ---
 
 ### Related types
 
-* [AmazonProduct](/reference/amazonproduct)
+* [AmazonProduct](/api-reference/amazonproduct)

@@ -7,24 +7,23 @@ description: "The input fields to provide the necessary information to remove it
 
 ---
 
-`id`: `ID!`
+<ParamField path="id" type="ID!">
+  The ID of the cart that the user wants to remove items from. It's a unique identifier for the cart in the system.
 
-The ID of the cart that the user wants to remove items from. It's a unique identifier for the cart in the system.
-
+</ParamField>
 ---
 
-`items`: [DeleteCartLinesInput](https://rye-docs.readme.io/reference/deletecartlinesinput)
-
-The `DeleteCartLinesInput` object containing the list of items to be removed from the cart.
-
+<ParamField path="items" type="DeleteCartLinesInput">
+  The `DeleteCartLinesInput` object containing the list of items to be removed from the cart.
+</ParamField>
 ---
 
 ### Mutations
 
-* [deleteCartItems](/reference/deletecartitems)
+* [deleteCartItems](/api-reference/deletecartitems)
 
 ---
 
 ### Related types
 
-* [CartResponse](/reference/cartresponse)
+* [CartResponse](/api-reference/cartresponse)
