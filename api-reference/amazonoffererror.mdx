@@ -7,21 +7,19 @@ description: "Represents an Amazon offer error"
 
 ---
 
-`message`: `String!`
-
+<ParamField path="message" type="String!">
 Error message related to the Offer
-
+</ParamField>
 ---
 
-`code`: [OfferErrorCode](/api-reference/offererrorcode)!
-
+<ParamField path="code" type="OfferErrorCode">
 Error code
-
+</ParamField>
 ---
 
-`details`: [AmazonOfferErrorDetails](/api-reference/amazonoffererrordetails)
-
+<ParamField path="details" type="AmazonOfferErrorDetails">
 Additional error information
+</ParamField>
 
 ---
 

@@ -1,0 +1,22 @@
+---
+title: "ReturnApprovedEvent"
+description: "Represents a return being requested"
+---
+
+## Fields
+
+---
+
+`id`: `ID!`
+
+The unique identifier of the event.
+
+---
+
+`createdAt`: [Time!](/reference/time)
+
+The time the order event was created.
+
+---
+
+`data`: [AmazonReturnApprovedEventData](/reference/amazonreturnapprovedeventdata) | [ShopifyReturnApprovedEventData](/reference/shopifyreturnapprovededeventdata)

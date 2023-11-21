@@ -166,7 +166,6 @@
                   "api-reference/cancelamazonorderitem",
                   "api-reference/ordercancelfailedorderevent",
                   "api-reference/ordercancelstartedorderevent",
-                  "api-reference/ordercancelstartedorderevent-copy",
                   "api-reference/returnapprovededevent",
                   "api-reference/returnclosedevent",
                   "api-reference/amazonreturnrequestedeventdata",
