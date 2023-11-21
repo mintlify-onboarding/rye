@@ -7,21 +7,20 @@ description: "Represents information related to the checkout process of a user's
 
 ---
 
-`cart`: [Cart!](/api-reference/cart-2)
+<ParamField path="cart" type="Cart!">
+  The cart associated with the checkout.
+</ParamField>
+---
 
-The cart associated with the checkout.
+<ParamField path="status" type="CheckoutStatus!">
+  The status of the checkout.
+</ParamField>
 
 ---
 
-`status`: [CheckoutStatus!](/api-reference/checkoutstatus)
-
-The status of the checkout.
-
----
-
-`orders`: [\[Order!\]!](/api-reference/order-new)
-
+<ParamField path="orders" type="Order!!">
 The list of orders associated with the checkout.
+</ParamField>
 
 ---
 

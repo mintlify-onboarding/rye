@@ -7,22 +7,19 @@ description: "Represents a failed payment status for an order."
 
 ---
 
-`id`: `ID!`
-
+<ParamField path="id" type="ID!">
 The unique identifier of the event.
-
+</ParamField>
 ---
 
-`createdAt`: [Time!](/api-reference/time)
-
+<ParamField path="createdAt" type="Time!">
 The time the order event was created.
-
+</ParamField>
 ---
 
-`reason`: `String!`
-
+<ParamField path="reason" type="String!">
 The reason for the order failure.
-
+</ParamField>
 ---
 
 ### Related types

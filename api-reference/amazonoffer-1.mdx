@@ -7,37 +7,34 @@ description: "Represents various price-related information and shipping methods 
 
 ---
 
-`subtotal`: [Price](https://rye-docs.readme.io/api-reference/price)
-
- A Price object representing the subtotal of the products in the cart before taxes and shipping fees are applied.
-
+<ParamField path="subtotal" type="Price">
+   A Price object representing the subtotal of the products in the cart before taxes and shipping fees are applied.
+</ParamField>
 ---
 
-`margin`: [Price](https://rye-docs.readme.io/api-reference/price)
-
-A Price object representing the margin on the products in the cart.
-
+<ParamField path="margin" type="Price">
+  A Price object representing the margin on the products in the cart.
+</ParamField>
 ---
 
-`notAvailableIds`: `[String!]!`
-
-An array of string IDs representing the products that are not available for purchase. This can be helpful in notifying the user about any unavailable items in their cart.
-
+<ParamField path="usenotAvailableIdsr_id" type="[String!]!">
+  An array of string IDs representing the products that are not available for purchase. This can be helpful in notifying the user about any unavailable items in their cart.
+</ParamField>
 ---
 
-`shippingMethods`: [\[ShippingMethod!\]!](https://rye-docs.readme.io/api-reference/shippingmethod)
-
-An array of [ShippingMethod](https://rye-docs.readme.io/api-reference/shippingmethod) objects that contain information about the available shipping options for the cart.
-
+<ParamField path="shippingMethods" type="ShippingMethod!!">
+  An array of [ShippingMethod](/api-reference/shippingmethod) objects that contain information about the available shipping options for the cart.
+</ParamField>
 ---
 
-`selectedShippingMethod`: [\[ShippingMethod!\]!](https://rye-docs.readme.io/api-reference/shippingmethod)
-
-A [ShippingMethod](https://rye-docs.readme.io/api-reference/shippingmethod) object that contains information about the selected shipping option for a store.
-
+<ParamField path="selectedShippingMethod" type="ShippingMethod!!">
+  A [ShippingMethod](/api-reference/shippingmethod) object that contains information about the selected shipping option for a store.
+</ParamField>
 ---
 
-`errors`: [\[AmazonOfferError!\]!](https://rye-docs.readme.io/api-reference/amazonoffererror)
+<ParamField path="errors" type="AmazonOfferError!!">
+  The id of the user
+</ParamField>
 
 ---
 

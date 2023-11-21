@@ -7,40 +7,35 @@ description: "Represents estimated costs that the buyer will pay at checkout. Th
 
 ---
 
-`subtotal`: [Price!](https://rye-docs.readme.io/api-reference/price)
-
+<ParamField path="subtotal" type="Price!">
 The amount, before taxes and cart-level discounts, for the customer to pay
-
+</ParamField>
 ---
 
-`tax`: [Price](https://rye-docs.readme.io/api-reference/price)
-
+<ParamField path="tax" type="Price">
 The tax amount for the customer to pay at checkout
-
+</ParamField>
 ---
 
-`margin`: [Price!](https://rye-docs.readme.io/api-reference/price)
-
+<ParamField path="margin" type="Price!">
 The total margin amount
+</ParamField>
 
 ---
 
-`shipping`: [Price](https://rye-docs.readme.io/api-reference/price)
-
+<ParamField path="shipping" type="Price">
 The shipping amount for the customer to pay at checkout
-
+</ParamField>
 ---
 
-`total`: [Price](https://rye-docs.readme.io/api-reference/price)
-
+<ParamField path="total" type="Price">
 The total amount for the customer to pay
-
+</ParamField>
 ---
 
-`isEstimated`:` Boolean!`
-
+<ParamField path="isEstimated" type="Boolean!">
 Indicates whether the cost is estimated
-
+</ParamField>
 ---
 
 ### Related types

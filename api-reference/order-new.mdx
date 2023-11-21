@@ -7,22 +7,20 @@ description: "Represents an order that a customer places for a product."
 
 ---
 
-`id`: `ID!`
-
+<ParamField path="id" type="ID!">
  A Price object representing the subtotal of the products in the cart before taxes and shipping fees are applied.
-
+</ParamField>
 ---
 
-`status`: [OrderStatus!](/api-reference/orderstatus)
-
+<ParamField path="status" type="OrderStatus!">
 The status of the order.
+</ParamField>
 
 ---
 
-`events`: [\[OrderEvent!\]!](/api-reference/orderevent)
-
+<ParamField path="events" type="OrderEvent!">
 The list of events associated with the order.
-
+</ParamField>
 ---
 
 ### Related types

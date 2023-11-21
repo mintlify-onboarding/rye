@@ -7,16 +7,15 @@ description: "The interface defines a set of properties that can be used to repr
 
 ---
 
-`id:`: `ID!`
-
+<ParamField path="id" type="ID!">
 The unique identifier of the event.
+</ParamField>
 
 ---
 
-`createdAt`: [Time!](/api-reference/time)
-
+<ParamField path="createdAt" type="Time!">
 The timestamp when the event was created.
-
+</ParamField>
 ---
 
 ### Related queries
@@ -46,9 +45,9 @@ The timestamp when the event was created.
 
 An example below shows a response from [checkoutByCartID](/api-reference/orderbyid) that returns an array of events that implement `OrderEvent` interface.
 
-JSON
 
-`{
+```JSON JSON
+{
     "data": {
         "checkoutByCartID": {
             "status": "PARTIALLY_SUCCEEDED",
@@ -95,4 +94,4 @@ JSON
         }
     }
 }
-`
+```

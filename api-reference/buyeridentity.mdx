@@ -7,71 +7,58 @@ description: "Represents the buyer's information within the cart API schema. It 
 
 ---
 
-`firstName`: `String`
+<ParamField path="firstName" type="String">
+  A string representing the first name of the person or the company.
+</ParamField>
 
-A string representing the first name of the person or the company.
-
----
-
-`lastName`: `String`
-
-A string representing the last name of the person or the company.
 
 ---
+<ParamField path="lastName" type="String">
+  A string representing the last name of the person or the company.
+</ParamField>
+---
+<ParamField path="email" type="String">
+  A string representing the email address of the person or the company.
+</ParamField>
+---
+<ParamField path="phone" type="String">
+  A string representing the 10-digit phone number of the person or the company.
+</ParamField>
+---
+<ParamField path="address1" type="String">
+  A string representing the first line of the address, such as the street name and number.
+</ParamField>
+---
+<ParamField path="address2" type="String">
+  A string representing the second line of the address, typically used for additional information such as an apartment or suite number.
+</ParamField>
+---
+<ParamField path="city" type="String">
+  A string representing the name of the city, district, village, or town where the buyer is located.
 
-`email`: `String`
-
-A string representing the email address of the person or the company.
+</ParamField>
 
 ---
-
-`phone`: `String`
-
-A string representing the 10-digit phone number of the person or the company.
-
----
-
-`address1`: `String`
-
-A string representing the first line of the address, such as the street name and number.
+<ParamField path="provinceCode" type="String">
+  A string representing the 2-letter state or province code (e.g., "NY" for New York or "ON" for Ontario).
+</ParamField>
 
 ---
-
-`address2`: `String`
-
-A string representing the second line of the address, typically used for additional information such as an apartment or suite number.
-
+<ParamField path="countryCode" type="Country!">
+  A Country value representing the 2-letter country code (e.g., "US" for United States or "CA" for Canada).
+</ParamField>
 ---
 
-`city`: `String`
-
-A string representing the name of the city, district, village, or town where the buyer is located.
-
----
-
-`provinceCode`: `String`
-
-A string representing the 2-letter state or province code (e.g., "NY" for New York or "ON" for Ontario).
-
----
-
-`countryCode`: [Country!](/api-reference/country)
-
-A Country value representing the 2-letter country code (e.g., "US" for United States or "CA" for Canada).
-
----
-
-`postalCode`: `String`
-
-A string representing the area postal code or ZIP code.
-
+<ParamField path="postalCode" type="String">
+  A string representing the area postal code or ZIP code.
+</ParamField>
 ---
 
 ### Mutations
 
-[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](https://rye-docs.readme.io/api-reference/updatecartbuyeridentity)
+[updateCartBuyerIdentity(input: CartBuyerIdentityUpdateInput!)](/api-reference/updatecartbuyeridentity)
 
-Updates buyer identity if not provided in [createCart](https://rye-docs.readme.io/api-reference/createcart) mutation
+Updates buyer identity if not provided in [createCart](/api-reference/createcart) mutation
 
 ### Related types
 

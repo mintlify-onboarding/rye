@@ -7,70 +7,60 @@ description: "The Product interface is a common interface implemented across dif
 
 ---
 
-`id`: `ID!`
-
+<ParamField path="id" type="ID!">
 A non-null unique identifier for the product.
+</ParamField>
 
 ---
 
-`marketplace`: [Marketplace!](/api-reference/marketplace)
-
+<ParamField path="marketplace" type="Marketplace!">
 A non-null enumeration value representing the marketplace.
-
+</ParamField>
 ---
 
-`title`: `String!`
-
+<ParamField path="title" type="String!">
 A non-null string containing the title of the product.
-
+</ParamField>
 ---
 
-`description`: `String!`
-
+<ParamField path="description" type="String!">
 A non-null string containing the product's description.
-
+</ParamField>
 ---
 
-`vendor`: `String!`
-
+<ParamField path="vendor" type="String!">
 A non-null string representing the product's vendor or brand.
-
+</ParamField>
 ---
 
-`url`: [URL!](/api-reference/url)
-
+<ParamField path="url" type="URL!">
 A non-null URL pointing to the product's page on the marketplace.
-
+</ParamField>
 ---
 
-`isAvailable`: `Boolean!`
-
+<ParamField path="isAvailable" type="Boolean!">
 A non-null boolean value indicating whether the product is available for purchase.
-
+</ParamField>
 ---
 
-`tags`: `[String!]!`
-
+<ParamField path="tags" type="[String!]!">
 A non-null list of strings representing tags associated with the product.
-
+</ParamField>
 ---
 
-`images`: [\[Image!\]!](/api-reference/image)
-
+<ParamField path="images" type="Image!!">
 A non-null list of image objects associated with the product, implementing the Image interface.
-
+</ParamField>
 ---
 
-`variants`: [\[Variant!\]!](/api-reference/variant)
-
+<ParamField path="variants" type="Variant!!">
 A non-null list of product variants available, implementing the Variant interface. These can include different sizes, colors, or other options for the product.
-
+</ParamField>
 ---
 
-`price`: [Price!](/api-reference/price)
-
+<ParamField path="price" type="Price!">
 A nullable Price object representing the product's price. The price might be null if it is not available or cannot be determined.
-
+</ParamField>
 ---
 
 ### Implementations

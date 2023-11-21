@@ -7,22 +7,20 @@ description: "Response after cancelOrder mutation is called."
 
 ---
 
-`result`: [CancelOrderResult!](/api-reference/cancelorderresult)
-
+<ParamField path="result" type="CancelOrderResult!">
 Array containing the orders associated with an order id and the cancellation status for each order.
-
+</ParamField>
 ---
 
-`error`: [CancelOrderError](/api-reference/cancelordererror)
-
+<ParamField path="error" type="CancelOrderError">
 Error object detailing information on why a cancellation request failed
-
+</ParamField>
 ---
 
 ## Mutations
 
 ---
 
-[cancelOrder(input: CancelOrderInput!)](https://rye-docs.readme.io/api-reference/cancelorder)
+[cancelOrder(input: CancelOrderInput!)](/api-reference/cancelorder)
 
 ---

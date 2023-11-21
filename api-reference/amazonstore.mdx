@@ -7,45 +7,40 @@ description: "Represents an Amazon store."
 
 ---
 
-`store`: `String!` 
+<ParamField path="store" type="String!">
+  The name of the Amazon store. The value is always equal to `amazon`
+</ParamField>
+---
 
-The name of the Amazon store. The value is always equal to `amazon`
+<ParamField path="cartLines" type="AmazonCartLine!!">
+  An array of [AmazonCartLine](/api-reference/amazoncartline) objects, each representing a line item in the cart with the Amazon product details and the quantity of the product.
+</ParamField>
+---
+
+<ParamField path="offer" type="AmazonOffer">
+  An `Offer` object containing information about taxes, prices, and shipping methods related to the items in the cart.
+</ParamField>
+---
+
+<ParamField path="shipsToCountries" type="Country!">
+  Countries that the store ships to.
+</ParamField>
 
 ---
 
-`cartLines`: [\[AmazonCartLine!\]!](https://rye-docs.readme.io/api-reference/amazoncartline)
-
-An array of [AmazonCartLine](https://rye-docs.readme.io/api-reference/amazoncartline) objects, each representing a line item in the cart with the Amazon product details and the quantity of the product.
-
+<ParamField path="isSubmitted" type="Boolean!">
+  True if the store items ended up with a successful checkout
+</ParamField>
 ---
 
-`offer`: [AmazonOffer](https://rye-docs.readme.io/api-reference/amazonoffer-1)
-
-An `Offer` object containing information about taxes, prices, and shipping methods related to the items in the cart.
-
+<ParamField path="requestId" type="String!">
+  A unique identifier will be used for getting information about the order after the cart is submitted
+</ParamField>
 ---
 
-`shipsToCountries`: [\[Country!\]](https://rye-docs.readme.io/api-reference/country)
-
-Countries that the store ships to.
-
----
-
-`isSubmitted`: `Boolean!`
-
-True if the store items ended up with a successful checkout
-
----
-
-`requestId`: `String!`
-
-A unique identifier will be used for getting information about the order after the cart is submitted
-
----
-
-`errors`: [\[AmazonStoreError!\]!](/api-reference/amazonstoreerror)
-
-Contains errors related to a specific store
+<ParamField path="errors" type="AmazonStoreError!!">
+  Contains errors related to a specific store
+</ParamField>
 
 ---
 

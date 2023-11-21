@@ -7,20 +7,17 @@ description: "Represents pricing information. It allows for easy calculation, co
 
 ---
 
-`value`: `Int!`
-
+<ParamField path="value" type="Int!">
  An integer representing the amount of money the product or service costs. The value is multiplied by 100 to avoid floating-point errors, which can cause inaccuracies when working with decimals. For example, if the price is $10.99, the value will be stored as 1099.
-
+</ParamField>
 ---
 
-`currency`: [Currency!](/api-reference/currency)
-
+<ParamField path="currency" type="Currency!">
 A Currency value indicating the currency in which the price is denominated. This is typically represented by a standardized three-letter currency code, such as USD for United States Dollars or EUR for Euros.
-
+</ParamField>
 ---
 
-`displayValue`: `String!`
-
+<ParamField path="displayValue" type="String!">
 A formatted string that represents the price in a human-readable format, including the currency symbol and appropriate decimal places. For example, if the price is $10.99 in US Dollars, the displayValue will be "$10.99".
-
+</ParamField>
 ---
