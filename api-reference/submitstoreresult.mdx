@@ -7,31 +7,31 @@ description: "Represents the result of submitting a store within a cart."
 
 ---
 
-`store`: [Store!](https://rye-docs.readme.io/reference/store)
-
+<ParamField path="store" type="Store!">
 This field represents the store's information for which the cart submission result is provided.
-
+</ParamField>
 ---
 
-`status`: [SubmitStoreStatus!](https://rye-docs.readme.io/reference/submitstorestatus)
-
+<ParamField path="status" type="SubmitStoreStatus!">
 This non-null field is an enumeration that represents the status of the checkout process for the store.
+</ParamField>
 
 ---
 
-`requestId`: `ID`
-
+<ParamField path="requestId" type="ID">
 This nullable field represents the request ID received from the checkout process. It can be used for tracking or troubleshooting purposes.
+</ParamField>
 
 ---
 
-`isSubmitted`: `Boolean!`
-
+<ParamField path="isSubmitted" type="Boolean!">
 True if the store items ended up with a successful checkout
+</ParamField>
 
 ---
 
-`errors`: [\[SubmitStoreResultError!\]](/reference/submitstoreresulterror)
+<ParamField path="errors" type="SubmitStoreResultError!">
+</ParamField>
 
 Store submit errors.
 
@@ -39,4 +39,4 @@ Store submit errors.
 
 ### Related types
 
-* [SubmitCartData](/reference/submitcartdata)
+* [SubmitCartData](/api-reference/submitcartdata)

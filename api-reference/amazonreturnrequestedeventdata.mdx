@@ -7,14 +7,16 @@ description: "Represents an order that a customer places for a product."
 
 ---
 
-`marketplace`: `amazon`
+<ParamField path="marketplace" type="amazon">
+</ParamField>
 
 ---
 
-`requestedLineItems`: [AmazonReturnLineItem\[\]](/reference/cancelorderstatus)
-
+<ParamField path="requestedLineItems" type="AmazonReturnLineItem">
 Requested items to be returned
+</ParamField>
 
 ---
 
-`requestedAt`: [Time](/reference/time)
+<ParamField path="requestedAt" type="Time">
+</ParamField>

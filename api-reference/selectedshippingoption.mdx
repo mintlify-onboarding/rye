@@ -7,29 +7,29 @@ description: "Represents shipping option selected for a store."
 
 ---
 
-`store`: `String!`
-
+<ParamField path="store" type="String!">
 The store the shipping option is selected for.
+</ParamField>
 
-> 📘
-> 
-> This field must be equal to [AmazonStore.store](/reference/amazonstore#fields) or [ShopifyStore.store](/reference/shopifystore#fields) fields.
-> 
-> For Amazon store the value is always `amazon`
-
+<Note>
+ 
+ **This field must be equal to [AmazonStore.store](/api-reference/amazonstore#fields) or [ShopifyStore.store](/api-reference/shopifystore#fields) fields.**
+ 
+ For Amazon store the value is always `amazon`
+</Note>
 ---
 
 `shippingId`: `String!`
 
 The ID of the shipping option selected.
 
-> 📘
-> 
-> The id can be retrieved from [ShopifyOffer.shippingMethods](/reference/shopifyoffer-1#fields)/[AmazonOffer.shippingMethods](/reference/amazonoffer-1)
-
+<Note>
+ 
+ The id can be retrieved from [ShopifyOffer.shippingMethods](/api-reference/shopifyoffer-1#fields)/[AmazonOffer.shippingMethods](/api-reference/amazonoffer-1)
+</Note>
 ---
 
 ### Related types
 
-* [CartSubmitInput](/reference/cartsubmitinput)
-* [UpdateCartSelectedShippingOptionsInput](/reference/updatecartselectedshippingoptionsinput)
+* [CartSubmitInput](/api-reference/cartsubmitinput)
+* [UpdateCartSelectedShippingOptionsInput](/api-reference/updatecartselectedshippingoptionsinput)

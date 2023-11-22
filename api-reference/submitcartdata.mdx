@@ -7,18 +7,19 @@ description: "Represents the result of submitting a cart."
 
 ---
 
-`id`: `ID`
-
+<ParamField path="id" type="ID">
 This non-null field represents the unique identifier (ID) of the submitted cart.
+</ParamField>
 
 ---
 
-`stores`: [\[SubmitStoreResult!\]!](https://rye-docs.readme.io/reference/submitstoreresult)
-
+<ParamField path="stores" type="SubmitStoreResult!!">
 This non-null list field contains the submission results of individual stores within the cart.
+</ParamField>
+
 
 ---
 
 ### Related types
 
-* [SubmitCartResult](/reference/submitcartresult)
+* [SubmitCartResult](/api-reference/submitcartresult)

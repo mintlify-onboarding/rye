@@ -7,15 +7,14 @@ description: "Represents the result of submitting a cart."
 
 ---
 
-`cart`: [SubmitCartData!](/reference/submitcartdata)
-
+<ParamField path="cart" type="SubmitCartData!">
 Cart submit data.
-
+</ParamField>
 ---
 
-`errors`: [\[SubmitCartResultError!\]!](/reference/submitcartresulterror)
-
+<ParamField path="errors" type="SubmitCartResultError!!">
 Cart submit errors.
+</ParamField>
 
 ---
 
@@ -23,7 +22,7 @@ Cart submit errors.
 
 ---
 
-[submitCart(input: CartSubmitInput!)](https://rye-docs.readme.io/reference/submitcart)
+[submitCart(input: CartSubmitInput!)](/api-reference/submitcart)
 
 Submit a Cart for the checkout
 

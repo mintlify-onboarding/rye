@@ -7,45 +7,48 @@ description: "Represents a Shopify store."
 
 ---
 
+<ParamField path="user_id" type="string">
+  The id of the user
+</ParamField>
 `store`: `String!`
 
 The name of the Shopify store.
 
 ---
-
-`cartLines`: [\[ShopifyCartLine!\]!](https://rye-docs.readme.io/reference/shopifycartline)
-
+<ParamField path="cartLines" type="ShopifyCartLine!">
 An array of [ShopifyCartLine](https://rye-docs.readme.io/reference/shopifycartline) objects, each representing a line item in the cart with the Shopify product variant details and the quantity of the variant.
+</ParamField>
 
 ---
 
-`offer`: [ShopifyOffer](https://rye-docs.readme.io/reference/shopifyoffer-1)
-
+<ParamField path="offer" type="ShopifyOffer">
 An `Offer` object containing information about taxes, prices, and shipping methods related to the items in the cart.
+</ParamField>
 
 ---
 
-`shipsToCountries`: [\[Country!\]](https://rye-docs.readme.io/reference/country)
-
+<ParamField path="shipsToCountries" type="Country!">
 Countries that the store ships to.
+</ParamField>
+
 
 ---
 
-`isSubmitted`: `Boolean!`
-
+<ParamField path="isSubmitted" type="Boolean!">
 True if the store items ended up with a successful checkout
+</ParamField>
+
 
 ---
 
-`requestId`: `String!`
-
-A unique identifier that will be used for getting information about the order after the cart is submitted
+<ParamField path="requestId" type="String!">
+</ParamField>
 
 ---
 
-`errors`: [\[ShopifyStoreError!\]!](/reference/shopifystoreerror)
-
+<ParamField path="errors" type="ShopifyStoreError!!">
 Contains errors related to a specific store
+</ParamField>
 
 ---
 

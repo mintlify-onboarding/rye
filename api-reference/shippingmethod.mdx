@@ -7,34 +7,30 @@ description: "Represents various price-related information and shipping methods 
 
 ---
 
-`id`: `ID!`
-
+<ParamField path="id" type="ID!">
 A unique identifier for the shipping method. This ID can be used to reference the shipping method when updating or selecting a specific shipping method.
-
+</ParamField>
 ---
 
-`label`: `String!`
-
+<ParamField path="label" type="String!">
 A label that describes the shipping method. This can be displayed to the user to help them understand the shipping option, such as "Standard Shipping" or "Express Shipping."
+</ParamField>
 
 ---
 
-`price`: [Price](https://rye-docs.readme.io/reference/price)
-
+<ParamField path="price" type="Price">
  The base price of the shipping method. This is the cost of shipping before any taxes are applied.
-
+</ParamField>
 ---
 
-`taxes`: [Price](https://rye-docs.readme.io/reference/price)
-
+<ParamField path="taxes" type="Price">
  This field contains information about the amount of taxes that are included in the total taxes based on the shipping price.
-
+</ParamField>
 ---
 
-`total`: [Price](https://rye-docs.readme.io/reference/price)
-
+<ParamField path="total" type="Price">
  The total cost of the offer, including subtotal, shipping price, and taxes. This is the final amount that the user would pay.
-
+</ParamField>
 ---
 
 ### Related types

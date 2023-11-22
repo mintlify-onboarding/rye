@@ -7,19 +7,19 @@ description: "Represents cart items from a Shopify store. Allows updating the qu
 
 ---
 
-`quantity`: `Int!`
-
+<ParamField path="quantity" type="Int!">
 The number of items of this particular product variant in the cart.
+</ParamField>
 
 ---
 
-`variant`: [ShopifyVariant!](https://rye-docs.readme.io/reference/shopifyvariant)
-
+<ParamField path="variant" type="ShopifyVariant!">
 The product variant from the Shopify store that corresponds to this cart line item.
+</ParamField>
 
 ---
 
 ### Related types
 
-* [ShopifyStore](/reference/shopifystore)
-* [CartLine](/reference/cartline)
+* [ShopifyStore](/api-reference/shopifystore)
+* [CartLine](/api-reference/cartline)
